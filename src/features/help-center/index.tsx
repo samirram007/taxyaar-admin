@@ -2,9 +2,14 @@ import Icon from "@/components/icon"
 import { Label } from "@/components/ui/label"
 import { lowerCase } from "@/utils/removeEmptyStrings"
 import { useLocation, useNavigate } from "@tanstack/react-router"
+import { useEffect } from "react"
+import { useHelpCenter } from "./contexts/help_center-context"
 
 const HelpCenter = () => {
-
+    const { setHeaderVisible } = useHelpCenter()
+    useEffect(() => {
+        setHeaderVisible(true)
+    }, [])
     return (
         <>
 

@@ -5,6 +5,8 @@ import { Main } from '@/layouts/components/main'
 
 
 
+import { useHelpCenter } from '@/features/help-center/contexts/help_center-context'
+import { useEffect } from 'react'
 import { ActionPages } from './components/action-page'
 import { type TopicArticle } from './data/schema'
 
@@ -17,9 +19,13 @@ interface TopicArticleProps {
     data?: TopicArticle
 }
 
-export default function TransporterDetails(props: TopicArticleProps) {
+export default function ArticleDetails(props: TopicArticleProps) {
     const { data } = props
     const keyName = 'topicArticle'
+    const { setHeaderVisible } = useHelpCenter()
+    useEffect(() => {
+        setHeaderVisible(false)
+    }, [])
 
     return (
 

@@ -11,12 +11,14 @@ import { Dialog, DialogDescription, DialogFooter, DialogHeader, DialogTitle } fr
 import { Route as TopicSectionRoute } from '@/routes/_authenticated/help-center/_layout/topic_section/_layout'
 import { lowerCase } from '@/utils/removeEmptyStrings'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { useNavigate } from '@tanstack/react-router'
-import { Loader2 } from 'lucide-react'
+import { Link, useNavigate } from '@tanstack/react-router'
+import { ChevronRightIcon, Loader2 } from 'lucide-react'
 import { useForm } from 'react-hook-form'
 import { useTopicSectionMutation } from '../data/queryOptions'
 import { formSchema, type TopicSection, type TopicSectionForm } from '../data/schema'
 
+import { Route as HelpCenterRouteTo } from '@/routes/_authenticated/help-center/_layout'
+import { Route as TopicSectionRouteTo } from '@/routes/_authenticated/help-center/_layout/topic_section/_layout'
 import { useEffect } from 'react'
 import slugify from 'slugify'
 import { TopicCategoryCombobox } from './sub-component/topic_category-combo-box'
@@ -79,6 +81,11 @@ export function FormAction({ currentRow }: Props) {
                     {isEdit ? `Update the ${lowerCase(moduleName)} here. `
                         : `Create new ${lowerCase(moduleName)} here. `}
                     Click save when you&apos;re done.
+                    <p className='text-muted-foreground flex flex-row items-center gap-2'>
+                        <Link to={HelpCenterRouteTo.to} className='text-blue-600 hover:underline flex flex-row items-center gap-2'  >  Help Center </Link>
+                        <Link to={TopicSectionRouteTo.to} className='text-blue-600 hover:underline flex flex-row items-center gap-2'  >
+                            <ChevronRightIcon size={12} />  Sections </Link>
+                    </p>
                 </DialogDescription>
             </DialogHeader>
 

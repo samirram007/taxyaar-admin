@@ -43,12 +43,12 @@ export const columns: ColumnDef<TopicArticle>[] = [
     enableHiding: false,
   },
   {
-    accessorKey: 'name',
+    accessorKey: 'title',
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title='Name' />
+      <DataTableColumnHeader column={column} title='Title' />
     ),
     cell: ({ row }) => (
-      <LongText className='max-w-36'>{row.getValue('name')}</LongText>
+      <LongText className='max-w-36'>{row.getValue('title')}</LongText>
     ),
     meta: {
       className: cn(
@@ -72,21 +72,19 @@ export const columns: ColumnDef<TopicArticle>[] = [
   {
     accessorKey: 'topicSectionId',
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title='Section' />
+      <DataTableColumnHeader column={column} title='Category / Section' />
     ),
     cell: ({ row }) => (
-      <div className='w-fit text-nowrap'>{row.original.topicSection?.name ?? row.getValue('topicCategory.name')}</div>
+      <div className='w-fit text-nowrap'>
+        <Badge variant='secondary' className='capitalize shadow-md'>
+
+          {row.original.topicSection?.topicCategory?.name ?? row.getValue('topicSection.topicCategory.name') + ' - '}
+        </Badge>
+        {row.original.topicSection?.name ?? row.getValue('topicSection.name')}
+      </div>
     ),
   },
 
-  {
-    accessorKey: 'description',
-    header: ({ column }) => (
-      <DataTableColumnHeader column={column} title='Description' />
-    ),
-    cell: ({ row }) => <div>{row.getValue('description')}</div>,
-    enableSorting: false,
-  },
   {
     accessorKey: 'status',
     header: ({ column }) => (

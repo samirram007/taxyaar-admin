@@ -146,58 +146,52 @@ code {
   [role='button']:not(:disabled) {
     cursor: pointer;
   }
-  input[type="number"]{
+  input[type='number'] {
     @apply text-right;
-     &::-webkit-outer-spin-button,
-  &::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-  }
- 
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
   }
   input,
   select,
-  button[role='combobox'],
-  textarea {
+  button[role='combobox'] {
     @apply shadow-sm shadow-indigo-400;
     @apply focus:bg-indigo-500! focus:text-gray-200 focus:font-semibold focus:text-left;
     @apply focus:placeholder:text-gray-200;
   }
-  .command-input-wrapper input[data-slot="command-input"]{
+  .command-input-wrapper input[data-slot='command-input'] {
     @apply shadow-none shadow-indigo-400/5;
     @apply focus:bg-indigo-500/10! focus:text-gray-200 focus:font-semibold focus:text-left;
     @apply focus:placeholder:text-gray-200;
   }
   [data-slot='command-input-wrapper'] input {
     @apply shadow-none;
-  @apply focus:bg-transparent! focus:text-inherit! focus:font-normal!;
-}
-  
+    @apply focus:bg-transparent! focus:text-inherit! focus:font-normal!;
+  }
+
   input[type='checkbox'] {
     @apply !px-0 w-9;
   }
   aside {
     box-shadow: 5px 0px 16px 1px #1d1ad521;
-}
-button[role='combobox'][data-state='open'] {
-  background-color: #e66262;
-  border-color: #3b82f6; /* Tailwind blue-500 */
-  box-shadow: 0 0 0 2px rgba(221, 58, 8, 0.5);
-   /* @apply  bg-indigo-500! text-gray-200!; */
-  
-}
+  }
+  button[role='combobox'][data-state='open'] {
+    background-color: #e66262;
+    border-color: #3b82f6; /* Tailwind blue-500 */
+    box-shadow: 0 0 0 2px rgba(221, 58, 8, 0.5);
+    /* @apply  bg-indigo-500! text-gray-200!; */
+  }
 
-
-/* Optional: change text color */
-button[role='combobox'][data-state='open'] > span {
-  @apply font-semibold text-gray-200;
-  @apply focus:text-gray-200;
-}
-button[role='combobox']    {
-   @apply   data-[placeholder]:focus:text-blue-200! ;  
- 
-}
-   
+  /* Optional: change text color */
+  button[role='combobox'][data-state='open'] > span {
+    @apply font-semibold text-gray-200;
+    @apply focus:text-gray-200;
+  }
+  button[role='combobox'] {
+    @apply data-[placeholder]:focus:text-blue-200!;
+  }
 
   /* Prevent focus zoom on mobile devices */
   @media screen and (max-width: 767px) {
@@ -272,3 +266,106 @@ button[role='combobox']    {
   width: var(--radix-popover-trigger-width);
   /* optionally, max-width, min-width as needed */
 }
+ 
+.article-body {
+  all: unset;
+  all: revert; /* revert browser defaults safely */
+  display: block;
+  font-family: system-ui, sans-serif;
+  color: #222;
+  line-height: 1.6;
+  padding: 0;
+  margin: 0;
+}
+
+/* Reset all elements inside article-body */
+.article-body * {
+  all: unset;
+  all: revert;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+/* Basic typography defaults */
+.article-body h1,
+.article-body h2,
+.article-body h3,
+.article-body h4,
+.article-body h5,
+.article-body h6 {
+  font-weight: 600;
+  line-height: 1.25;
+  margin: 1em 0 0.5em;
+}
+
+.article-body p {
+  margin: 0 0 1em;
+}
+
+.article-body ul,
+.article-body ol {
+  padding-left: 2em;
+  margin-bottom: 1em;
+}
+
+.article-body li {
+  margin: 0.25em 0;
+}
+
+.article-body a {
+  color: #0070f3;
+  text-decoration: underline;
+}
+
+.article-body img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.article-body table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.article-body th,
+.article-body td {
+  border: 1px solid #ddd;
+  padding: 0.5em;
+}
+
+.article-body pre,
+.article-body code {
+  font-family: 'Fira Code', monospace;
+  background: #f6f8fa;
+  padding: 0.25em 0.5em;
+  border-radius: 4px;
+}
+
+.article-body blockquote {
+  border-left: 4px solid #ddd;
+  margin: 1em 0;
+  padding-left: 1em;
+  color: #555;
+}
+.article-body > .tiptap {
+  table {
+    border: 2px solid gray;
+    border-collapse: collapse;
+    td {
+      border: 2px solid gray;
+    }
+  }
+}
+ 
+/* .code-editor-body textarea{
+
+  all: unset;
+  all: revert;
+}
+.code-editor-body textarea:focus {
+    background: white!important;
+    color:#222!important;
+  
+} */

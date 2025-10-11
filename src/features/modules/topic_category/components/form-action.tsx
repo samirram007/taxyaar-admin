@@ -8,17 +8,17 @@ import {
 
 import FormInputField from '@/components/form-input-field'
 import { Dialog, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from '@/components/ui/dialog'
-import { Route as TopicCategoryRoute } from '@/routes/_authenticated/help-center/_layout/topic_category/_layout'
+import { Route as HelpCenterRouteTo } from '@/routes/_authenticated/help-center/_layout'
+import { Route as TopicCategoryRoute, Route as TopicCategoryRouteTo } from '@/routes/_authenticated/help-center/_layout/topic_category/_layout'
 import { lowerCase } from '@/utils/removeEmptyStrings'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { useNavigate } from '@tanstack/react-router'
-import { Loader2 } from 'lucide-react'
+import { Link, useNavigate } from '@tanstack/react-router'
+import { ChevronRightIcon, Loader2 } from 'lucide-react'
+import { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
+import slugify from 'slugify'
 import { useTopicCategoryMutation } from '../data/queryOptions'
 import { formSchema, type TopicCategory, type TopicCategoryForm } from '../data/schema'
-
-import { useEffect } from 'react'
-import slugify from 'slugify'
 interface Props {
     currentRow?: TopicCategory
 }
@@ -75,6 +75,11 @@ export function FormAction({ currentRow }: Props) {
                     {isEdit ? `Update the ${lowerCase(moduleName)} here. `
                         : `Create new ${lowerCase(moduleName)} here. `}
                     Click save when you&apos;re done.
+                    <p className='text-muted-foreground flex flex-row items-center gap-2'>
+                        <Link to={HelpCenterRouteTo.to} className='text-blue-600 hover:underline flex flex-row items-center gap-2'  >  Help Center </Link>
+                        <Link to={TopicCategoryRouteTo.to} className='text-blue-600 hover:underline flex flex-row items-center gap-2'  >
+                            <ChevronRightIcon size={12} />  Categories </Link>
+                    </p>
                 </DialogDescription>
             </DialogHeader>
 
