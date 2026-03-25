@@ -4,7 +4,7 @@ import type { Row } from "@tanstack/react-table"
 import { useTopicCategory } from "../contexts/topic_category-context"
 import type { TopicCategory } from "../data/schema"
 
-import { Route as TopicCategoryDetailRoute } from '@/routes/_authenticated/help-center/_layout/topic_category/_layout/$id'
+import { Route as TopicCategoryDetailRoute } from '@/routes/_protected/help-center/_layout/topic_category/_layout/$id'
 
 interface DataTableRowActionsProps {
     row: Row<TopicCategory>
@@ -22,7 +22,7 @@ const RowActions = (props: DataTableRowActionsProps) => {
                 console.log("row Action: ", currentRow)
                 navigate({
                     to: TopicCategoryDetailRoute.to,
-                    params: { id: data.id!.toString() },
+                    params: { id: data.id! },
                 })
 
             }}

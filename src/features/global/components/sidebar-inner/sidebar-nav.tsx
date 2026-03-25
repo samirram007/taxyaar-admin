@@ -14,6 +14,7 @@ import { useState, type JSX } from 'react'
 interface SidebarNavProps extends React.HTMLAttributes<HTMLElement> {
   items: {
     href: string
+    visible: boolean
     title: string
     icon: JSX.Element
   }[]
@@ -42,12 +43,13 @@ export default function SidebarNav({
           </SelectTrigger>
           <SelectContent>
             {items.map((item) => (
-              <SelectItem key={item.href} value={item.href}>
+              item.visible &&
+              (<SelectItem key={item.href} value={item.href}>
                 <div className='flex gap-x-4 px-2 py-1'>
                   <span className='scale-125'>{item.icon}</span>
                   <span className='text-md'>{item.title}</span>
                 </div>
-              </SelectItem>
+              </SelectItem>)
             ))}
           </SelectContent>
         </Select>
@@ -66,6 +68,7 @@ export default function SidebarNav({
           {...props}
         >
           {items.map((item) => (
+            item.visible &&
             <Link
               key={item.href}
               to={item.href}

@@ -28,12 +28,14 @@ const topNav = [
         href: 'dashboard/overview',
         isActive: true,
         disabled: false,
+        visible: false,
     },
     {
-        title: 'Customers',
-        href: '/dashboard/customers',
+        title: 'Help Center',
+        href: '/help-center',
         isActive: false,
         disabled: true,
+        visible: true,
     },
     {
         title: 'Products',

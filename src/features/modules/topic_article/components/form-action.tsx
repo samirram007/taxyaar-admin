@@ -8,7 +8,7 @@ import {
 
 import FormInputField from '@/components/form-input-field'
 import { Dialog, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from '@/components/ui/dialog'
-import { Route as TopicArticleRoute } from '@/routes/_authenticated/help-center/_layout/topic_article/_layout'
+import { Route as TopicArticleRoute } from '@/routes/_protected/help-center/_layout/topic_article/_layout'
 import { lowerCase } from '@/utils/removeEmptyStrings'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Link, useNavigate } from '@tanstack/react-router'
@@ -23,8 +23,9 @@ import { formSchema, type TopicArticle, type TopicArticleForm } from '../data/sc
 import RichTextEditor from './sub-component/rich-text-editor/index'
 import { TopicSectionCombobox } from './sub-component/topic_section-combo-box'
 
-import { Route as HelpCenterRouteTo } from '@/routes/_authenticated/help-center/_layout'
-import { Route as TopicArticleRouteTo } from '@/routes/_authenticated/help-center/_layout/topic_article/_layout'
+import { Route as HelpCenterRouteTo } from '@/routes/_protected/help-center/_layout'
+import { Route as TopicArticleRouteTo } from '@/routes/_protected/help-center/_layout/topic_article/_layout'
+import { Card } from '@/components/ui/card'
 interface Props {
     currentRow?: TopicArticle
 }
@@ -97,7 +98,8 @@ export function FormAction({ currentRow }: Props) {
 
 
             <div className='grid grid-cols-1 gap-4  h-full max-w-full  overflow-y-auto py-4 '>
-                <div>
+                <Card className='w-full p-6 rounded-2xl bg-gray-100 border-2 border-gray-200'>
+
 
                     <Form {...form}>
                         <form
@@ -157,7 +159,7 @@ export function FormAction({ currentRow }: Props) {
                             {isPending ? "Saving..." : "Save changes"}
                         </Button>
                     </DialogFooter>
-                </div>
+                </Card>
 
             </div>
 

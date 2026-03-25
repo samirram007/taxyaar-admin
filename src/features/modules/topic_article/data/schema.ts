@@ -2,6 +2,7 @@ import { ActiveInactiveStatusSchema } from '@/types/active-inactive-status';
 import { TrueFalseSchema } from '@/types/true-false';
 import { z } from 'zod';
 import { topicSectionSchema } from '../../topic_section/data/schema';
+import { userSchema } from '../../user/data/schema';
 
 
 
@@ -17,6 +18,12 @@ export const topicArticleSchema = z.object({
   content: z.string(),
   topicSectionId: z.number().int().positive(),
   topicSection: topicSectionSchema.nullish(),
+  createdBy: z.number().int().positive().nullish(),
+  updatedBy: z.number().int().positive().nullish(),
+  creator: userSchema.nullish(),
+  updater: userSchema.nullish(),
+  createdAt: z.coerce.date().nullish(),
+  updatedAt: z.coerce.date().nullish(),
 
 
 })

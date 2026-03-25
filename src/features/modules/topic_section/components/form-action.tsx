@@ -8,7 +8,7 @@ import {
 
 import FormInputField from '@/components/form-input-field'
 import { Dialog, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from '@/components/ui/dialog'
-import { Route as TopicSectionRoute } from '@/routes/_authenticated/help-center/_layout/topic_section/_layout'
+import { Route as TopicSectionRoute } from '@/routes/_protected/help-center/_layout/topic_section/_layout'
 import { lowerCase } from '@/utils/removeEmptyStrings'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Link, useNavigate } from '@tanstack/react-router'
@@ -17,11 +17,12 @@ import { useForm } from 'react-hook-form'
 import { useTopicSectionMutation } from '../data/queryOptions'
 import { formSchema, type TopicSection, type TopicSectionForm } from '../data/schema'
 
-import { Route as HelpCenterRouteTo } from '@/routes/_authenticated/help-center/_layout'
-import { Route as TopicSectionRouteTo } from '@/routes/_authenticated/help-center/_layout/topic_section/_layout'
+import { Route as HelpCenterRouteTo } from '@/routes/_protected/help-center/_layout'
+import { Route as TopicSectionRouteTo } from '@/routes/_protected/help-center/_layout/topic_section/_layout'
 import { useEffect } from 'react'
 import slugify from 'slugify'
 import { TopicCategoryCombobox } from './sub-component/topic_category-combo-box'
+import { Card } from '@/components/ui/card'
 interface Props {
     currentRow?: TopicSection
 }
@@ -92,7 +93,8 @@ export function FormAction({ currentRow }: Props) {
 
 
             <div className='grid grid-cols-2 gap-4  h-full max-w-full  overflow-y-auto py-4 '>
-                <div>
+                <Card className='w-full p-6 rounded-2xl border-2 border-gray-200'>
+
 
                     <Form {...form}>
                         <form
@@ -135,7 +137,7 @@ export function FormAction({ currentRow }: Props) {
                             {isPending ? "Saving..." : "Save changes"}
                         </Button>
                     </DialogFooter>
-                </div>
+                </Card>
 
             </div>
 
@@ -143,5 +145,6 @@ export function FormAction({ currentRow }: Props) {
 
 
         </Dialog>
+
     )
 }

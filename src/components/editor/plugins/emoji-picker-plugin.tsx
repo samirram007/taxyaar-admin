@@ -7,9 +7,8 @@
  * LICENSE file in the root directory of this source tree.
  *
  */
-import * as React from "react"
-import { useCallback, useEffect, useMemo, useState } from "react"
-import dynamic from "next/dynamic"
+
+import { useCallback, useEffect, useMemo, useState, lazy, Suspense } from "react"
 import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext"
 import {
   MenuOption,
@@ -21,21 +20,13 @@ import {
   $isRangeSelection,
   TextNode,
 } from "lexical"
-import { createPortal } from "react-dom"
 
-import {
-  Command,
-  CommandGroup,
-  CommandItem,
-  CommandList,
-} from "@/components/ui/command"
 
-const LexicalTypeaheadMenuPlugin = dynamic(
-  () =>
-    import("@lexical/react/LexicalTypeaheadMenuPlugin").then(
-      (mod) => mod.LexicalTypeaheadMenuPlugin
-    ),
-  { ssr: false }
+
+const LexicalTypeaheadMenuPlugin = lazy(() =>
+  import("@lexical/react/LexicalTypeaheadMenuPlugin").then(
+    (mod) => ({ default: mod.LexicalTypeaheadMenuPlugin })
+  )
 )
 
 class EmojiOption extends MenuOption {
@@ -74,8 +65,9 @@ export function EmojiPickerPlugin() {
   const [editor] = useLexicalComposerContext()
   const [queryString, setQueryString] = useState<string | null>(null)
   const [emojis, setEmojis] = useState<Array<Emoji>>([])
-  const [isOpen, setIsOpen] = useState(false)
+  // const [isOpen, setIsOpen] = useState(false)
   useEffect(() => {
+    console.log(setQueryString)
     import("../utils/emoji-list").then((file) => setEmojis(file.default))
   }, [])
 
@@ -135,24 +127,25 @@ export function EmojiPickerPlugin() {
     },
     [editor]
   )
-
+  console.log(onSelectOption, options, checkForTriggerMatch)
   return (
-    // @ts-ignore
-    <LexicalTypeaheadMenuPlugin<EmojiOption>
-      onQueryChange={setQueryString}
-      onSelectOption={onSelectOption}
-      triggerFn={checkForTriggerMatch}
-      options={options}
-      onOpen={() => {
-        setIsOpen(true)
-      }}
-      onClose={() => {
-        setIsOpen(false)
-      }}
-      menuRenderFn={(
-        anchorElementRef,
-        { selectedIndex, selectOptionAndCleanUp, setHighlightedIndex }
-      ) => {
+    <Suspense fallback={null}>
+      {/* @ts-ignore */}
+      <LexicalTypeaheadMenuPlugin<EmojiOption>
+        onQueryChange={setQueryString}
+        onSelectOption={onSelectOption}
+        triggerFn={checkForTriggerMatch}
+        options={options}
+        onOpen={() => {
+          setIsOpen(true)
+        }}
+        onClose={() => {
+          setIsOpen(false)
+        }}
+        menuRenderFn={(
+          anchorElementRef,
+          { selectedIndex, selectOptionAndCleanUp, setHighlightedIndex }
+        ) => {
         return anchorElementRef.current && options.length
           ? createPortal(
               <div className="fixed z-10 w-[200px] rounded-md shadow-md">
@@ -202,6 +195,7 @@ export function EmojiPickerPlugin() {
             )
           : null
       }}
-    />
+      />
+    </Suspense>
   )
 }

@@ -45,7 +45,7 @@ export function ActionDialog({ currentRow, open, onOpenChange }: Props) {
       }
       : {
         name: '',
-        code: '',
+        slug: '',
         description: '',
         status: 'active',
         isEdit,

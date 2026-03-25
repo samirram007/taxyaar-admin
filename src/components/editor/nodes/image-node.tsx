@@ -1,5 +1,5 @@
 import * as React from "react"
-import { JSX, Suspense } from "react"
+import { type JSX, Suspense } from "react"
 import type {
   DOMConversionMap,
   DOMConversionOutput,
@@ -120,6 +120,7 @@ export class ImageNode extends DecoratorNode<JSX.Element> {
   static importDOM(): DOMConversionMap | null {
     return {
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      // @ts-expect-error - need to verify type in conversion function
       img: (node: Node) => ({
         conversion: $convertImageElement,
         priority: 0,

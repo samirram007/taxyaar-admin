@@ -8,8 +8,8 @@ import {
 
 import FormInputField from '@/components/form-input-field'
 import { Dialog, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from '@/components/ui/dialog'
-import { Route as HelpCenterRouteTo } from '@/routes/_authenticated/help-center/_layout'
-import { Route as TopicCategoryRoute, Route as TopicCategoryRouteTo } from '@/routes/_authenticated/help-center/_layout/topic_category/_layout'
+import { Route as HelpCenterRouteTo } from '@/routes/_protected/help-center/_layout'
+import { Route as TopicCategoryRoute, Route as TopicCategoryRouteTo } from '@/routes/_protected/help-center/_layout/topic_category/_layout'
 import { lowerCase } from '@/utils/removeEmptyStrings'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Link, useNavigate } from '@tanstack/react-router'
@@ -19,6 +19,7 @@ import { useForm } from 'react-hook-form'
 import slugify from 'slugify'
 import { useTopicCategoryMutation } from '../data/queryOptions'
 import { formSchema, type TopicCategory, type TopicCategoryForm } from '../data/schema'
+import { Card } from '@/components/ui/card'
 interface Props {
     currentRow?: TopicCategory
 }
@@ -86,7 +87,8 @@ export function FormAction({ currentRow }: Props) {
 
 
             <div className='grid grid-cols-2 gap-4  h-full max-w-full  overflow-y-auto py-4 '>
-                <div>
+                <Card className='w-full p-6 rounded-2xl border-2 border-gray-200'>
+
 
                     <Form {...form}>
                         <form
@@ -126,7 +128,7 @@ export function FormAction({ currentRow }: Props) {
                             {isPending ? "Saving..." : "Save changes"}
                         </Button>
                     </DialogFooter>
-                </div>
+                </Card>
 
             </div>
 

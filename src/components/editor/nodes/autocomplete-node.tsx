@@ -64,8 +64,10 @@ export class AutocompleteNode extends TextNode {
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   updateDOM(prevNode: this, dom: HTMLElement, config: EditorConfig): boolean {
+    console.log(prevNode, dom, config)
     return false
   }
+
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   exportDOM(_: LexicalEditor): DOMExportOutput {

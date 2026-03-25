@@ -12,11 +12,13 @@ interface RetryableRequestConfig extends InternalAxiosRequestConfig {
 // Create Axios instance
 const axiosClient: AxiosInstance = axios.create({
     baseURL: import.meta.env.VITE_API_BASE_URL,
-    // baseURL: '/api',
     withCredentials: true,
-    headers: {
-        'Content-Type': 'application/json',
-    },
+    // baseURL: '/api',
+    // baseURL: 'https://taxyaar-api.local/api',
+
+    // headers: {
+    //     'Content-Type': 'application/json',
+    // },
 })
 // axiosClient.defaults.withCredentials = true;
 // console.log("Axios  Client", axiosClient);

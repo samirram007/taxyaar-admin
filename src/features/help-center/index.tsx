@@ -1,9 +1,10 @@
 import Icon from "@/components/icon"
-import { Label } from "@/components/ui/label"
+
 import { lowerCase } from "@/utils/removeEmptyStrings"
 import { useLocation, useNavigate } from "@tanstack/react-router"
 import { useEffect } from "react"
 import { useHelpCenter } from "./contexts/help_center-context"
+import { Card } from "@/components/ui/card"
 
 const HelpCenter = () => {
     const { setHeaderVisible } = useHelpCenter()
@@ -13,7 +14,7 @@ const HelpCenter = () => {
     return (
         <>
 
-            <div className='grid grid-cols-4 gap-6'>
+            <div className='grid grid-cols-3 w-full overflow-y-hidden gap-8 p-4'>
                 {sidebarNavItems && sidebarNavItems.map((item) => (
                     <ItemTablet key={item.title} item={item} />
                 ))}
@@ -38,18 +39,19 @@ const ItemTablet = ({ item }: { item: sidebarNavItems }) => {
         navigate({ to: `/${router.pathname}/${lowerCase(item.href.replace(' ', '_'))}` })
     }
     return (
-        <Label className='text-lg tablet rounded-2xl border-2 p-4 flex items-start '
+        <Card className='w-full text-lg tablet rounded-2xl border-2 p-6 flex items-start '
             onClick={handleClick}
         >
-            <div className=' '>
-                <Icon name={item.icon!} size={36} className='text-amber-700/70' />
+            <div className=' shadow-md rounded-full p-4 mr-4 bg-blue-100 flex items-center justify-center 
+            w-32 h-32 -ml-10 -mt-10 border-4 border-blue-300'>
+                <Icon name={item.icon!} size={72} className='text-blue-700/80' />
             </div>
             <div>
 
-                <div className='text-2xl'>  {item.title}</div>
-                <div className='text-sm'>  {item.href}</div>
+                <div className='text-2xl -mt-4'>  {item.title}</div>
+                <div className='text-xs text-gray-500 p-2 cursor-pointer'> link:   {item.href}</div>
             </div>
-        </Label>
+        </Card>
     )
 }
 const sidebarNavItems = [

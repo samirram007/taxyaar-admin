@@ -1,5 +1,5 @@
-import { JSX, useEffect, useRef, useState } from "react"
-import * as React from "react"
+import { type JSX, useEffect, useRef, useState } from "react"
+
 import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext"
 import { $wrapNodeInElement, mergeRegister } from "@lexical/utils"
 import {
@@ -17,15 +17,15 @@ import {
   DRAGOVER_COMMAND,
   DRAGSTART_COMMAND,
   DROP_COMMAND,
-  LexicalCommand,
-  LexicalEditor,
+  type LexicalCommand,
+  type LexicalEditor,
 } from "lexical"
 
 import {
   $createImageNode,
   $isImageNode,
   ImageNode,
-  ImagePayload,
+  type ImagePayload,
 } from "@/components/editor/nodes/image-node"
 import { CAN_USE_DOM } from "@/components/editor/shared/can-use-dom"
 import { Button } from "@/components/ui/button"

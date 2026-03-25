@@ -15,7 +15,7 @@ import { GridTable } from './components/grid-table'
 import { PrimaryButtons } from './components/primary-buttons'
 import { topicArticleListSchema, type TopicArticleList } from './data/schema'
 
-import { Route as HelpCenterRouteTo } from '@/routes/_authenticated/help-center/_layout'
+import { Route as HelpCenterRouteTo } from '@/routes/_protected/help-center/_layout'
 
 // Import the correct type for topicarticleListSchema
 

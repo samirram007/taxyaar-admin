@@ -1,5 +1,5 @@
-import { Dispatch, JSX, useCallback, useEffect, useRef, useState } from "react"
-import * as React from "react"
+import { type Dispatch, type JSX, useCallback, useEffect, useRef, useState } from "react"
+
 import { $isCodeHighlightNode } from "@lexical/code"
 import { $isLinkNode, TOGGLE_LINK_COMMAND } from "@lexical/link"
 import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext"
@@ -11,7 +11,7 @@ import {
   $isTextNode,
   COMMAND_PRIORITY_LOW,
   FORMAT_TEXT_COMMAND,
-  LexicalEditor,
+  type LexicalEditor,
   SELECTION_CHANGE_COMMAND,
 } from "lexical"
 import {
@@ -90,6 +90,7 @@ function FloatingTextFormat({
     }
   }
   function mouseUpListener(e: MouseEvent) {
+    console.log(e.clientX)
     if (popupCharStylesEditorRef?.current) {
       if (popupCharStylesEditorRef.current.style.pointerEvents !== "auto") {
         popupCharStylesEditorRef.current.style.pointerEvents = "auto"

@@ -2,40 +2,80 @@ import tailwindcss from '@tailwindcss/vite'
 import tanstackRouter from '@tanstack/router-plugin/vite'
 import react from '@vitejs/plugin-react'
 import { resolve } from 'node:path'
-import { defineConfig } from 'vite'
+import { defineConfig, loadEnv } from 'vite'
 import tsConfigPaths from 'vite-tsconfig-paths'
 
 // https://vitejs.dev/config/
-export default defineConfig({
-  server: {
+export default defineConfig(({ mode }) => {
+  // const isProd = mode === 'production'
+  const env = loadEnv(mode, process.cwd())
+  //console.log("env", env)
+  return {
 
-    proxy: {
-      '/api': {
-        target: 'https://taxyaar-backend.test', // Your Laravel backend URL
-        changeOrigin: true, // Ensures the host header is rewritten to the target
-        secure: false, // For local HTTP servers (set to true for HTTPS in production)
-        // rewrite: (path) => path.replace(/^\/api/, ''), // Optional: removes /api prefix if needed
+    // base: isProd ? '/frontend/' : '/',
+    base: env.VITE_BASE_URL,
+    server: {
+      // port: 3000,
+      proxy: {
+        '/api': {
+          target: env.VITE_API_BASE_URL, // Your Laravel backend URL
+          changeOrigin: true, // Ensures the host header is rewritten to the target
+          secure: false, // For local HTTP servers (set to true for HTTPS in production)
+          rewrite: (path) => path.replace(/^\/api/, ''), // Optional: removes /api prefix if needed
+        },
+      },
+
+    },
+    build: {
+      // ssr: 'src/entry-server.tsx', // for server rendering
+      // outDir: 'dist-ssr',
+      chunkSizeWarningLimit: 1000,
+      rollupOptions: {
+        output: {
+          // manualChunks(id) {
+
+          //   // if (id.includes('src/features/accounts/settings')) {
+          //   //   return 'accounts-settings'
+          //   // }
+
+          //   if (id.includes('src/features/masters/accounts')) {
+          //     return 'accounts'
+          //   }
+          // },
+        },
       },
     },
-  },
-
-  build: {
-    chunkSizeWarningLimit: 1000,
-  },
-  plugins: [ 
-    tsConfigPaths({
-      projects: ['./tsconfig.json'],
-    }),
-    tanstackRouter({
-      target: 'react',
-      autoCodeSplitting: true,
-    }),
-    react(),
-    tailwindcss(),
-  ],
-  resolve: {
-    alias: {
-      '@': resolve(__dirname, './src'),
+    plugins: [
+      tsConfigPaths({
+        projects: ['./tsconfig.json'],
+      }),
+      tanstackRouter({
+        target: 'react',
+        autoCodeSplitting: true,
+        spa: {
+          enabled: true,
+          prerender: {
+            crawlLinks: true,
+          },
+        },
+        sitemap: {
+          host: 'https://localhost:3000',
+        },
+      } as any),
+      react(),
+      tailwindcss(),
+    ],
+    test: {
+      globals: true,
+      environment: 'jsdom',
     },
-  },
-})
+
+
+    resolve: {
+      alias: {
+        '@': resolve(__dirname, './src'),
+      },
+    },
+  }
+}
+)

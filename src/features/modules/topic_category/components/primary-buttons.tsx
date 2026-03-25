@@ -1,6 +1,6 @@
 
 import { Button } from '@/components/ui/button'
-import { Route as TopicCategoryDetailRoute } from '@/routes/_authenticated/help-center/_layout/topic_category/_layout/$id'
+import { Route as TopicCategoryDetailRoute } from '@/routes/_protected/help-center/_layout/topic_category/_layout/$id'
 
 import { IconUserPlus } from '@tabler/icons-react'
 import { Link } from '@tanstack/react-router'
