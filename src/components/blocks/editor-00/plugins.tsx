@@ -7,6 +7,7 @@ import { ContentEditable } from "@/components/editor/editor-ui/content-editable"
 export function Plugins() {
   const [floatingAnchorElem, setFloatingAnchorElem] =
     useState<HTMLDivElement | null>(null)
+  console.log(floatingAnchorElem)
 
   const onRef = (_floatingAnchorElem: HTMLDivElement) => {
     if (_floatingAnchorElem !== null) {

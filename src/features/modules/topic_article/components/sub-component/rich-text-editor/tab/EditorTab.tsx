@@ -84,8 +84,8 @@ function EditorTab() {
   if (!editor) return null;
 
   return (
-    <div className="min-h-[inherit] rounded-lg border   shadow">
-      <div className="flex flex-wrap gap-2 border-b p-2 items-center ">
+    <div className="min-h-[inherit] rounded-none border-0  shadow">
+      <div className="flex flex-wrap gap-2 border-b border-gray-800 p-2 items-center ">
         <ToolbarButton title="CSS">
           <CSSInput editor={editor} />
         </ToolbarButton>

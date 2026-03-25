@@ -1,8 +1,8 @@
-import { JSX, useMemo, useState } from "react"
+import { type JSX, useMemo, useState } from "react"
 import {
   AutoEmbedOption,
-  EmbedConfig,
-  EmbedMatchResult,
+  type EmbedConfig,
+  type EmbedMatchResult,
   LexicalAutoEmbedPlugin,
   URL_MATCHER,
 } from "@lexical/react/LexicalAutoEmbedPlugin"
@@ -224,10 +224,10 @@ export function AutoEmbedPlugin(): JSX.Element {
         menuRenderFn={(
           anchorElementRef,
           {
-            selectedIndex,
+
             options,
             selectOptionAndCleanUp,
-            setHighlightedIndex,
+
           }
         ) => {
           return anchorElementRef.current ? (
@@ -243,7 +243,7 @@ export function AutoEmbedPlugin(): JSX.Element {
                     <Command>
                       <CommandList>
                         <CommandGroup>
-                          {options.map((option, i: number) => (
+                          {options.map((option) => (
                             <CommandItem
                               key={option.key}
                               value={option.title}

@@ -5,7 +5,7 @@ import { $restoreEditorState } from "@lexical/utils"
 import {
   $getSelection,
   $isRangeSelection,
-  EditorState,
+  type EditorState,
   RootNode,
 } from "lexical"
 
@@ -34,6 +34,7 @@ export function MaxLengthPlugin({ maxLength }: { maxLength: number }): null {
           // text content was already at the limit.
           if (
             prevTextContentSize === maxLength &&
+            lastRestoredEditorState !== null &&
             lastRestoredEditorState !== prevEditorState
           ) {
             lastRestoredEditorState = prevEditorState

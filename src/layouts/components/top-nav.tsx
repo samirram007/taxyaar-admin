@@ -17,6 +17,7 @@ interface TopNavProps extends React.HTMLAttributes<HTMLElement> {
     href: string
     isActive: boolean
     disabled?: boolean
+    visible?: boolean
   }[]
 }
 
@@ -53,7 +54,8 @@ export function TopNav({ className, links, ...props }: TopNavProps) {
         )}
         {...props}
       >
-        {links.map(({ title, href, isActive }) => (
+        {links.map(({ title, href, visible, isActive }) => (
+          visible && (
           <Link
             key={`${title}-${href}`}
             to={href}
@@ -62,6 +64,7 @@ export function TopNav({ className, links, ...props }: TopNavProps) {
           >
             {title}
           </Link>
+          )
         ))}
       </nav>
     </>

@@ -13,7 +13,7 @@ import { PrimaryButtons } from './components/primary-buttons'
 import { topicCategoryListSchema, type TopicCategoryList } from './data/schema'
 
 import { useHelpCenter } from '@/features/help-center/contexts/help_center-context'
-import { Route as HelpCenterRouteTo } from '@/routes/_authenticated/help-center/_layout'
+import { Route as HelpCenterRouteTo } from '@/routes/_protected/help-center/_layout'
 import { ArrowLeft } from 'lucide-react'
 import { useEffect } from 'react'
 // Import the correct type for topiccategoryListSchema

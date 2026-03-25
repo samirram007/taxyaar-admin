@@ -4,7 +4,7 @@ import type { Row } from "@tanstack/react-table"
 import { useTopicSection } from "../contexts/topic_section-context"
 import type { TopicSection } from "../data/schema"
 
-import { Route as TopicSectionDetailRoute } from '@/routes/_authenticated/help-center/_layout/topic_section/_layout/$id'
+import { Route as TopicSectionDetailRoute } from '@/routes/_protected/help-center/_layout/topic_section/_layout/$id'
 
 interface DataTableRowActionsProps {
     row: Row<TopicSection>

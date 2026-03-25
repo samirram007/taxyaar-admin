@@ -16,6 +16,7 @@ function CodeTab() {
   const [error, setError] = useState<string | null>(null);
   const [parsedHtml, setParsedHtml] = useState<React.ReactNode>(null);
 
+  console.log(isFormatting, error, parsedHtml)
   // Memoize the format handler
   const handleFormat = useCallback(async () => {
     // Check for valid input and context

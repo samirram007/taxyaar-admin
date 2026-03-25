@@ -1,4 +1,5 @@
 import {
+  IconAccessPoint,
   IconBarrierBlock,
   IconBrowserCheck,
   IconBug,
@@ -24,7 +25,7 @@ export const sidebarData: SidebarData = {
   user: {
     name: 'samir',
     visible: true,
-    email: 'samir.dev@gmail.com',
+    email: 'admin@admin.com',
     avatar: '/avatars/shadcn.jpg',
   },
   header: {
@@ -71,6 +72,104 @@ export const sidebarData: SidebarData = {
           visible: true,
           url: '/help-center',
           icon: IconHelp,
+        },
+
+
+      ],
+    },
+    {
+      title: 'Administration',
+      visible: true,
+      items: [
+        {
+          title: 'User',
+          url: '/administration/user',
+          visible: true,
+          icon: IconUserCog,
+        },
+        {
+          title: 'App Module  ',
+          url: '/administration/app_module',
+          visible: true,
+          icon: IconUserCog,
+        },
+      ],
+    },
+    {
+      title: 'Masters',
+      visible: true,
+      items: [
+        {
+          title: 'Organization',
+          visible: true,
+          icon: IconAccessPoint,
+          items: [
+            {
+              title: 'Company',
+              visible: true,
+              url: '/masters/organization/company',
+              icon: IconUserCog,
+            },
+            {
+              title: 'Branch',
+              visible: false,
+              url: '/masters/organization/branch',
+              icon: IconUserCog,
+            },
+            {
+              title: 'Financial Year',
+              visible: false,
+              url: '/masters/organization/financial_year',
+              icon: IconUserCog,
+            },
+            {
+              title: 'Currency',
+              visible: true,
+              url: '/masters/organization/currency',
+              icon: IconUserCog,
+            },
+            {
+              title: 'Country',
+              visible: true,
+              url: '/masters/organization/country',
+              icon: IconUserCog,
+            },
+            {
+              title: 'State',
+              visible: true,
+              url: '/masters/organization/state',
+              icon: IconUserCog,
+            },
+
+
+          ]
+        },
+
+        {
+          title: 'Payroll',
+          visible: true,
+          icon: IconAccessPoint,
+          items: [
+            {
+              title: 'Employee',
+              visible: true,
+              url: '/masters/payroll/employee',
+              icon: IconUserCog,
+            },
+            {
+              title: 'Department',
+              visible: true,
+              url: '/masters/payroll/department',
+              icon: IconUserCog,
+            },
+            {
+              title: 'Designation',
+              visible: true,
+              url: '/masters/payroll/designation',
+              icon: IconUserCog,
+            },
+
+          ]
         },
 
       ],
@@ -145,30 +244,36 @@ export const sidebarData: SidebarData = {
       items: [
         {
           title: 'Settings',
+          visible: true,
           icon: IconSettings,
           items: [
             {
               title: 'Profile',
+              visible: true,
               url: '/settings',
               icon: IconUserCog,
             },
             {
               title: 'Account',
+              visible: true,
               url: '/settings/account',
               icon: IconTool,
             },
             {
               title: 'Appearance',
+              visible: true,
               url: '/settings/appearance',
               icon: IconPalette,
             },
             {
               title: 'Notifications',
+              visible: true,
               url: '/settings/notifications',
               icon: IconNotification,
             },
             {
               title: 'Display',
+              visible: true,
               url: '/settings/display',
               icon: IconBrowserCheck,
             },

@@ -1,8 +1,8 @@
-import { JSX, useEffect } from "react"
+import { type JSX, useEffect } from "react"
 import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext"
 import type { LexicalEditor } from "lexical"
 import { TextNode } from "lexical"
-import { createPortal } from "react-dom"
+
 
 import {
   $createEmojiNode,

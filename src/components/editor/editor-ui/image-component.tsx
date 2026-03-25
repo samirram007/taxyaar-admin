@@ -1,5 +1,5 @@
 import { AutoFocusPlugin } from "@lexical/react/LexicalAutoFocusPlugin"
-import { useCollaborationContext } from "@lexical/react/LexicalCollaborationContext"
+// import { useCollaborationContext } from "@lexical/react/LexicalCollaborationContext"
 import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext"
 import { LexicalErrorBoundary } from "@lexical/react/LexicalErrorBoundary"
 import { HistoryPlugin } from "@lexical/react/LexicalHistoryPlugin"
@@ -88,9 +88,9 @@ function LazyImage({
       alt={altText}
       ref={imageRef}
       style={{
-        height,
-        maxWidth,
-        width,
+        height: typeof height === "number" ? `${height}px` : height,
+        maxWidth: typeof maxWidth === "number" ? `${maxWidth}px` : maxWidth,
+        width: typeof width === "number" ? `${width}px` : width,
       }}
       onError={onError}
       draggable="false"
@@ -101,12 +101,9 @@ function LazyImage({
 function BrokenImage(): JSX.Element {
   return (
     <img
+      alt="Broken image"
+      className="max-w-full h-[200px] w-[200px] opacity-20"
       src={""}
-      style={{
-        height: 200,
-        opacity: 0.2,
-        width: 200,
-      }}
       draggable="false"
     />
   )
@@ -140,7 +137,7 @@ export default function ImageComponent({
   const [isSelected, setSelected, clearSelection] =
     useLexicalNodeSelection(nodeKey)
   const [isResizing, setIsResizing] = useState<boolean>(false)
-  const { isCollabActive } = useCollaborationContext()
+  // const { isCollabActive } = useCollaborationContext()
   const [editor] = useLexicalComposerContext()
   const [selection, setSelection] = useState<BaseSelection | null>(null)
   const activeEditorRef = useRef<LexicalEditor | null>(null)

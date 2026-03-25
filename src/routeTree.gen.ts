@@ -11,38 +11,82 @@
 import { createFileRoute } from '@tanstack/react-router'
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as AuthenticatedRouteImport } from './routes/_authenticated'
+import { Route as ProtectedRouteImport } from './routes/_protected'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as DemoTanstackQueryRouteImport } from './routes/demo/tanstack-query'
-import { Route as DemoTableRouteImport } from './routes/demo/table'
-import { Route as DemoStorybookRouteImport } from './routes/demo/storybook'
-import { Route as AuthenticatedDashboardRouteImport } from './routes/_authenticated/dashboard'
-import { Route as AuthenticatedChartsRouteImport } from './routes/_authenticated/charts'
+import { Route as ProtectedDashboardRouteImport } from './routes/_protected/dashboard'
+import { Route as ProtectedChartsRouteImport } from './routes/_protected/charts'
 import { Route as authSignInRouteImport } from './routes/(auth)/sign-in'
 import { Route as authOtpRouteImport } from './routes/(auth)/otp'
-import { Route as AuthenticatedSettingsRouteRouteImport } from './routes/_authenticated/settings/route'
-import { Route as AuthenticatedSettingsIndexRouteImport } from './routes/_authenticated/settings/index'
-import { Route as DemoFormSimpleRouteImport } from './routes/demo/form.simple'
-import { Route as DemoFormAddressRouteImport } from './routes/demo/form.address'
-import { Route as AuthenticatedSettingsNotificationsRouteImport } from './routes/_authenticated/settings/notifications'
-import { Route as AuthenticatedSettingsDisplayRouteImport } from './routes/_authenticated/settings/display'
-import { Route as AuthenticatedSettingsAppearanceRouteImport } from './routes/_authenticated/settings/appearance'
-import { Route as AuthenticatedSettingsAccountRouteImport } from './routes/_authenticated/settings/account'
-import { Route as AuthenticatedHelpCenterLayoutRouteImport } from './routes/_authenticated/help-center/_layout'
-import { Route as AuthenticatedauthProfileRouteImport } from './routes/_authenticated/(auth)/profile'
-import { Route as AuthenticatedHelpCenterLayoutIndexRouteImport } from './routes/_authenticated/help-center/_layout/index'
-import { Route as AuthenticatedHelpCenterLayoutTopic_sectionLayoutRouteImport } from './routes/_authenticated/help-center/_layout/topic_section/_layout'
-import { Route as AuthenticatedHelpCenterLayoutTopic_categoryLayoutRouteImport } from './routes/_authenticated/help-center/_layout/topic_category/_layout'
-import { Route as AuthenticatedHelpCenterLayoutTopic_articleLayoutRouteImport } from './routes/_authenticated/help-center/_layout/topic_article/_layout'
-import { Route as AuthenticatedHelpCenterLayoutTopic_sectionLayoutIndexRouteImport } from './routes/_authenticated/help-center/_layout/topic_section/_layout/index'
-import { Route as AuthenticatedHelpCenterLayoutTopic_categoryLayoutIndexRouteImport } from './routes/_authenticated/help-center/_layout/topic_category/_layout/index'
-import { Route as AuthenticatedHelpCenterLayoutTopic_articleLayoutIndexRouteImport } from './routes/_authenticated/help-center/_layout/topic_article/_layout/index'
-import { Route as AuthenticatedHelpCenterLayoutTopic_sectionLayoutIdRouteImport } from './routes/_authenticated/help-center/_layout/topic_section/_layout/$id'
-import { Route as AuthenticatedHelpCenterLayoutTopic_categoryLayoutIdRouteImport } from './routes/_authenticated/help-center/_layout/topic_category/_layout/$id'
-import { Route as AuthenticatedHelpCenterLayoutTopic_articleLayoutIdRouteImport } from './routes/_authenticated/help-center/_layout/topic_article/_layout/$id'
+import { Route as ProtectedSettingsRouteRouteImport } from './routes/_protected/settings/route'
+import { Route as ProtectedSettingsIndexRouteImport } from './routes/_protected/settings/index'
+import { Route as ProtectedSettingsNotificationsRouteImport } from './routes/_protected/settings/notifications'
+import { Route as ProtectedSettingsDisplayRouteImport } from './routes/_protected/settings/display'
+import { Route as ProtectedSettingsAppearanceRouteImport } from './routes/_protected/settings/appearance'
+import { Route as ProtectedSettingsAccountRouteImport } from './routes/_protected/settings/account'
+import { Route as ProtectedHelpCenterLayoutRouteImport } from './routes/_protected/help-center/_layout'
+import { Route as ProtectedAdministrationLayoutRouteImport } from './routes/_protected/administration/_layout'
+import { Route as ProtectedauthProfileRouteImport } from './routes/_protected/(auth)/profile'
+import { Route as ProtectedHelpCenterLayoutIndexRouteImport } from './routes/_protected/help-center/_layout/index'
+import { Route as ProtectedMastersPayrollLayoutRouteImport } from './routes/_protected/masters/payroll/_layout'
+import { Route as ProtectedMastersOrganizationLayoutRouteImport } from './routes/_protected/masters/organization/_layout'
+import { Route as ProtectedAdministrationLayoutPermissionIndexRouteImport } from './routes/_protected/administration/_layout/permission/index'
+import { Route as ProtectedAdministrationLayoutApp_module_featureIndexRouteImport } from './routes/_protected/administration/_layout/app_module_feature/index'
+import { Route as ProtectedAdministrationLayoutApp_moduleIndexRouteImport } from './routes/_protected/administration/_layout/app_module/index'
+import { Route as ProtectedHelpCenterLayoutTopic_sectionLayoutRouteImport } from './routes/_protected/help-center/_layout/topic_section/_layout'
+import { Route as ProtectedHelpCenterLayoutTopic_categoryLayoutRouteImport } from './routes/_protected/help-center/_layout/topic_category/_layout'
+import { Route as ProtectedHelpCenterLayoutTopic_articleLayoutRouteImport } from './routes/_protected/help-center/_layout/topic_article/_layout'
+import { Route as ProtectedAdministrationLayoutUserLayoutRouteImport } from './routes/_protected/administration/_layout/user/_layout'
+import { Route as ProtectedAdministrationLayoutRoleLayoutRouteImport } from './routes/_protected/administration/_layout/role/_layout'
+import { Route as ProtectedMastersPayrollLayoutShiftIndexRouteImport } from './routes/_protected/masters/payroll/_layout/shift/index'
+import { Route as ProtectedMastersPayrollLayoutSalary_structureIndexRouteImport } from './routes/_protected/masters/payroll/_layout/salary_structure/index'
+import { Route as ProtectedMastersPayrollLayoutSalary_componentIndexRouteImport } from './routes/_protected/masters/payroll/_layout/salary_component/index'
+import { Route as ProtectedMastersPayrollLayoutSalaryIndexRouteImport } from './routes/_protected/masters/payroll/_layout/salary/index'
+import { Route as ProtectedMastersPayrollLayoutLeave_typeIndexRouteImport } from './routes/_protected/masters/payroll/_layout/leave_type/index'
+import { Route as ProtectedMastersPayrollLayoutHolidayIndexRouteImport } from './routes/_protected/masters/payroll/_layout/holiday/index'
+import { Route as ProtectedMastersPayrollLayoutGradeIndexRouteImport } from './routes/_protected/masters/payroll/_layout/grade/index'
+import { Route as ProtectedMastersPayrollLayoutEmployee_groupIndexRouteImport } from './routes/_protected/masters/payroll/_layout/employee_group/index'
+import { Route as ProtectedMastersPayrollLayoutDesignationIndexRouteImport } from './routes/_protected/masters/payroll/_layout/designation/index'
+import { Route as ProtectedMastersPayrollLayoutDepartmentIndexRouteImport } from './routes/_protected/masters/payroll/_layout/department/index'
+import { Route as ProtectedMastersPayrollLayoutCost_centerIndexRouteImport } from './routes/_protected/masters/payroll/_layout/cost_center/index'
+import { Route as ProtectedMastersPayrollLayoutCost_categoryIndexRouteImport } from './routes/_protected/masters/payroll/_layout/cost_category/index'
+import { Route as ProtectedMastersPayrollLayoutCost_allocation_ruleIndexRouteImport } from './routes/_protected/masters/payroll/_layout/cost_allocation_rule/index'
+import { Route as ProtectedMastersPayrollLayoutBankIndexRouteImport } from './routes/_protected/masters/payroll/_layout/bank/index'
+import { Route as ProtectedMastersOrganizationLayoutFinancial_yearIndexRouteImport } from './routes/_protected/masters/organization/_layout/financial_year/index'
+import { Route as ProtectedMastersOrganizationLayoutBranchIndexRouteImport } from './routes/_protected/masters/organization/_layout/branch/index'
+import { Route as ProtectedHelpCenterLayoutTopic_sectionLayoutIndexRouteImport } from './routes/_protected/help-center/_layout/topic_section/_layout/index'
+import { Route as ProtectedHelpCenterLayoutTopic_categoryLayoutIndexRouteImport } from './routes/_protected/help-center/_layout/topic_category/_layout/index'
+import { Route as ProtectedHelpCenterLayoutTopic_articleLayoutIndexRouteImport } from './routes/_protected/help-center/_layout/topic_article/_layout/index'
+import { Route as ProtectedAdministrationLayoutUserLayoutIndexRouteImport } from './routes/_protected/administration/_layout/user/_layout/index'
+import { Route as ProtectedAdministrationLayoutRoleLayoutIndexRouteImport } from './routes/_protected/administration/_layout/role/_layout/index'
+import { Route as ProtectedMastersPayrollLayoutEmployeeLayoutRouteImport } from './routes/_protected/masters/payroll/_layout/employee/_layout'
+import { Route as ProtectedMastersOrganizationLayoutStateLayoutRouteImport } from './routes/_protected/masters/organization/_layout/state/_layout'
+import { Route as ProtectedMastersOrganizationLayoutCurrencyLayoutRouteImport } from './routes/_protected/masters/organization/_layout/currency/_layout'
+import { Route as ProtectedMastersOrganizationLayoutCountryLayoutRouteImport } from './routes/_protected/masters/organization/_layout/country/_layout'
+import { Route as ProtectedMastersOrganizationLayoutCompanyLayoutRouteImport } from './routes/_protected/masters/organization/_layout/company/_layout'
+import { Route as ProtectedHelpCenterLayoutTopic_sectionLayoutIdRouteImport } from './routes/_protected/help-center/_layout/topic_section/_layout/$id'
+import { Route as ProtectedHelpCenterLayoutTopic_categoryLayoutIdRouteImport } from './routes/_protected/help-center/_layout/topic_category/_layout/$id'
+import { Route as ProtectedAdministrationLayoutUserLayoutIdRouteImport } from './routes/_protected/administration/_layout/user/_layout/$id'
+import { Route as ProtectedMastersPayrollLayoutEmployeeLayoutIndexRouteImport } from './routes/_protected/masters/payroll/_layout/employee/_layout/index'
+import { Route as ProtectedMastersOrganizationLayoutStateLayoutIndexRouteImport } from './routes/_protected/masters/organization/_layout/state/_layout/index'
+import { Route as ProtectedMastersOrganizationLayoutCurrencyLayoutIndexRouteImport } from './routes/_protected/masters/organization/_layout/currency/_layout/index'
+import { Route as ProtectedMastersOrganizationLayoutCountryLayoutIndexRouteImport } from './routes/_protected/masters/organization/_layout/country/_layout/index'
+import { Route as ProtectedMastersOrganizationLayoutCompanyLayoutIndexRouteImport } from './routes/_protected/masters/organization/_layout/company/_layout/index'
+import { Route as ProtectedHelpCenterLayoutTopic_articleLayoutIdIndexRouteImport } from './routes/_protected/help-center/_layout/topic_article/_layout/$id/index'
+import { Route as ProtectedMastersPayrollLayoutEmployeeLayoutIdRouteImport } from './routes/_protected/masters/payroll/_layout/employee/_layout/$id'
+import { Route as ProtectedMastersOrganizationLayoutStateLayoutIdRouteImport } from './routes/_protected/masters/organization/_layout/state/_layout/$id'
+import { Route as ProtectedMastersOrganizationLayoutCurrencyLayoutIdRouteImport } from './routes/_protected/masters/organization/_layout/currency/_layout/$id'
+import { Route as ProtectedMastersOrganizationLayoutCountryLayoutIdRouteImport } from './routes/_protected/masters/organization/_layout/country/_layout/$id'
+import { Route as ProtectedMastersOrganizationLayoutCompanyLayoutIdRouteImport } from './routes/_protected/masters/organization/_layout/company/_layout/$id'
+import { Route as ProtectedHelpCenterLayoutTopic_articleLayoutIdRelatedArticleRouteImport } from './routes/_protected/help-center/_layout/topic_article/_layout/$id/related-article'
+import { Route as ProtectedAdministrationLayoutRoleLayoutIdModuleRouteImport } from './routes/_protected/administration/_layout/role/_layout/$id/_module'
+import { Route as ProtectedAdministrationLayoutRoleLayoutIdModuleIndexRouteImport } from './routes/_protected/administration/_layout/role/_layout/$id/_module/index'
+import { Route as ProtectedAdministrationLayoutRoleLayoutIdModuleModuleidRouteImport } from './routes/_protected/administration/_layout/role/_layout/$id/_module/$moduleid'
 
-const AuthenticatedHelpCenterRouteImport = createFileRoute(
-  '/_authenticated/help-center',
+const ProtectedHelpCenterRouteImport = createFileRoute(
+  '/_protected/help-center',
+)()
+const ProtectedAdministrationRouteImport = createFileRoute(
+  '/_protected/administration',
 )()
 const errors503LazyRouteImport = createFileRoute('/(errors)/503')()
 const errors500LazyRouteImport = createFileRoute('/(errors)/500')()
@@ -55,18 +99,48 @@ const authSignIn2LazyRouteImport = createFileRoute('/(auth)/sign-in-2')()
 const authForgotPasswordLazyRouteImport = createFileRoute(
   '/(auth)/forgot-password',
 )()
-const AuthenticatedHelpCenterLayoutTopic_sectionRouteImport = createFileRoute(
-  '/_authenticated/help-center/_layout/topic_section',
+const ProtectedMastersPayrollRouteImport = createFileRoute(
+  '/_protected/masters/payroll',
 )()
-const AuthenticatedHelpCenterLayoutTopic_categoryRouteImport = createFileRoute(
-  '/_authenticated/help-center/_layout/topic_category',
+const ProtectedMastersOrganizationRouteImport = createFileRoute(
+  '/_protected/masters/organization',
 )()
-const AuthenticatedHelpCenterLayoutTopic_articleRouteImport = createFileRoute(
-  '/_authenticated/help-center/_layout/topic_article',
+const ProtectedHelpCenterLayoutTopic_sectionRouteImport = createFileRoute(
+  '/_protected/help-center/_layout/topic_section',
+)()
+const ProtectedHelpCenterLayoutTopic_categoryRouteImport = createFileRoute(
+  '/_protected/help-center/_layout/topic_category',
+)()
+const ProtectedHelpCenterLayoutTopic_articleRouteImport = createFileRoute(
+  '/_protected/help-center/_layout/topic_article',
+)()
+const ProtectedAdministrationLayoutUserRouteImport = createFileRoute(
+  '/_protected/administration/_layout/user',
+)()
+const ProtectedAdministrationLayoutRoleRouteImport = createFileRoute(
+  '/_protected/administration/_layout/role',
+)()
+const ProtectedMastersPayrollLayoutEmployeeRouteImport = createFileRoute(
+  '/_protected/masters/payroll/_layout/employee',
+)()
+const ProtectedMastersOrganizationLayoutStateRouteImport = createFileRoute(
+  '/_protected/masters/organization/_layout/state',
+)()
+const ProtectedMastersOrganizationLayoutCurrencyRouteImport = createFileRoute(
+  '/_protected/masters/organization/_layout/currency',
+)()
+const ProtectedMastersOrganizationLayoutCountryRouteImport = createFileRoute(
+  '/_protected/masters/organization/_layout/country',
+)()
+const ProtectedMastersOrganizationLayoutCompanyRouteImport = createFileRoute(
+  '/_protected/masters/organization/_layout/company',
+)()
+const ProtectedAdministrationLayoutRoleLayoutIdRouteImport = createFileRoute(
+  '/_protected/administration/_layout/role/_layout/$id',
 )()
 
-const AuthenticatedRoute = AuthenticatedRouteImport.update({
-  id: '/_authenticated',
+const ProtectedRoute = ProtectedRouteImport.update({
+  id: '/_protected',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -74,10 +148,15 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const AuthenticatedHelpCenterRoute = AuthenticatedHelpCenterRouteImport.update({
+const ProtectedHelpCenterRoute = ProtectedHelpCenterRouteImport.update({
   id: '/help-center',
   path: '/help-center',
-  getParentRoute: () => AuthenticatedRoute,
+  getParentRoute: () => ProtectedRoute,
+} as any)
+const ProtectedAdministrationRoute = ProtectedAdministrationRouteImport.update({
+  id: '/administration',
+  path: '/administration',
+  getParentRoute: () => ProtectedRoute,
 } as any)
 const errors503LazyRoute = errors503LazyRouteImport
   .update({
@@ -144,30 +223,15 @@ const authForgotPasswordLazyRoute = authForgotPasswordLazyRouteImport
   .lazy(() =>
     import('./routes/(auth)/forgot-password.lazy').then((d) => d.Route),
   )
-const DemoTanstackQueryRoute = DemoTanstackQueryRouteImport.update({
-  id: '/demo/tanstack-query',
-  path: '/demo/tanstack-query',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const DemoTableRoute = DemoTableRouteImport.update({
-  id: '/demo/table',
-  path: '/demo/table',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const DemoStorybookRoute = DemoStorybookRouteImport.update({
-  id: '/demo/storybook',
-  path: '/demo/storybook',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const AuthenticatedDashboardRoute = AuthenticatedDashboardRouteImport.update({
+const ProtectedDashboardRoute = ProtectedDashboardRouteImport.update({
   id: '/dashboard',
   path: '/dashboard',
-  getParentRoute: () => AuthenticatedRoute,
+  getParentRoute: () => ProtectedRoute,
 } as any)
-const AuthenticatedChartsRoute = AuthenticatedChartsRouteImport.update({
+const ProtectedChartsRoute = ProtectedChartsRouteImport.update({
   id: '/charts',
   path: '/charts',
-  getParentRoute: () => AuthenticatedRoute,
+  getParentRoute: () => ProtectedRoute,
 } as any)
 const authSignInRoute = authSignInRouteImport.update({
   id: '/(auth)/sign-in',
@@ -179,151 +243,459 @@ const authOtpRoute = authOtpRouteImport.update({
   path: '/otp',
   getParentRoute: () => rootRouteImport,
 } as any)
-const AuthenticatedSettingsRouteRoute =
-  AuthenticatedSettingsRouteRouteImport.update({
-    id: '/settings',
-    path: '/settings',
-    getParentRoute: () => AuthenticatedRoute,
-  } as any)
-const AuthenticatedSettingsIndexRoute =
-  AuthenticatedSettingsIndexRouteImport.update({
-    id: '/',
-    path: '/',
-    getParentRoute: () => AuthenticatedSettingsRouteRoute,
-  } as any)
-const DemoFormSimpleRoute = DemoFormSimpleRouteImport.update({
-  id: '/demo/form/simple',
-  path: '/demo/form/simple',
-  getParentRoute: () => rootRouteImport,
+const ProtectedSettingsRouteRoute = ProtectedSettingsRouteRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => ProtectedRoute,
 } as any)
-const DemoFormAddressRoute = DemoFormAddressRouteImport.update({
-  id: '/demo/form/address',
-  path: '/demo/form/address',
-  getParentRoute: () => rootRouteImport,
+const ProtectedMastersPayrollRoute = ProtectedMastersPayrollRouteImport.update({
+  id: '/masters/payroll',
+  path: '/masters/payroll',
+  getParentRoute: () => ProtectedRoute,
 } as any)
-const AuthenticatedSettingsNotificationsRoute =
-  AuthenticatedSettingsNotificationsRouteImport.update({
+const ProtectedMastersOrganizationRoute =
+  ProtectedMastersOrganizationRouteImport.update({
+    id: '/masters/organization',
+    path: '/masters/organization',
+    getParentRoute: () => ProtectedRoute,
+  } as any)
+const ProtectedSettingsIndexRoute = ProtectedSettingsIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => ProtectedSettingsRouteRoute,
+} as any)
+const ProtectedSettingsNotificationsRoute =
+  ProtectedSettingsNotificationsRouteImport.update({
     id: '/notifications',
     path: '/notifications',
-    getParentRoute: () => AuthenticatedSettingsRouteRoute,
+    getParentRoute: () => ProtectedSettingsRouteRoute,
   } as any)
-const AuthenticatedSettingsDisplayRoute =
-  AuthenticatedSettingsDisplayRouteImport.update({
+const ProtectedSettingsDisplayRoute =
+  ProtectedSettingsDisplayRouteImport.update({
     id: '/display',
     path: '/display',
-    getParentRoute: () => AuthenticatedSettingsRouteRoute,
+    getParentRoute: () => ProtectedSettingsRouteRoute,
   } as any)
-const AuthenticatedSettingsAppearanceRoute =
-  AuthenticatedSettingsAppearanceRouteImport.update({
+const ProtectedSettingsAppearanceRoute =
+  ProtectedSettingsAppearanceRouteImport.update({
     id: '/appearance',
     path: '/appearance',
-    getParentRoute: () => AuthenticatedSettingsRouteRoute,
+    getParentRoute: () => ProtectedSettingsRouteRoute,
   } as any)
-const AuthenticatedSettingsAccountRoute =
-  AuthenticatedSettingsAccountRouteImport.update({
+const ProtectedSettingsAccountRoute =
+  ProtectedSettingsAccountRouteImport.update({
     id: '/account',
     path: '/account',
-    getParentRoute: () => AuthenticatedSettingsRouteRoute,
+    getParentRoute: () => ProtectedSettingsRouteRoute,
   } as any)
-const AuthenticatedHelpCenterLayoutRoute =
-  AuthenticatedHelpCenterLayoutRouteImport.update({
+const ProtectedHelpCenterLayoutRoute =
+  ProtectedHelpCenterLayoutRouteImport.update({
     id: '/_layout',
-    getParentRoute: () => AuthenticatedHelpCenterRoute,
+    getParentRoute: () => ProtectedHelpCenterRoute,
   } as any)
-const AuthenticatedauthProfileRoute =
-  AuthenticatedauthProfileRouteImport.update({
-    id: '/(auth)/profile',
-    path: '/profile',
-    getParentRoute: () => AuthenticatedRoute,
+const ProtectedAdministrationLayoutRoute =
+  ProtectedAdministrationLayoutRouteImport.update({
+    id: '/_layout',
+    getParentRoute: () => ProtectedAdministrationRoute,
   } as any)
-const AuthenticatedHelpCenterLayoutTopic_sectionRoute =
-  AuthenticatedHelpCenterLayoutTopic_sectionRouteImport.update({
+const ProtectedauthProfileRoute = ProtectedauthProfileRouteImport.update({
+  id: '/(auth)/profile',
+  path: '/profile',
+  getParentRoute: () => ProtectedRoute,
+} as any)
+const ProtectedHelpCenterLayoutTopic_sectionRoute =
+  ProtectedHelpCenterLayoutTopic_sectionRouteImport.update({
     id: '/topic_section',
     path: '/topic_section',
-    getParentRoute: () => AuthenticatedHelpCenterLayoutRoute,
+    getParentRoute: () => ProtectedHelpCenterLayoutRoute,
   } as any)
-const AuthenticatedHelpCenterLayoutTopic_categoryRoute =
-  AuthenticatedHelpCenterLayoutTopic_categoryRouteImport.update({
+const ProtectedHelpCenterLayoutTopic_categoryRoute =
+  ProtectedHelpCenterLayoutTopic_categoryRouteImport.update({
     id: '/topic_category',
     path: '/topic_category',
-    getParentRoute: () => AuthenticatedHelpCenterLayoutRoute,
+    getParentRoute: () => ProtectedHelpCenterLayoutRoute,
   } as any)
-const AuthenticatedHelpCenterLayoutTopic_articleRoute =
-  AuthenticatedHelpCenterLayoutTopic_articleRouteImport.update({
+const ProtectedHelpCenterLayoutTopic_articleRoute =
+  ProtectedHelpCenterLayoutTopic_articleRouteImport.update({
     id: '/topic_article',
     path: '/topic_article',
-    getParentRoute: () => AuthenticatedHelpCenterLayoutRoute,
+    getParentRoute: () => ProtectedHelpCenterLayoutRoute,
   } as any)
-const AuthenticatedHelpCenterLayoutIndexRoute =
-  AuthenticatedHelpCenterLayoutIndexRouteImport.update({
+const ProtectedAdministrationLayoutUserRoute =
+  ProtectedAdministrationLayoutUserRouteImport.update({
+    id: '/user',
+    path: '/user',
+    getParentRoute: () => ProtectedAdministrationLayoutRoute,
+  } as any)
+const ProtectedAdministrationLayoutRoleRoute =
+  ProtectedAdministrationLayoutRoleRouteImport.update({
+    id: '/role',
+    path: '/role',
+    getParentRoute: () => ProtectedAdministrationLayoutRoute,
+  } as any)
+const ProtectedHelpCenterLayoutIndexRoute =
+  ProtectedHelpCenterLayoutIndexRouteImport.update({
     id: '/',
     path: '/',
-    getParentRoute: () => AuthenticatedHelpCenterLayoutRoute,
+    getParentRoute: () => ProtectedHelpCenterLayoutRoute,
   } as any)
-const AuthenticatedHelpCenterLayoutTopic_sectionLayoutRoute =
-  AuthenticatedHelpCenterLayoutTopic_sectionLayoutRouteImport.update({
+const ProtectedMastersPayrollLayoutRoute =
+  ProtectedMastersPayrollLayoutRouteImport.update({
     id: '/_layout',
-    getParentRoute: () => AuthenticatedHelpCenterLayoutTopic_sectionRoute,
+    getParentRoute: () => ProtectedMastersPayrollRoute,
   } as any)
-const AuthenticatedHelpCenterLayoutTopic_categoryLayoutRoute =
-  AuthenticatedHelpCenterLayoutTopic_categoryLayoutRouteImport.update({
+const ProtectedMastersOrganizationLayoutRoute =
+  ProtectedMastersOrganizationLayoutRouteImport.update({
     id: '/_layout',
-    getParentRoute: () => AuthenticatedHelpCenterLayoutTopic_categoryRoute,
+    getParentRoute: () => ProtectedMastersOrganizationRoute,
   } as any)
-const AuthenticatedHelpCenterLayoutTopic_articleLayoutRoute =
-  AuthenticatedHelpCenterLayoutTopic_articleLayoutRouteImport.update({
+const ProtectedMastersPayrollLayoutEmployeeRoute =
+  ProtectedMastersPayrollLayoutEmployeeRouteImport.update({
+    id: '/employee',
+    path: '/employee',
+    getParentRoute: () => ProtectedMastersPayrollLayoutRoute,
+  } as any)
+const ProtectedMastersOrganizationLayoutStateRoute =
+  ProtectedMastersOrganizationLayoutStateRouteImport.update({
+    id: '/state',
+    path: '/state',
+    getParentRoute: () => ProtectedMastersOrganizationLayoutRoute,
+  } as any)
+const ProtectedMastersOrganizationLayoutCurrencyRoute =
+  ProtectedMastersOrganizationLayoutCurrencyRouteImport.update({
+    id: '/currency',
+    path: '/currency',
+    getParentRoute: () => ProtectedMastersOrganizationLayoutRoute,
+  } as any)
+const ProtectedMastersOrganizationLayoutCountryRoute =
+  ProtectedMastersOrganizationLayoutCountryRouteImport.update({
+    id: '/country',
+    path: '/country',
+    getParentRoute: () => ProtectedMastersOrganizationLayoutRoute,
+  } as any)
+const ProtectedMastersOrganizationLayoutCompanyRoute =
+  ProtectedMastersOrganizationLayoutCompanyRouteImport.update({
+    id: '/company',
+    path: '/company',
+    getParentRoute: () => ProtectedMastersOrganizationLayoutRoute,
+  } as any)
+const ProtectedAdministrationLayoutPermissionIndexRoute =
+  ProtectedAdministrationLayoutPermissionIndexRouteImport.update({
+    id: '/permission/',
+    path: '/permission/',
+    getParentRoute: () => ProtectedAdministrationLayoutRoute,
+  } as any)
+const ProtectedAdministrationLayoutApp_module_featureIndexRoute =
+  ProtectedAdministrationLayoutApp_module_featureIndexRouteImport.update({
+    id: '/app_module_feature/',
+    path: '/app_module_feature/',
+    getParentRoute: () => ProtectedAdministrationLayoutRoute,
+  } as any)
+const ProtectedAdministrationLayoutApp_moduleIndexRoute =
+  ProtectedAdministrationLayoutApp_moduleIndexRouteImport.update({
+    id: '/app_module/',
+    path: '/app_module/',
+    getParentRoute: () => ProtectedAdministrationLayoutRoute,
+  } as any)
+const ProtectedHelpCenterLayoutTopic_sectionLayoutRoute =
+  ProtectedHelpCenterLayoutTopic_sectionLayoutRouteImport.update({
     id: '/_layout',
-    getParentRoute: () => AuthenticatedHelpCenterLayoutTopic_articleRoute,
+    getParentRoute: () => ProtectedHelpCenterLayoutTopic_sectionRoute,
   } as any)
-const AuthenticatedHelpCenterLayoutTopic_sectionLayoutIndexRoute =
-  AuthenticatedHelpCenterLayoutTopic_sectionLayoutIndexRouteImport.update({
-    id: '/',
-    path: '/',
-    getParentRoute: () => AuthenticatedHelpCenterLayoutTopic_sectionLayoutRoute,
+const ProtectedHelpCenterLayoutTopic_categoryLayoutRoute =
+  ProtectedHelpCenterLayoutTopic_categoryLayoutRouteImport.update({
+    id: '/_layout',
+    getParentRoute: () => ProtectedHelpCenterLayoutTopic_categoryRoute,
   } as any)
-const AuthenticatedHelpCenterLayoutTopic_categoryLayoutIndexRoute =
-  AuthenticatedHelpCenterLayoutTopic_categoryLayoutIndexRouteImport.update({
-    id: '/',
-    path: '/',
-    getParentRoute: () =>
-      AuthenticatedHelpCenterLayoutTopic_categoryLayoutRoute,
+const ProtectedHelpCenterLayoutTopic_articleLayoutRoute =
+  ProtectedHelpCenterLayoutTopic_articleLayoutRouteImport.update({
+    id: '/_layout',
+    getParentRoute: () => ProtectedHelpCenterLayoutTopic_articleRoute,
   } as any)
-const AuthenticatedHelpCenterLayoutTopic_articleLayoutIndexRoute =
-  AuthenticatedHelpCenterLayoutTopic_articleLayoutIndexRouteImport.update({
-    id: '/',
-    path: '/',
-    getParentRoute: () => AuthenticatedHelpCenterLayoutTopic_articleLayoutRoute,
+const ProtectedAdministrationLayoutUserLayoutRoute =
+  ProtectedAdministrationLayoutUserLayoutRouteImport.update({
+    id: '/_layout',
+    getParentRoute: () => ProtectedAdministrationLayoutUserRoute,
   } as any)
-const AuthenticatedHelpCenterLayoutTopic_sectionLayoutIdRoute =
-  AuthenticatedHelpCenterLayoutTopic_sectionLayoutIdRouteImport.update({
+const ProtectedAdministrationLayoutRoleLayoutRoute =
+  ProtectedAdministrationLayoutRoleLayoutRouteImport.update({
+    id: '/_layout',
+    getParentRoute: () => ProtectedAdministrationLayoutRoleRoute,
+  } as any)
+const ProtectedAdministrationLayoutRoleLayoutIdRoute =
+  ProtectedAdministrationLayoutRoleLayoutIdRouteImport.update({
     id: '/$id',
     path: '/$id',
-    getParentRoute: () => AuthenticatedHelpCenterLayoutTopic_sectionLayoutRoute,
+    getParentRoute: () => ProtectedAdministrationLayoutRoleLayoutRoute,
   } as any)
-const AuthenticatedHelpCenterLayoutTopic_categoryLayoutIdRoute =
-  AuthenticatedHelpCenterLayoutTopic_categoryLayoutIdRouteImport.update({
+const ProtectedMastersPayrollLayoutShiftIndexRoute =
+  ProtectedMastersPayrollLayoutShiftIndexRouteImport.update({
+    id: '/shift/',
+    path: '/shift/',
+    getParentRoute: () => ProtectedMastersPayrollLayoutRoute,
+  } as any)
+const ProtectedMastersPayrollLayoutSalary_structureIndexRoute =
+  ProtectedMastersPayrollLayoutSalary_structureIndexRouteImport.update({
+    id: '/salary_structure/',
+    path: '/salary_structure/',
+    getParentRoute: () => ProtectedMastersPayrollLayoutRoute,
+  } as any)
+const ProtectedMastersPayrollLayoutSalary_componentIndexRoute =
+  ProtectedMastersPayrollLayoutSalary_componentIndexRouteImport.update({
+    id: '/salary_component/',
+    path: '/salary_component/',
+    getParentRoute: () => ProtectedMastersPayrollLayoutRoute,
+  } as any)
+const ProtectedMastersPayrollLayoutSalaryIndexRoute =
+  ProtectedMastersPayrollLayoutSalaryIndexRouteImport.update({
+    id: '/salary/',
+    path: '/salary/',
+    getParentRoute: () => ProtectedMastersPayrollLayoutRoute,
+  } as any)
+const ProtectedMastersPayrollLayoutLeave_typeIndexRoute =
+  ProtectedMastersPayrollLayoutLeave_typeIndexRouteImport.update({
+    id: '/leave_type/',
+    path: '/leave_type/',
+    getParentRoute: () => ProtectedMastersPayrollLayoutRoute,
+  } as any)
+const ProtectedMastersPayrollLayoutHolidayIndexRoute =
+  ProtectedMastersPayrollLayoutHolidayIndexRouteImport.update({
+    id: '/holiday/',
+    path: '/holiday/',
+    getParentRoute: () => ProtectedMastersPayrollLayoutRoute,
+  } as any)
+const ProtectedMastersPayrollLayoutGradeIndexRoute =
+  ProtectedMastersPayrollLayoutGradeIndexRouteImport.update({
+    id: '/grade/',
+    path: '/grade/',
+    getParentRoute: () => ProtectedMastersPayrollLayoutRoute,
+  } as any)
+const ProtectedMastersPayrollLayoutEmployee_groupIndexRoute =
+  ProtectedMastersPayrollLayoutEmployee_groupIndexRouteImport.update({
+    id: '/employee_group/',
+    path: '/employee_group/',
+    getParentRoute: () => ProtectedMastersPayrollLayoutRoute,
+  } as any)
+const ProtectedMastersPayrollLayoutDesignationIndexRoute =
+  ProtectedMastersPayrollLayoutDesignationIndexRouteImport.update({
+    id: '/designation/',
+    path: '/designation/',
+    getParentRoute: () => ProtectedMastersPayrollLayoutRoute,
+  } as any)
+const ProtectedMastersPayrollLayoutDepartmentIndexRoute =
+  ProtectedMastersPayrollLayoutDepartmentIndexRouteImport.update({
+    id: '/department/',
+    path: '/department/',
+    getParentRoute: () => ProtectedMastersPayrollLayoutRoute,
+  } as any)
+const ProtectedMastersPayrollLayoutCost_centerIndexRoute =
+  ProtectedMastersPayrollLayoutCost_centerIndexRouteImport.update({
+    id: '/cost_center/',
+    path: '/cost_center/',
+    getParentRoute: () => ProtectedMastersPayrollLayoutRoute,
+  } as any)
+const ProtectedMastersPayrollLayoutCost_categoryIndexRoute =
+  ProtectedMastersPayrollLayoutCost_categoryIndexRouteImport.update({
+    id: '/cost_category/',
+    path: '/cost_category/',
+    getParentRoute: () => ProtectedMastersPayrollLayoutRoute,
+  } as any)
+const ProtectedMastersPayrollLayoutCost_allocation_ruleIndexRoute =
+  ProtectedMastersPayrollLayoutCost_allocation_ruleIndexRouteImport.update({
+    id: '/cost_allocation_rule/',
+    path: '/cost_allocation_rule/',
+    getParentRoute: () => ProtectedMastersPayrollLayoutRoute,
+  } as any)
+const ProtectedMastersPayrollLayoutBankIndexRoute =
+  ProtectedMastersPayrollLayoutBankIndexRouteImport.update({
+    id: '/bank/',
+    path: '/bank/',
+    getParentRoute: () => ProtectedMastersPayrollLayoutRoute,
+  } as any)
+const ProtectedMastersOrganizationLayoutFinancial_yearIndexRoute =
+  ProtectedMastersOrganizationLayoutFinancial_yearIndexRouteImport.update({
+    id: '/financial_year/',
+    path: '/financial_year/',
+    getParentRoute: () => ProtectedMastersOrganizationLayoutRoute,
+  } as any)
+const ProtectedMastersOrganizationLayoutBranchIndexRoute =
+  ProtectedMastersOrganizationLayoutBranchIndexRouteImport.update({
+    id: '/branch/',
+    path: '/branch/',
+    getParentRoute: () => ProtectedMastersOrganizationLayoutRoute,
+  } as any)
+const ProtectedHelpCenterLayoutTopic_sectionLayoutIndexRoute =
+  ProtectedHelpCenterLayoutTopic_sectionLayoutIndexRouteImport.update({
+    id: '/',
+    path: '/',
+    getParentRoute: () => ProtectedHelpCenterLayoutTopic_sectionLayoutRoute,
+  } as any)
+const ProtectedHelpCenterLayoutTopic_categoryLayoutIndexRoute =
+  ProtectedHelpCenterLayoutTopic_categoryLayoutIndexRouteImport.update({
+    id: '/',
+    path: '/',
+    getParentRoute: () => ProtectedHelpCenterLayoutTopic_categoryLayoutRoute,
+  } as any)
+const ProtectedHelpCenterLayoutTopic_articleLayoutIndexRoute =
+  ProtectedHelpCenterLayoutTopic_articleLayoutIndexRouteImport.update({
+    id: '/',
+    path: '/',
+    getParentRoute: () => ProtectedHelpCenterLayoutTopic_articleLayoutRoute,
+  } as any)
+const ProtectedAdministrationLayoutUserLayoutIndexRoute =
+  ProtectedAdministrationLayoutUserLayoutIndexRouteImport.update({
+    id: '/',
+    path: '/',
+    getParentRoute: () => ProtectedAdministrationLayoutUserLayoutRoute,
+  } as any)
+const ProtectedAdministrationLayoutRoleLayoutIndexRoute =
+  ProtectedAdministrationLayoutRoleLayoutIndexRouteImport.update({
+    id: '/',
+    path: '/',
+    getParentRoute: () => ProtectedAdministrationLayoutRoleLayoutRoute,
+  } as any)
+const ProtectedMastersPayrollLayoutEmployeeLayoutRoute =
+  ProtectedMastersPayrollLayoutEmployeeLayoutRouteImport.update({
+    id: '/_layout',
+    getParentRoute: () => ProtectedMastersPayrollLayoutEmployeeRoute,
+  } as any)
+const ProtectedMastersOrganizationLayoutStateLayoutRoute =
+  ProtectedMastersOrganizationLayoutStateLayoutRouteImport.update({
+    id: '/_layout',
+    getParentRoute: () => ProtectedMastersOrganizationLayoutStateRoute,
+  } as any)
+const ProtectedMastersOrganizationLayoutCurrencyLayoutRoute =
+  ProtectedMastersOrganizationLayoutCurrencyLayoutRouteImport.update({
+    id: '/_layout',
+    getParentRoute: () => ProtectedMastersOrganizationLayoutCurrencyRoute,
+  } as any)
+const ProtectedMastersOrganizationLayoutCountryLayoutRoute =
+  ProtectedMastersOrganizationLayoutCountryLayoutRouteImport.update({
+    id: '/_layout',
+    getParentRoute: () => ProtectedMastersOrganizationLayoutCountryRoute,
+  } as any)
+const ProtectedMastersOrganizationLayoutCompanyLayoutRoute =
+  ProtectedMastersOrganizationLayoutCompanyLayoutRouteImport.update({
+    id: '/_layout',
+    getParentRoute: () => ProtectedMastersOrganizationLayoutCompanyRoute,
+  } as any)
+const ProtectedHelpCenterLayoutTopic_sectionLayoutIdRoute =
+  ProtectedHelpCenterLayoutTopic_sectionLayoutIdRouteImport.update({
     id: '/$id',
     path: '/$id',
-    getParentRoute: () =>
-      AuthenticatedHelpCenterLayoutTopic_categoryLayoutRoute,
+    getParentRoute: () => ProtectedHelpCenterLayoutTopic_sectionLayoutRoute,
   } as any)
-const AuthenticatedHelpCenterLayoutTopic_articleLayoutIdRoute =
-  AuthenticatedHelpCenterLayoutTopic_articleLayoutIdRouteImport.update({
+const ProtectedHelpCenterLayoutTopic_categoryLayoutIdRoute =
+  ProtectedHelpCenterLayoutTopic_categoryLayoutIdRouteImport.update({
     id: '/$id',
     path: '/$id',
-    getParentRoute: () => AuthenticatedHelpCenterLayoutTopic_articleLayoutRoute,
+    getParentRoute: () => ProtectedHelpCenterLayoutTopic_categoryLayoutRoute,
+  } as any)
+const ProtectedAdministrationLayoutUserLayoutIdRoute =
+  ProtectedAdministrationLayoutUserLayoutIdRouteImport.update({
+    id: '/$id',
+    path: '/$id',
+    getParentRoute: () => ProtectedAdministrationLayoutUserLayoutRoute,
+  } as any)
+const ProtectedMastersPayrollLayoutEmployeeLayoutIndexRoute =
+  ProtectedMastersPayrollLayoutEmployeeLayoutIndexRouteImport.update({
+    id: '/',
+    path: '/',
+    getParentRoute: () => ProtectedMastersPayrollLayoutEmployeeLayoutRoute,
+  } as any)
+const ProtectedMastersOrganizationLayoutStateLayoutIndexRoute =
+  ProtectedMastersOrganizationLayoutStateLayoutIndexRouteImport.update({
+    id: '/',
+    path: '/',
+    getParentRoute: () => ProtectedMastersOrganizationLayoutStateLayoutRoute,
+  } as any)
+const ProtectedMastersOrganizationLayoutCurrencyLayoutIndexRoute =
+  ProtectedMastersOrganizationLayoutCurrencyLayoutIndexRouteImport.update({
+    id: '/',
+    path: '/',
+    getParentRoute: () => ProtectedMastersOrganizationLayoutCurrencyLayoutRoute,
+  } as any)
+const ProtectedMastersOrganizationLayoutCountryLayoutIndexRoute =
+  ProtectedMastersOrganizationLayoutCountryLayoutIndexRouteImport.update({
+    id: '/',
+    path: '/',
+    getParentRoute: () => ProtectedMastersOrganizationLayoutCountryLayoutRoute,
+  } as any)
+const ProtectedMastersOrganizationLayoutCompanyLayoutIndexRoute =
+  ProtectedMastersOrganizationLayoutCompanyLayoutIndexRouteImport.update({
+    id: '/',
+    path: '/',
+    getParentRoute: () => ProtectedMastersOrganizationLayoutCompanyLayoutRoute,
+  } as any)
+const ProtectedHelpCenterLayoutTopic_articleLayoutIdIndexRoute =
+  ProtectedHelpCenterLayoutTopic_articleLayoutIdIndexRouteImport.update({
+    id: '/$id/',
+    path: '/$id/',
+    getParentRoute: () => ProtectedHelpCenterLayoutTopic_articleLayoutRoute,
+  } as any)
+const ProtectedMastersPayrollLayoutEmployeeLayoutIdRoute =
+  ProtectedMastersPayrollLayoutEmployeeLayoutIdRouteImport.update({
+    id: '/$id',
+    path: '/$id',
+    getParentRoute: () => ProtectedMastersPayrollLayoutEmployeeLayoutRoute,
+  } as any)
+const ProtectedMastersOrganizationLayoutStateLayoutIdRoute =
+  ProtectedMastersOrganizationLayoutStateLayoutIdRouteImport.update({
+    id: '/$id',
+    path: '/$id',
+    getParentRoute: () => ProtectedMastersOrganizationLayoutStateLayoutRoute,
+  } as any)
+const ProtectedMastersOrganizationLayoutCurrencyLayoutIdRoute =
+  ProtectedMastersOrganizationLayoutCurrencyLayoutIdRouteImport.update({
+    id: '/$id',
+    path: '/$id',
+    getParentRoute: () => ProtectedMastersOrganizationLayoutCurrencyLayoutRoute,
+  } as any)
+const ProtectedMastersOrganizationLayoutCountryLayoutIdRoute =
+  ProtectedMastersOrganizationLayoutCountryLayoutIdRouteImport.update({
+    id: '/$id',
+    path: '/$id',
+    getParentRoute: () => ProtectedMastersOrganizationLayoutCountryLayoutRoute,
+  } as any)
+const ProtectedMastersOrganizationLayoutCompanyLayoutIdRoute =
+  ProtectedMastersOrganizationLayoutCompanyLayoutIdRouteImport.update({
+    id: '/$id',
+    path: '/$id',
+    getParentRoute: () => ProtectedMastersOrganizationLayoutCompanyLayoutRoute,
+  } as any)
+const ProtectedHelpCenterLayoutTopic_articleLayoutIdRelatedArticleRoute =
+  ProtectedHelpCenterLayoutTopic_articleLayoutIdRelatedArticleRouteImport.update(
+    {
+      id: '/$id/related-article',
+      path: '/$id/related-article',
+      getParentRoute: () => ProtectedHelpCenterLayoutTopic_articleLayoutRoute,
+    } as any,
+  )
+const ProtectedAdministrationLayoutRoleLayoutIdModuleRoute =
+  ProtectedAdministrationLayoutRoleLayoutIdModuleRouteImport.update({
+    id: '/_module',
+    getParentRoute: () => ProtectedAdministrationLayoutRoleLayoutIdRoute,
+  } as any)
+const ProtectedAdministrationLayoutRoleLayoutIdModuleIndexRoute =
+  ProtectedAdministrationLayoutRoleLayoutIdModuleIndexRouteImport.update({
+    id: '/',
+    path: '/',
+    getParentRoute: () => ProtectedAdministrationLayoutRoleLayoutIdModuleRoute,
+  } as any)
+const ProtectedAdministrationLayoutRoleLayoutIdModuleModuleidRoute =
+  ProtectedAdministrationLayoutRoleLayoutIdModuleModuleidRouteImport.update({
+    id: '/$moduleid',
+    path: '/$moduleid',
+    getParentRoute: () => ProtectedAdministrationLayoutRoleLayoutIdModuleRoute,
   } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/settings': typeof AuthenticatedSettingsRouteRouteWithChildren
+  '/settings': typeof ProtectedSettingsRouteRouteWithChildren
   '/otp': typeof authOtpRoute
   '/sign-in': typeof authSignInRoute
-  '/charts': typeof AuthenticatedChartsRoute
-  '/dashboard': typeof AuthenticatedDashboardRoute
-  '/demo/storybook': typeof DemoStorybookRoute
-  '/demo/table': typeof DemoTableRoute
-  '/demo/tanstack-query': typeof DemoTanstackQueryRoute
+  '/charts': typeof ProtectedChartsRoute
+  '/dashboard': typeof ProtectedDashboardRoute
   '/forgot-password': typeof authForgotPasswordLazyRoute
   '/sign-in-2': typeof authSignIn2LazyRoute
   '/sign-up': typeof authSignUpLazyRoute
@@ -333,35 +705,76 @@ export interface FileRoutesByFullPath {
   '/404': typeof errors404LazyRoute
   '/500': typeof errors500LazyRoute
   '/503': typeof errors503LazyRoute
-  '/profile': typeof AuthenticatedauthProfileRoute
-  '/help-center': typeof AuthenticatedHelpCenterLayoutRouteWithChildren
-  '/settings/account': typeof AuthenticatedSettingsAccountRoute
-  '/settings/appearance': typeof AuthenticatedSettingsAppearanceRoute
-  '/settings/display': typeof AuthenticatedSettingsDisplayRoute
-  '/settings/notifications': typeof AuthenticatedSettingsNotificationsRoute
-  '/demo/form/address': typeof DemoFormAddressRoute
-  '/demo/form/simple': typeof DemoFormSimpleRoute
-  '/settings/': typeof AuthenticatedSettingsIndexRoute
-  '/help-center/': typeof AuthenticatedHelpCenterLayoutIndexRoute
-  '/help-center/topic_article': typeof AuthenticatedHelpCenterLayoutTopic_articleLayoutRouteWithChildren
-  '/help-center/topic_category': typeof AuthenticatedHelpCenterLayoutTopic_categoryLayoutRouteWithChildren
-  '/help-center/topic_section': typeof AuthenticatedHelpCenterLayoutTopic_sectionLayoutRouteWithChildren
-  '/help-center/topic_article/$id': typeof AuthenticatedHelpCenterLayoutTopic_articleLayoutIdRoute
-  '/help-center/topic_category/$id': typeof AuthenticatedHelpCenterLayoutTopic_categoryLayoutIdRoute
-  '/help-center/topic_section/$id': typeof AuthenticatedHelpCenterLayoutTopic_sectionLayoutIdRoute
-  '/help-center/topic_article/': typeof AuthenticatedHelpCenterLayoutTopic_articleLayoutIndexRoute
-  '/help-center/topic_category/': typeof AuthenticatedHelpCenterLayoutTopic_categoryLayoutIndexRoute
-  '/help-center/topic_section/': typeof AuthenticatedHelpCenterLayoutTopic_sectionLayoutIndexRoute
+  '/profile': typeof ProtectedauthProfileRoute
+  '/administration': typeof ProtectedAdministrationLayoutRouteWithChildren
+  '/help-center': typeof ProtectedHelpCenterLayoutRouteWithChildren
+  '/settings/account': typeof ProtectedSettingsAccountRoute
+  '/settings/appearance': typeof ProtectedSettingsAppearanceRoute
+  '/settings/display': typeof ProtectedSettingsDisplayRoute
+  '/settings/notifications': typeof ProtectedSettingsNotificationsRoute
+  '/settings/': typeof ProtectedSettingsIndexRoute
+  '/masters/organization': typeof ProtectedMastersOrganizationLayoutRouteWithChildren
+  '/masters/payroll': typeof ProtectedMastersPayrollLayoutRouteWithChildren
+  '/help-center/': typeof ProtectedHelpCenterLayoutIndexRoute
+  '/administration/role': typeof ProtectedAdministrationLayoutRoleLayoutRouteWithChildren
+  '/administration/user': typeof ProtectedAdministrationLayoutUserLayoutRouteWithChildren
+  '/help-center/topic_article': typeof ProtectedHelpCenterLayoutTopic_articleLayoutRouteWithChildren
+  '/help-center/topic_category': typeof ProtectedHelpCenterLayoutTopic_categoryLayoutRouteWithChildren
+  '/help-center/topic_section': typeof ProtectedHelpCenterLayoutTopic_sectionLayoutRouteWithChildren
+  '/administration/app_module': typeof ProtectedAdministrationLayoutApp_moduleIndexRoute
+  '/administration/app_module_feature': typeof ProtectedAdministrationLayoutApp_module_featureIndexRoute
+  '/administration/permission': typeof ProtectedAdministrationLayoutPermissionIndexRoute
+  '/administration/user/$id': typeof ProtectedAdministrationLayoutUserLayoutIdRoute
+  '/help-center/topic_category/$id': typeof ProtectedHelpCenterLayoutTopic_categoryLayoutIdRoute
+  '/help-center/topic_section/$id': typeof ProtectedHelpCenterLayoutTopic_sectionLayoutIdRoute
+  '/masters/organization/company': typeof ProtectedMastersOrganizationLayoutCompanyLayoutRouteWithChildren
+  '/masters/organization/country': typeof ProtectedMastersOrganizationLayoutCountryLayoutRouteWithChildren
+  '/masters/organization/currency': typeof ProtectedMastersOrganizationLayoutCurrencyLayoutRouteWithChildren
+  '/masters/organization/state': typeof ProtectedMastersOrganizationLayoutStateLayoutRouteWithChildren
+  '/masters/payroll/employee': typeof ProtectedMastersPayrollLayoutEmployeeLayoutRouteWithChildren
+  '/administration/role/': typeof ProtectedAdministrationLayoutRoleLayoutIndexRoute
+  '/administration/user/': typeof ProtectedAdministrationLayoutUserLayoutIndexRoute
+  '/help-center/topic_article/': typeof ProtectedHelpCenterLayoutTopic_articleLayoutIndexRoute
+  '/help-center/topic_category/': typeof ProtectedHelpCenterLayoutTopic_categoryLayoutIndexRoute
+  '/help-center/topic_section/': typeof ProtectedHelpCenterLayoutTopic_sectionLayoutIndexRoute
+  '/masters/organization/branch': typeof ProtectedMastersOrganizationLayoutBranchIndexRoute
+  '/masters/organization/financial_year': typeof ProtectedMastersOrganizationLayoutFinancial_yearIndexRoute
+  '/masters/payroll/bank': typeof ProtectedMastersPayrollLayoutBankIndexRoute
+  '/masters/payroll/cost_allocation_rule': typeof ProtectedMastersPayrollLayoutCost_allocation_ruleIndexRoute
+  '/masters/payroll/cost_category': typeof ProtectedMastersPayrollLayoutCost_categoryIndexRoute
+  '/masters/payroll/cost_center': typeof ProtectedMastersPayrollLayoutCost_centerIndexRoute
+  '/masters/payroll/department': typeof ProtectedMastersPayrollLayoutDepartmentIndexRoute
+  '/masters/payroll/designation': typeof ProtectedMastersPayrollLayoutDesignationIndexRoute
+  '/masters/payroll/employee_group': typeof ProtectedMastersPayrollLayoutEmployee_groupIndexRoute
+  '/masters/payroll/grade': typeof ProtectedMastersPayrollLayoutGradeIndexRoute
+  '/masters/payroll/holiday': typeof ProtectedMastersPayrollLayoutHolidayIndexRoute
+  '/masters/payroll/leave_type': typeof ProtectedMastersPayrollLayoutLeave_typeIndexRoute
+  '/masters/payroll/salary': typeof ProtectedMastersPayrollLayoutSalaryIndexRoute
+  '/masters/payroll/salary_component': typeof ProtectedMastersPayrollLayoutSalary_componentIndexRoute
+  '/masters/payroll/salary_structure': typeof ProtectedMastersPayrollLayoutSalary_structureIndexRoute
+  '/masters/payroll/shift': typeof ProtectedMastersPayrollLayoutShiftIndexRoute
+  '/administration/role/$id': typeof ProtectedAdministrationLayoutRoleLayoutIdModuleRouteWithChildren
+  '/help-center/topic_article/$id/related-article': typeof ProtectedHelpCenterLayoutTopic_articleLayoutIdRelatedArticleRoute
+  '/masters/organization/company/$id': typeof ProtectedMastersOrganizationLayoutCompanyLayoutIdRoute
+  '/masters/organization/country/$id': typeof ProtectedMastersOrganizationLayoutCountryLayoutIdRoute
+  '/masters/organization/currency/$id': typeof ProtectedMastersOrganizationLayoutCurrencyLayoutIdRoute
+  '/masters/organization/state/$id': typeof ProtectedMastersOrganizationLayoutStateLayoutIdRoute
+  '/masters/payroll/employee/$id': typeof ProtectedMastersPayrollLayoutEmployeeLayoutIdRoute
+  '/help-center/topic_article/$id': typeof ProtectedHelpCenterLayoutTopic_articleLayoutIdIndexRoute
+  '/masters/organization/company/': typeof ProtectedMastersOrganizationLayoutCompanyLayoutIndexRoute
+  '/masters/organization/country/': typeof ProtectedMastersOrganizationLayoutCountryLayoutIndexRoute
+  '/masters/organization/currency/': typeof ProtectedMastersOrganizationLayoutCurrencyLayoutIndexRoute
+  '/masters/organization/state/': typeof ProtectedMastersOrganizationLayoutStateLayoutIndexRoute
+  '/masters/payroll/employee/': typeof ProtectedMastersPayrollLayoutEmployeeLayoutIndexRoute
+  '/administration/role/$id/$moduleid': typeof ProtectedAdministrationLayoutRoleLayoutIdModuleModuleidRoute
+  '/administration/role/$id/': typeof ProtectedAdministrationLayoutRoleLayoutIdModuleIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/otp': typeof authOtpRoute
   '/sign-in': typeof authSignInRoute
-  '/charts': typeof AuthenticatedChartsRoute
-  '/dashboard': typeof AuthenticatedDashboardRoute
-  '/demo/storybook': typeof DemoStorybookRoute
-  '/demo/table': typeof DemoTableRoute
-  '/demo/tanstack-query': typeof DemoTanstackQueryRoute
+  '/charts': typeof ProtectedChartsRoute
+  '/dashboard': typeof ProtectedDashboardRoute
   '/forgot-password': typeof authForgotPasswordLazyRoute
   '/sign-in-2': typeof authSignIn2LazyRoute
   '/sign-up': typeof authSignUpLazyRoute
@@ -371,34 +784,67 @@ export interface FileRoutesByTo {
   '/404': typeof errors404LazyRoute
   '/500': typeof errors500LazyRoute
   '/503': typeof errors503LazyRoute
-  '/profile': typeof AuthenticatedauthProfileRoute
-  '/help-center': typeof AuthenticatedHelpCenterLayoutIndexRoute
-  '/settings/account': typeof AuthenticatedSettingsAccountRoute
-  '/settings/appearance': typeof AuthenticatedSettingsAppearanceRoute
-  '/settings/display': typeof AuthenticatedSettingsDisplayRoute
-  '/settings/notifications': typeof AuthenticatedSettingsNotificationsRoute
-  '/demo/form/address': typeof DemoFormAddressRoute
-  '/demo/form/simple': typeof DemoFormSimpleRoute
-  '/settings': typeof AuthenticatedSettingsIndexRoute
-  '/help-center/topic_article': typeof AuthenticatedHelpCenterLayoutTopic_articleLayoutIndexRoute
-  '/help-center/topic_category': typeof AuthenticatedHelpCenterLayoutTopic_categoryLayoutIndexRoute
-  '/help-center/topic_section': typeof AuthenticatedHelpCenterLayoutTopic_sectionLayoutIndexRoute
-  '/help-center/topic_article/$id': typeof AuthenticatedHelpCenterLayoutTopic_articleLayoutIdRoute
-  '/help-center/topic_category/$id': typeof AuthenticatedHelpCenterLayoutTopic_categoryLayoutIdRoute
-  '/help-center/topic_section/$id': typeof AuthenticatedHelpCenterLayoutTopic_sectionLayoutIdRoute
+  '/profile': typeof ProtectedauthProfileRoute
+  '/administration': typeof ProtectedAdministrationLayoutRouteWithChildren
+  '/help-center': typeof ProtectedHelpCenterLayoutIndexRoute
+  '/settings/account': typeof ProtectedSettingsAccountRoute
+  '/settings/appearance': typeof ProtectedSettingsAppearanceRoute
+  '/settings/display': typeof ProtectedSettingsDisplayRoute
+  '/settings/notifications': typeof ProtectedSettingsNotificationsRoute
+  '/settings': typeof ProtectedSettingsIndexRoute
+  '/masters/organization': typeof ProtectedMastersOrganizationLayoutRouteWithChildren
+  '/masters/payroll': typeof ProtectedMastersPayrollLayoutRouteWithChildren
+  '/administration/role': typeof ProtectedAdministrationLayoutRoleLayoutIndexRoute
+  '/administration/user': typeof ProtectedAdministrationLayoutUserLayoutIndexRoute
+  '/help-center/topic_article': typeof ProtectedHelpCenterLayoutTopic_articleLayoutIndexRoute
+  '/help-center/topic_category': typeof ProtectedHelpCenterLayoutTopic_categoryLayoutIndexRoute
+  '/help-center/topic_section': typeof ProtectedHelpCenterLayoutTopic_sectionLayoutIndexRoute
+  '/administration/app_module': typeof ProtectedAdministrationLayoutApp_moduleIndexRoute
+  '/administration/app_module_feature': typeof ProtectedAdministrationLayoutApp_module_featureIndexRoute
+  '/administration/permission': typeof ProtectedAdministrationLayoutPermissionIndexRoute
+  '/administration/user/$id': typeof ProtectedAdministrationLayoutUserLayoutIdRoute
+  '/help-center/topic_category/$id': typeof ProtectedHelpCenterLayoutTopic_categoryLayoutIdRoute
+  '/help-center/topic_section/$id': typeof ProtectedHelpCenterLayoutTopic_sectionLayoutIdRoute
+  '/masters/organization/company': typeof ProtectedMastersOrganizationLayoutCompanyLayoutIndexRoute
+  '/masters/organization/country': typeof ProtectedMastersOrganizationLayoutCountryLayoutIndexRoute
+  '/masters/organization/currency': typeof ProtectedMastersOrganizationLayoutCurrencyLayoutIndexRoute
+  '/masters/organization/state': typeof ProtectedMastersOrganizationLayoutStateLayoutIndexRoute
+  '/masters/payroll/employee': typeof ProtectedMastersPayrollLayoutEmployeeLayoutIndexRoute
+  '/masters/organization/branch': typeof ProtectedMastersOrganizationLayoutBranchIndexRoute
+  '/masters/organization/financial_year': typeof ProtectedMastersOrganizationLayoutFinancial_yearIndexRoute
+  '/masters/payroll/bank': typeof ProtectedMastersPayrollLayoutBankIndexRoute
+  '/masters/payroll/cost_allocation_rule': typeof ProtectedMastersPayrollLayoutCost_allocation_ruleIndexRoute
+  '/masters/payroll/cost_category': typeof ProtectedMastersPayrollLayoutCost_categoryIndexRoute
+  '/masters/payroll/cost_center': typeof ProtectedMastersPayrollLayoutCost_centerIndexRoute
+  '/masters/payroll/department': typeof ProtectedMastersPayrollLayoutDepartmentIndexRoute
+  '/masters/payroll/designation': typeof ProtectedMastersPayrollLayoutDesignationIndexRoute
+  '/masters/payroll/employee_group': typeof ProtectedMastersPayrollLayoutEmployee_groupIndexRoute
+  '/masters/payroll/grade': typeof ProtectedMastersPayrollLayoutGradeIndexRoute
+  '/masters/payroll/holiday': typeof ProtectedMastersPayrollLayoutHolidayIndexRoute
+  '/masters/payroll/leave_type': typeof ProtectedMastersPayrollLayoutLeave_typeIndexRoute
+  '/masters/payroll/salary': typeof ProtectedMastersPayrollLayoutSalaryIndexRoute
+  '/masters/payroll/salary_component': typeof ProtectedMastersPayrollLayoutSalary_componentIndexRoute
+  '/masters/payroll/salary_structure': typeof ProtectedMastersPayrollLayoutSalary_structureIndexRoute
+  '/masters/payroll/shift': typeof ProtectedMastersPayrollLayoutShiftIndexRoute
+  '/administration/role/$id': typeof ProtectedAdministrationLayoutRoleLayoutIdModuleIndexRoute
+  '/help-center/topic_article/$id/related-article': typeof ProtectedHelpCenterLayoutTopic_articleLayoutIdRelatedArticleRoute
+  '/masters/organization/company/$id': typeof ProtectedMastersOrganizationLayoutCompanyLayoutIdRoute
+  '/masters/organization/country/$id': typeof ProtectedMastersOrganizationLayoutCountryLayoutIdRoute
+  '/masters/organization/currency/$id': typeof ProtectedMastersOrganizationLayoutCurrencyLayoutIdRoute
+  '/masters/organization/state/$id': typeof ProtectedMastersOrganizationLayoutStateLayoutIdRoute
+  '/masters/payroll/employee/$id': typeof ProtectedMastersPayrollLayoutEmployeeLayoutIdRoute
+  '/help-center/topic_article/$id': typeof ProtectedHelpCenterLayoutTopic_articleLayoutIdIndexRoute
+  '/administration/role/$id/$moduleid': typeof ProtectedAdministrationLayoutRoleLayoutIdModuleModuleidRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/_authenticated': typeof AuthenticatedRouteWithChildren
-  '/_authenticated/settings': typeof AuthenticatedSettingsRouteRouteWithChildren
+  '/_protected': typeof ProtectedRouteWithChildren
+  '/_protected/settings': typeof ProtectedSettingsRouteRouteWithChildren
   '/(auth)/otp': typeof authOtpRoute
   '/(auth)/sign-in': typeof authSignInRoute
-  '/_authenticated/charts': typeof AuthenticatedChartsRoute
-  '/_authenticated/dashboard': typeof AuthenticatedDashboardRoute
-  '/demo/storybook': typeof DemoStorybookRoute
-  '/demo/table': typeof DemoTableRoute
-  '/demo/tanstack-query': typeof DemoTanstackQueryRoute
+  '/_protected/charts': typeof ProtectedChartsRoute
+  '/_protected/dashboard': typeof ProtectedDashboardRoute
   '/(auth)/forgot-password': typeof authForgotPasswordLazyRoute
   '/(auth)/sign-in-2': typeof authSignIn2LazyRoute
   '/(auth)/sign-up': typeof authSignUpLazyRoute
@@ -408,29 +854,84 @@ export interface FileRoutesById {
   '/(errors)/404': typeof errors404LazyRoute
   '/(errors)/500': typeof errors500LazyRoute
   '/(errors)/503': typeof errors503LazyRoute
-  '/_authenticated/(auth)/profile': typeof AuthenticatedauthProfileRoute
-  '/_authenticated/help-center': typeof AuthenticatedHelpCenterRouteWithChildren
-  '/_authenticated/help-center/_layout': typeof AuthenticatedHelpCenterLayoutRouteWithChildren
-  '/_authenticated/settings/account': typeof AuthenticatedSettingsAccountRoute
-  '/_authenticated/settings/appearance': typeof AuthenticatedSettingsAppearanceRoute
-  '/_authenticated/settings/display': typeof AuthenticatedSettingsDisplayRoute
-  '/_authenticated/settings/notifications': typeof AuthenticatedSettingsNotificationsRoute
-  '/demo/form/address': typeof DemoFormAddressRoute
-  '/demo/form/simple': typeof DemoFormSimpleRoute
-  '/_authenticated/settings/': typeof AuthenticatedSettingsIndexRoute
-  '/_authenticated/help-center/_layout/': typeof AuthenticatedHelpCenterLayoutIndexRoute
-  '/_authenticated/help-center/_layout/topic_article': typeof AuthenticatedHelpCenterLayoutTopic_articleRouteWithChildren
-  '/_authenticated/help-center/_layout/topic_article/_layout': typeof AuthenticatedHelpCenterLayoutTopic_articleLayoutRouteWithChildren
-  '/_authenticated/help-center/_layout/topic_category': typeof AuthenticatedHelpCenterLayoutTopic_categoryRouteWithChildren
-  '/_authenticated/help-center/_layout/topic_category/_layout': typeof AuthenticatedHelpCenterLayoutTopic_categoryLayoutRouteWithChildren
-  '/_authenticated/help-center/_layout/topic_section': typeof AuthenticatedHelpCenterLayoutTopic_sectionRouteWithChildren
-  '/_authenticated/help-center/_layout/topic_section/_layout': typeof AuthenticatedHelpCenterLayoutTopic_sectionLayoutRouteWithChildren
-  '/_authenticated/help-center/_layout/topic_article/_layout/$id': typeof AuthenticatedHelpCenterLayoutTopic_articleLayoutIdRoute
-  '/_authenticated/help-center/_layout/topic_category/_layout/$id': typeof AuthenticatedHelpCenterLayoutTopic_categoryLayoutIdRoute
-  '/_authenticated/help-center/_layout/topic_section/_layout/$id': typeof AuthenticatedHelpCenterLayoutTopic_sectionLayoutIdRoute
-  '/_authenticated/help-center/_layout/topic_article/_layout/': typeof AuthenticatedHelpCenterLayoutTopic_articleLayoutIndexRoute
-  '/_authenticated/help-center/_layout/topic_category/_layout/': typeof AuthenticatedHelpCenterLayoutTopic_categoryLayoutIndexRoute
-  '/_authenticated/help-center/_layout/topic_section/_layout/': typeof AuthenticatedHelpCenterLayoutTopic_sectionLayoutIndexRoute
+  '/_protected/(auth)/profile': typeof ProtectedauthProfileRoute
+  '/_protected/administration': typeof ProtectedAdministrationRouteWithChildren
+  '/_protected/administration/_layout': typeof ProtectedAdministrationLayoutRouteWithChildren
+  '/_protected/help-center': typeof ProtectedHelpCenterRouteWithChildren
+  '/_protected/help-center/_layout': typeof ProtectedHelpCenterLayoutRouteWithChildren
+  '/_protected/settings/account': typeof ProtectedSettingsAccountRoute
+  '/_protected/settings/appearance': typeof ProtectedSettingsAppearanceRoute
+  '/_protected/settings/display': typeof ProtectedSettingsDisplayRoute
+  '/_protected/settings/notifications': typeof ProtectedSettingsNotificationsRoute
+  '/_protected/settings/': typeof ProtectedSettingsIndexRoute
+  '/_protected/masters/organization': typeof ProtectedMastersOrganizationRouteWithChildren
+  '/_protected/masters/organization/_layout': typeof ProtectedMastersOrganizationLayoutRouteWithChildren
+  '/_protected/masters/payroll': typeof ProtectedMastersPayrollRouteWithChildren
+  '/_protected/masters/payroll/_layout': typeof ProtectedMastersPayrollLayoutRouteWithChildren
+  '/_protected/help-center/_layout/': typeof ProtectedHelpCenterLayoutIndexRoute
+  '/_protected/administration/_layout/role': typeof ProtectedAdministrationLayoutRoleRouteWithChildren
+  '/_protected/administration/_layout/role/_layout': typeof ProtectedAdministrationLayoutRoleLayoutRouteWithChildren
+  '/_protected/administration/_layout/user': typeof ProtectedAdministrationLayoutUserRouteWithChildren
+  '/_protected/administration/_layout/user/_layout': typeof ProtectedAdministrationLayoutUserLayoutRouteWithChildren
+  '/_protected/help-center/_layout/topic_article': typeof ProtectedHelpCenterLayoutTopic_articleRouteWithChildren
+  '/_protected/help-center/_layout/topic_article/_layout': typeof ProtectedHelpCenterLayoutTopic_articleLayoutRouteWithChildren
+  '/_protected/help-center/_layout/topic_category': typeof ProtectedHelpCenterLayoutTopic_categoryRouteWithChildren
+  '/_protected/help-center/_layout/topic_category/_layout': typeof ProtectedHelpCenterLayoutTopic_categoryLayoutRouteWithChildren
+  '/_protected/help-center/_layout/topic_section': typeof ProtectedHelpCenterLayoutTopic_sectionRouteWithChildren
+  '/_protected/help-center/_layout/topic_section/_layout': typeof ProtectedHelpCenterLayoutTopic_sectionLayoutRouteWithChildren
+  '/_protected/administration/_layout/app_module/': typeof ProtectedAdministrationLayoutApp_moduleIndexRoute
+  '/_protected/administration/_layout/app_module_feature/': typeof ProtectedAdministrationLayoutApp_module_featureIndexRoute
+  '/_protected/administration/_layout/permission/': typeof ProtectedAdministrationLayoutPermissionIndexRoute
+  '/_protected/administration/_layout/user/_layout/$id': typeof ProtectedAdministrationLayoutUserLayoutIdRoute
+  '/_protected/help-center/_layout/topic_category/_layout/$id': typeof ProtectedHelpCenterLayoutTopic_categoryLayoutIdRoute
+  '/_protected/help-center/_layout/topic_section/_layout/$id': typeof ProtectedHelpCenterLayoutTopic_sectionLayoutIdRoute
+  '/_protected/masters/organization/_layout/company': typeof ProtectedMastersOrganizationLayoutCompanyRouteWithChildren
+  '/_protected/masters/organization/_layout/company/_layout': typeof ProtectedMastersOrganizationLayoutCompanyLayoutRouteWithChildren
+  '/_protected/masters/organization/_layout/country': typeof ProtectedMastersOrganizationLayoutCountryRouteWithChildren
+  '/_protected/masters/organization/_layout/country/_layout': typeof ProtectedMastersOrganizationLayoutCountryLayoutRouteWithChildren
+  '/_protected/masters/organization/_layout/currency': typeof ProtectedMastersOrganizationLayoutCurrencyRouteWithChildren
+  '/_protected/masters/organization/_layout/currency/_layout': typeof ProtectedMastersOrganizationLayoutCurrencyLayoutRouteWithChildren
+  '/_protected/masters/organization/_layout/state': typeof ProtectedMastersOrganizationLayoutStateRouteWithChildren
+  '/_protected/masters/organization/_layout/state/_layout': typeof ProtectedMastersOrganizationLayoutStateLayoutRouteWithChildren
+  '/_protected/masters/payroll/_layout/employee': typeof ProtectedMastersPayrollLayoutEmployeeRouteWithChildren
+  '/_protected/masters/payroll/_layout/employee/_layout': typeof ProtectedMastersPayrollLayoutEmployeeLayoutRouteWithChildren
+  '/_protected/administration/_layout/role/_layout/': typeof ProtectedAdministrationLayoutRoleLayoutIndexRoute
+  '/_protected/administration/_layout/user/_layout/': typeof ProtectedAdministrationLayoutUserLayoutIndexRoute
+  '/_protected/help-center/_layout/topic_article/_layout/': typeof ProtectedHelpCenterLayoutTopic_articleLayoutIndexRoute
+  '/_protected/help-center/_layout/topic_category/_layout/': typeof ProtectedHelpCenterLayoutTopic_categoryLayoutIndexRoute
+  '/_protected/help-center/_layout/topic_section/_layout/': typeof ProtectedHelpCenterLayoutTopic_sectionLayoutIndexRoute
+  '/_protected/masters/organization/_layout/branch/': typeof ProtectedMastersOrganizationLayoutBranchIndexRoute
+  '/_protected/masters/organization/_layout/financial_year/': typeof ProtectedMastersOrganizationLayoutFinancial_yearIndexRoute
+  '/_protected/masters/payroll/_layout/bank/': typeof ProtectedMastersPayrollLayoutBankIndexRoute
+  '/_protected/masters/payroll/_layout/cost_allocation_rule/': typeof ProtectedMastersPayrollLayoutCost_allocation_ruleIndexRoute
+  '/_protected/masters/payroll/_layout/cost_category/': typeof ProtectedMastersPayrollLayoutCost_categoryIndexRoute
+  '/_protected/masters/payroll/_layout/cost_center/': typeof ProtectedMastersPayrollLayoutCost_centerIndexRoute
+  '/_protected/masters/payroll/_layout/department/': typeof ProtectedMastersPayrollLayoutDepartmentIndexRoute
+  '/_protected/masters/payroll/_layout/designation/': typeof ProtectedMastersPayrollLayoutDesignationIndexRoute
+  '/_protected/masters/payroll/_layout/employee_group/': typeof ProtectedMastersPayrollLayoutEmployee_groupIndexRoute
+  '/_protected/masters/payroll/_layout/grade/': typeof ProtectedMastersPayrollLayoutGradeIndexRoute
+  '/_protected/masters/payroll/_layout/holiday/': typeof ProtectedMastersPayrollLayoutHolidayIndexRoute
+  '/_protected/masters/payroll/_layout/leave_type/': typeof ProtectedMastersPayrollLayoutLeave_typeIndexRoute
+  '/_protected/masters/payroll/_layout/salary/': typeof ProtectedMastersPayrollLayoutSalaryIndexRoute
+  '/_protected/masters/payroll/_layout/salary_component/': typeof ProtectedMastersPayrollLayoutSalary_componentIndexRoute
+  '/_protected/masters/payroll/_layout/salary_structure/': typeof ProtectedMastersPayrollLayoutSalary_structureIndexRoute
+  '/_protected/masters/payroll/_layout/shift/': typeof ProtectedMastersPayrollLayoutShiftIndexRoute
+  '/_protected/administration/_layout/role/_layout/$id': typeof ProtectedAdministrationLayoutRoleLayoutIdRouteWithChildren
+  '/_protected/administration/_layout/role/_layout/$id/_module': typeof ProtectedAdministrationLayoutRoleLayoutIdModuleRouteWithChildren
+  '/_protected/help-center/_layout/topic_article/_layout/$id/related-article': typeof ProtectedHelpCenterLayoutTopic_articleLayoutIdRelatedArticleRoute
+  '/_protected/masters/organization/_layout/company/_layout/$id': typeof ProtectedMastersOrganizationLayoutCompanyLayoutIdRoute
+  '/_protected/masters/organization/_layout/country/_layout/$id': typeof ProtectedMastersOrganizationLayoutCountryLayoutIdRoute
+  '/_protected/masters/organization/_layout/currency/_layout/$id': typeof ProtectedMastersOrganizationLayoutCurrencyLayoutIdRoute
+  '/_protected/masters/organization/_layout/state/_layout/$id': typeof ProtectedMastersOrganizationLayoutStateLayoutIdRoute
+  '/_protected/masters/payroll/_layout/employee/_layout/$id': typeof ProtectedMastersPayrollLayoutEmployeeLayoutIdRoute
+  '/_protected/help-center/_layout/topic_article/_layout/$id/': typeof ProtectedHelpCenterLayoutTopic_articleLayoutIdIndexRoute
+  '/_protected/masters/organization/_layout/company/_layout/': typeof ProtectedMastersOrganizationLayoutCompanyLayoutIndexRoute
+  '/_protected/masters/organization/_layout/country/_layout/': typeof ProtectedMastersOrganizationLayoutCountryLayoutIndexRoute
+  '/_protected/masters/organization/_layout/currency/_layout/': typeof ProtectedMastersOrganizationLayoutCurrencyLayoutIndexRoute
+  '/_protected/masters/organization/_layout/state/_layout/': typeof ProtectedMastersOrganizationLayoutStateLayoutIndexRoute
+  '/_protected/masters/payroll/_layout/employee/_layout/': typeof ProtectedMastersPayrollLayoutEmployeeLayoutIndexRoute
+  '/_protected/administration/_layout/role/_layout/$id/_module/$moduleid': typeof ProtectedAdministrationLayoutRoleLayoutIdModuleModuleidRoute
+  '/_protected/administration/_layout/role/_layout/$id/_module/': typeof ProtectedAdministrationLayoutRoleLayoutIdModuleIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -441,9 +942,6 @@ export interface FileRouteTypes {
     | '/sign-in'
     | '/charts'
     | '/dashboard'
-    | '/demo/storybook'
-    | '/demo/table'
-    | '/demo/tanstack-query'
     | '/forgot-password'
     | '/sign-in-2'
     | '/sign-up'
@@ -454,24 +952,68 @@ export interface FileRouteTypes {
     | '/500'
     | '/503'
     | '/profile'
+    | '/administration'
     | '/help-center'
     | '/settings/account'
     | '/settings/appearance'
     | '/settings/display'
     | '/settings/notifications'
-    | '/demo/form/address'
-    | '/demo/form/simple'
     | '/settings/'
+    | '/masters/organization'
+    | '/masters/payroll'
     | '/help-center/'
+    | '/administration/role'
+    | '/administration/user'
     | '/help-center/topic_article'
     | '/help-center/topic_category'
     | '/help-center/topic_section'
-    | '/help-center/topic_article/$id'
+    | '/administration/app_module'
+    | '/administration/app_module_feature'
+    | '/administration/permission'
+    | '/administration/user/$id'
     | '/help-center/topic_category/$id'
     | '/help-center/topic_section/$id'
+    | '/masters/organization/company'
+    | '/masters/organization/country'
+    | '/masters/organization/currency'
+    | '/masters/organization/state'
+    | '/masters/payroll/employee'
+    | '/administration/role/'
+    | '/administration/user/'
     | '/help-center/topic_article/'
     | '/help-center/topic_category/'
     | '/help-center/topic_section/'
+    | '/masters/organization/branch'
+    | '/masters/organization/financial_year'
+    | '/masters/payroll/bank'
+    | '/masters/payroll/cost_allocation_rule'
+    | '/masters/payroll/cost_category'
+    | '/masters/payroll/cost_center'
+    | '/masters/payroll/department'
+    | '/masters/payroll/designation'
+    | '/masters/payroll/employee_group'
+    | '/masters/payroll/grade'
+    | '/masters/payroll/holiday'
+    | '/masters/payroll/leave_type'
+    | '/masters/payroll/salary'
+    | '/masters/payroll/salary_component'
+    | '/masters/payroll/salary_structure'
+    | '/masters/payroll/shift'
+    | '/administration/role/$id'
+    | '/help-center/topic_article/$id/related-article'
+    | '/masters/organization/company/$id'
+    | '/masters/organization/country/$id'
+    | '/masters/organization/currency/$id'
+    | '/masters/organization/state/$id'
+    | '/masters/payroll/employee/$id'
+    | '/help-center/topic_article/$id'
+    | '/masters/organization/company/'
+    | '/masters/organization/country/'
+    | '/masters/organization/currency/'
+    | '/masters/organization/state/'
+    | '/masters/payroll/employee/'
+    | '/administration/role/$id/$moduleid'
+    | '/administration/role/$id/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -479,9 +1021,6 @@ export interface FileRouteTypes {
     | '/sign-in'
     | '/charts'
     | '/dashboard'
-    | '/demo/storybook'
-    | '/demo/table'
-    | '/demo/tanstack-query'
     | '/forgot-password'
     | '/sign-in-2'
     | '/sign-up'
@@ -492,32 +1031,65 @@ export interface FileRouteTypes {
     | '/500'
     | '/503'
     | '/profile'
+    | '/administration'
     | '/help-center'
     | '/settings/account'
     | '/settings/appearance'
     | '/settings/display'
     | '/settings/notifications'
-    | '/demo/form/address'
-    | '/demo/form/simple'
     | '/settings'
+    | '/masters/organization'
+    | '/masters/payroll'
+    | '/administration/role'
+    | '/administration/user'
     | '/help-center/topic_article'
     | '/help-center/topic_category'
     | '/help-center/topic_section'
-    | '/help-center/topic_article/$id'
+    | '/administration/app_module'
+    | '/administration/app_module_feature'
+    | '/administration/permission'
+    | '/administration/user/$id'
     | '/help-center/topic_category/$id'
     | '/help-center/topic_section/$id'
+    | '/masters/organization/company'
+    | '/masters/organization/country'
+    | '/masters/organization/currency'
+    | '/masters/organization/state'
+    | '/masters/payroll/employee'
+    | '/masters/organization/branch'
+    | '/masters/organization/financial_year'
+    | '/masters/payroll/bank'
+    | '/masters/payroll/cost_allocation_rule'
+    | '/masters/payroll/cost_category'
+    | '/masters/payroll/cost_center'
+    | '/masters/payroll/department'
+    | '/masters/payroll/designation'
+    | '/masters/payroll/employee_group'
+    | '/masters/payroll/grade'
+    | '/masters/payroll/holiday'
+    | '/masters/payroll/leave_type'
+    | '/masters/payroll/salary'
+    | '/masters/payroll/salary_component'
+    | '/masters/payroll/salary_structure'
+    | '/masters/payroll/shift'
+    | '/administration/role/$id'
+    | '/help-center/topic_article/$id/related-article'
+    | '/masters/organization/company/$id'
+    | '/masters/organization/country/$id'
+    | '/masters/organization/currency/$id'
+    | '/masters/organization/state/$id'
+    | '/masters/payroll/employee/$id'
+    | '/help-center/topic_article/$id'
+    | '/administration/role/$id/$moduleid'
   id:
     | '__root__'
     | '/'
-    | '/_authenticated'
-    | '/_authenticated/settings'
+    | '/_protected'
+    | '/_protected/settings'
     | '/(auth)/otp'
     | '/(auth)/sign-in'
-    | '/_authenticated/charts'
-    | '/_authenticated/dashboard'
-    | '/demo/storybook'
-    | '/demo/table'
-    | '/demo/tanstack-query'
+    | '/_protected/charts'
+    | '/_protected/dashboard'
     | '/(auth)/forgot-password'
     | '/(auth)/sign-in-2'
     | '/(auth)/sign-up'
@@ -527,39 +1099,91 @@ export interface FileRouteTypes {
     | '/(errors)/404'
     | '/(errors)/500'
     | '/(errors)/503'
-    | '/_authenticated/(auth)/profile'
-    | '/_authenticated/help-center'
-    | '/_authenticated/help-center/_layout'
-    | '/_authenticated/settings/account'
-    | '/_authenticated/settings/appearance'
-    | '/_authenticated/settings/display'
-    | '/_authenticated/settings/notifications'
-    | '/demo/form/address'
-    | '/demo/form/simple'
-    | '/_authenticated/settings/'
-    | '/_authenticated/help-center/_layout/'
-    | '/_authenticated/help-center/_layout/topic_article'
-    | '/_authenticated/help-center/_layout/topic_article/_layout'
-    | '/_authenticated/help-center/_layout/topic_category'
-    | '/_authenticated/help-center/_layout/topic_category/_layout'
-    | '/_authenticated/help-center/_layout/topic_section'
-    | '/_authenticated/help-center/_layout/topic_section/_layout'
-    | '/_authenticated/help-center/_layout/topic_article/_layout/$id'
-    | '/_authenticated/help-center/_layout/topic_category/_layout/$id'
-    | '/_authenticated/help-center/_layout/topic_section/_layout/$id'
-    | '/_authenticated/help-center/_layout/topic_article/_layout/'
-    | '/_authenticated/help-center/_layout/topic_category/_layout/'
-    | '/_authenticated/help-center/_layout/topic_section/_layout/'
+    | '/_protected/(auth)/profile'
+    | '/_protected/administration'
+    | '/_protected/administration/_layout'
+    | '/_protected/help-center'
+    | '/_protected/help-center/_layout'
+    | '/_protected/settings/account'
+    | '/_protected/settings/appearance'
+    | '/_protected/settings/display'
+    | '/_protected/settings/notifications'
+    | '/_protected/settings/'
+    | '/_protected/masters/organization'
+    | '/_protected/masters/organization/_layout'
+    | '/_protected/masters/payroll'
+    | '/_protected/masters/payroll/_layout'
+    | '/_protected/help-center/_layout/'
+    | '/_protected/administration/_layout/role'
+    | '/_protected/administration/_layout/role/_layout'
+    | '/_protected/administration/_layout/user'
+    | '/_protected/administration/_layout/user/_layout'
+    | '/_protected/help-center/_layout/topic_article'
+    | '/_protected/help-center/_layout/topic_article/_layout'
+    | '/_protected/help-center/_layout/topic_category'
+    | '/_protected/help-center/_layout/topic_category/_layout'
+    | '/_protected/help-center/_layout/topic_section'
+    | '/_protected/help-center/_layout/topic_section/_layout'
+    | '/_protected/administration/_layout/app_module/'
+    | '/_protected/administration/_layout/app_module_feature/'
+    | '/_protected/administration/_layout/permission/'
+    | '/_protected/administration/_layout/user/_layout/$id'
+    | '/_protected/help-center/_layout/topic_category/_layout/$id'
+    | '/_protected/help-center/_layout/topic_section/_layout/$id'
+    | '/_protected/masters/organization/_layout/company'
+    | '/_protected/masters/organization/_layout/company/_layout'
+    | '/_protected/masters/organization/_layout/country'
+    | '/_protected/masters/organization/_layout/country/_layout'
+    | '/_protected/masters/organization/_layout/currency'
+    | '/_protected/masters/organization/_layout/currency/_layout'
+    | '/_protected/masters/organization/_layout/state'
+    | '/_protected/masters/organization/_layout/state/_layout'
+    | '/_protected/masters/payroll/_layout/employee'
+    | '/_protected/masters/payroll/_layout/employee/_layout'
+    | '/_protected/administration/_layout/role/_layout/'
+    | '/_protected/administration/_layout/user/_layout/'
+    | '/_protected/help-center/_layout/topic_article/_layout/'
+    | '/_protected/help-center/_layout/topic_category/_layout/'
+    | '/_protected/help-center/_layout/topic_section/_layout/'
+    | '/_protected/masters/organization/_layout/branch/'
+    | '/_protected/masters/organization/_layout/financial_year/'
+    | '/_protected/masters/payroll/_layout/bank/'
+    | '/_protected/masters/payroll/_layout/cost_allocation_rule/'
+    | '/_protected/masters/payroll/_layout/cost_category/'
+    | '/_protected/masters/payroll/_layout/cost_center/'
+    | '/_protected/masters/payroll/_layout/department/'
+    | '/_protected/masters/payroll/_layout/designation/'
+    | '/_protected/masters/payroll/_layout/employee_group/'
+    | '/_protected/masters/payroll/_layout/grade/'
+    | '/_protected/masters/payroll/_layout/holiday/'
+    | '/_protected/masters/payroll/_layout/leave_type/'
+    | '/_protected/masters/payroll/_layout/salary/'
+    | '/_protected/masters/payroll/_layout/salary_component/'
+    | '/_protected/masters/payroll/_layout/salary_structure/'
+    | '/_protected/masters/payroll/_layout/shift/'
+    | '/_protected/administration/_layout/role/_layout/$id'
+    | '/_protected/administration/_layout/role/_layout/$id/_module'
+    | '/_protected/help-center/_layout/topic_article/_layout/$id/related-article'
+    | '/_protected/masters/organization/_layout/company/_layout/$id'
+    | '/_protected/masters/organization/_layout/country/_layout/$id'
+    | '/_protected/masters/organization/_layout/currency/_layout/$id'
+    | '/_protected/masters/organization/_layout/state/_layout/$id'
+    | '/_protected/masters/payroll/_layout/employee/_layout/$id'
+    | '/_protected/help-center/_layout/topic_article/_layout/$id/'
+    | '/_protected/masters/organization/_layout/company/_layout/'
+    | '/_protected/masters/organization/_layout/country/_layout/'
+    | '/_protected/masters/organization/_layout/currency/_layout/'
+    | '/_protected/masters/organization/_layout/state/_layout/'
+    | '/_protected/masters/payroll/_layout/employee/_layout/'
+    | '/_protected/administration/_layout/role/_layout/$id/_module/$moduleid'
+    | '/_protected/administration/_layout/role/_layout/$id/_module/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  AuthenticatedRoute: typeof AuthenticatedRouteWithChildren
+  ProtectedRoute: typeof ProtectedRouteWithChildren
   authOtpRoute: typeof authOtpRoute
   authSignInRoute: typeof authSignInRoute
-  DemoStorybookRoute: typeof DemoStorybookRoute
-  DemoTableRoute: typeof DemoTableRoute
-  DemoTanstackQueryRoute: typeof DemoTanstackQueryRoute
   authForgotPasswordLazyRoute: typeof authForgotPasswordLazyRoute
   authSignIn2LazyRoute: typeof authSignIn2LazyRoute
   authSignUpLazyRoute: typeof authSignUpLazyRoute
@@ -569,17 +1193,15 @@ export interface RootRouteChildren {
   errors404LazyRoute: typeof errors404LazyRoute
   errors500LazyRoute: typeof errors500LazyRoute
   errors503LazyRoute: typeof errors503LazyRoute
-  DemoFormAddressRoute: typeof DemoFormAddressRoute
-  DemoFormSimpleRoute: typeof DemoFormSimpleRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/_authenticated': {
-      id: '/_authenticated'
+    '/_protected': {
+      id: '/_protected'
       path: ''
       fullPath: ''
-      preLoaderRoute: typeof AuthenticatedRouteImport
+      preLoaderRoute: typeof ProtectedRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -589,12 +1211,19 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/_authenticated/help-center': {
-      id: '/_authenticated/help-center'
+    '/_protected/help-center': {
+      id: '/_protected/help-center'
       path: '/help-center'
       fullPath: '/help-center'
-      preLoaderRoute: typeof AuthenticatedHelpCenterRouteImport
-      parentRoute: typeof AuthenticatedRoute
+      preLoaderRoute: typeof ProtectedHelpCenterRouteImport
+      parentRoute: typeof ProtectedRoute
+    }
+    '/_protected/administration': {
+      id: '/_protected/administration'
+      path: '/administration'
+      fullPath: '/administration'
+      preLoaderRoute: typeof ProtectedAdministrationRouteImport
+      parentRoute: typeof ProtectedRoute
     }
     '/(errors)/503': {
       id: '/(errors)/503'
@@ -659,40 +1288,19 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof authForgotPasswordLazyRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/demo/tanstack-query': {
-      id: '/demo/tanstack-query'
-      path: '/demo/tanstack-query'
-      fullPath: '/demo/tanstack-query'
-      preLoaderRoute: typeof DemoTanstackQueryRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/demo/table': {
-      id: '/demo/table'
-      path: '/demo/table'
-      fullPath: '/demo/table'
-      preLoaderRoute: typeof DemoTableRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/demo/storybook': {
-      id: '/demo/storybook'
-      path: '/demo/storybook'
-      fullPath: '/demo/storybook'
-      preLoaderRoute: typeof DemoStorybookRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/_authenticated/dashboard': {
-      id: '/_authenticated/dashboard'
+    '/_protected/dashboard': {
+      id: '/_protected/dashboard'
       path: '/dashboard'
       fullPath: '/dashboard'
-      preLoaderRoute: typeof AuthenticatedDashboardRouteImport
-      parentRoute: typeof AuthenticatedRoute
+      preLoaderRoute: typeof ProtectedDashboardRouteImport
+      parentRoute: typeof ProtectedRoute
     }
-    '/_authenticated/charts': {
-      id: '/_authenticated/charts'
+    '/_protected/charts': {
+      id: '/_protected/charts'
       path: '/charts'
       fullPath: '/charts'
-      preLoaderRoute: typeof AuthenticatedChartsRouteImport
-      parentRoute: typeof AuthenticatedRoute
+      preLoaderRoute: typeof ProtectedChartsRouteImport
+      parentRoute: typeof ProtectedRoute
     }
     '/(auth)/sign-in': {
       id: '/(auth)/sign-in'
@@ -708,359 +1316,1161 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof authOtpRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/_authenticated/settings': {
-      id: '/_authenticated/settings'
+    '/_protected/settings': {
+      id: '/_protected/settings'
       path: '/settings'
       fullPath: '/settings'
-      preLoaderRoute: typeof AuthenticatedSettingsRouteRouteImport
-      parentRoute: typeof AuthenticatedRoute
+      preLoaderRoute: typeof ProtectedSettingsRouteRouteImport
+      parentRoute: typeof ProtectedRoute
     }
-    '/_authenticated/settings/': {
-      id: '/_authenticated/settings/'
+    '/_protected/masters/payroll': {
+      id: '/_protected/masters/payroll'
+      path: '/masters/payroll'
+      fullPath: '/masters/payroll'
+      preLoaderRoute: typeof ProtectedMastersPayrollRouteImport
+      parentRoute: typeof ProtectedRoute
+    }
+    '/_protected/masters/organization': {
+      id: '/_protected/masters/organization'
+      path: '/masters/organization'
+      fullPath: '/masters/organization'
+      preLoaderRoute: typeof ProtectedMastersOrganizationRouteImport
+      parentRoute: typeof ProtectedRoute
+    }
+    '/_protected/settings/': {
+      id: '/_protected/settings/'
       path: '/'
       fullPath: '/settings/'
-      preLoaderRoute: typeof AuthenticatedSettingsIndexRouteImport
-      parentRoute: typeof AuthenticatedSettingsRouteRoute
+      preLoaderRoute: typeof ProtectedSettingsIndexRouteImport
+      parentRoute: typeof ProtectedSettingsRouteRoute
     }
-    '/demo/form/simple': {
-      id: '/demo/form/simple'
-      path: '/demo/form/simple'
-      fullPath: '/demo/form/simple'
-      preLoaderRoute: typeof DemoFormSimpleRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/demo/form/address': {
-      id: '/demo/form/address'
-      path: '/demo/form/address'
-      fullPath: '/demo/form/address'
-      preLoaderRoute: typeof DemoFormAddressRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/_authenticated/settings/notifications': {
-      id: '/_authenticated/settings/notifications'
+    '/_protected/settings/notifications': {
+      id: '/_protected/settings/notifications'
       path: '/notifications'
       fullPath: '/settings/notifications'
-      preLoaderRoute: typeof AuthenticatedSettingsNotificationsRouteImport
-      parentRoute: typeof AuthenticatedSettingsRouteRoute
+      preLoaderRoute: typeof ProtectedSettingsNotificationsRouteImport
+      parentRoute: typeof ProtectedSettingsRouteRoute
     }
-    '/_authenticated/settings/display': {
-      id: '/_authenticated/settings/display'
+    '/_protected/settings/display': {
+      id: '/_protected/settings/display'
       path: '/display'
       fullPath: '/settings/display'
-      preLoaderRoute: typeof AuthenticatedSettingsDisplayRouteImport
-      parentRoute: typeof AuthenticatedSettingsRouteRoute
+      preLoaderRoute: typeof ProtectedSettingsDisplayRouteImport
+      parentRoute: typeof ProtectedSettingsRouteRoute
     }
-    '/_authenticated/settings/appearance': {
-      id: '/_authenticated/settings/appearance'
+    '/_protected/settings/appearance': {
+      id: '/_protected/settings/appearance'
       path: '/appearance'
       fullPath: '/settings/appearance'
-      preLoaderRoute: typeof AuthenticatedSettingsAppearanceRouteImport
-      parentRoute: typeof AuthenticatedSettingsRouteRoute
+      preLoaderRoute: typeof ProtectedSettingsAppearanceRouteImport
+      parentRoute: typeof ProtectedSettingsRouteRoute
     }
-    '/_authenticated/settings/account': {
-      id: '/_authenticated/settings/account'
+    '/_protected/settings/account': {
+      id: '/_protected/settings/account'
       path: '/account'
       fullPath: '/settings/account'
-      preLoaderRoute: typeof AuthenticatedSettingsAccountRouteImport
-      parentRoute: typeof AuthenticatedSettingsRouteRoute
+      preLoaderRoute: typeof ProtectedSettingsAccountRouteImport
+      parentRoute: typeof ProtectedSettingsRouteRoute
     }
-    '/_authenticated/help-center/_layout': {
-      id: '/_authenticated/help-center/_layout'
+    '/_protected/help-center/_layout': {
+      id: '/_protected/help-center/_layout'
       path: '/help-center'
       fullPath: '/help-center'
-      preLoaderRoute: typeof AuthenticatedHelpCenterLayoutRouteImport
-      parentRoute: typeof AuthenticatedHelpCenterRoute
+      preLoaderRoute: typeof ProtectedHelpCenterLayoutRouteImport
+      parentRoute: typeof ProtectedHelpCenterRoute
     }
-    '/_authenticated/(auth)/profile': {
-      id: '/_authenticated/(auth)/profile'
+    '/_protected/administration/_layout': {
+      id: '/_protected/administration/_layout'
+      path: '/administration'
+      fullPath: '/administration'
+      preLoaderRoute: typeof ProtectedAdministrationLayoutRouteImport
+      parentRoute: typeof ProtectedAdministrationRoute
+    }
+    '/_protected/(auth)/profile': {
+      id: '/_protected/(auth)/profile'
       path: '/profile'
       fullPath: '/profile'
-      preLoaderRoute: typeof AuthenticatedauthProfileRouteImport
-      parentRoute: typeof AuthenticatedRoute
+      preLoaderRoute: typeof ProtectedauthProfileRouteImport
+      parentRoute: typeof ProtectedRoute
     }
-    '/_authenticated/help-center/_layout/topic_section': {
-      id: '/_authenticated/help-center/_layout/topic_section'
+    '/_protected/help-center/_layout/topic_section': {
+      id: '/_protected/help-center/_layout/topic_section'
       path: '/topic_section'
       fullPath: '/help-center/topic_section'
-      preLoaderRoute: typeof AuthenticatedHelpCenterLayoutTopic_sectionRouteImport
-      parentRoute: typeof AuthenticatedHelpCenterLayoutRoute
+      preLoaderRoute: typeof ProtectedHelpCenterLayoutTopic_sectionRouteImport
+      parentRoute: typeof ProtectedHelpCenterLayoutRoute
     }
-    '/_authenticated/help-center/_layout/topic_category': {
-      id: '/_authenticated/help-center/_layout/topic_category'
+    '/_protected/help-center/_layout/topic_category': {
+      id: '/_protected/help-center/_layout/topic_category'
       path: '/topic_category'
       fullPath: '/help-center/topic_category'
-      preLoaderRoute: typeof AuthenticatedHelpCenterLayoutTopic_categoryRouteImport
-      parentRoute: typeof AuthenticatedHelpCenterLayoutRoute
+      preLoaderRoute: typeof ProtectedHelpCenterLayoutTopic_categoryRouteImport
+      parentRoute: typeof ProtectedHelpCenterLayoutRoute
     }
-    '/_authenticated/help-center/_layout/topic_article': {
-      id: '/_authenticated/help-center/_layout/topic_article'
+    '/_protected/help-center/_layout/topic_article': {
+      id: '/_protected/help-center/_layout/topic_article'
       path: '/topic_article'
       fullPath: '/help-center/topic_article'
-      preLoaderRoute: typeof AuthenticatedHelpCenterLayoutTopic_articleRouteImport
-      parentRoute: typeof AuthenticatedHelpCenterLayoutRoute
+      preLoaderRoute: typeof ProtectedHelpCenterLayoutTopic_articleRouteImport
+      parentRoute: typeof ProtectedHelpCenterLayoutRoute
     }
-    '/_authenticated/help-center/_layout/': {
-      id: '/_authenticated/help-center/_layout/'
+    '/_protected/administration/_layout/user': {
+      id: '/_protected/administration/_layout/user'
+      path: '/user'
+      fullPath: '/administration/user'
+      preLoaderRoute: typeof ProtectedAdministrationLayoutUserRouteImport
+      parentRoute: typeof ProtectedAdministrationLayoutRoute
+    }
+    '/_protected/administration/_layout/role': {
+      id: '/_protected/administration/_layout/role'
+      path: '/role'
+      fullPath: '/administration/role'
+      preLoaderRoute: typeof ProtectedAdministrationLayoutRoleRouteImport
+      parentRoute: typeof ProtectedAdministrationLayoutRoute
+    }
+    '/_protected/help-center/_layout/': {
+      id: '/_protected/help-center/_layout/'
       path: '/'
       fullPath: '/help-center/'
-      preLoaderRoute: typeof AuthenticatedHelpCenterLayoutIndexRouteImport
-      parentRoute: typeof AuthenticatedHelpCenterLayoutRoute
+      preLoaderRoute: typeof ProtectedHelpCenterLayoutIndexRouteImport
+      parentRoute: typeof ProtectedHelpCenterLayoutRoute
     }
-    '/_authenticated/help-center/_layout/topic_section/_layout': {
-      id: '/_authenticated/help-center/_layout/topic_section/_layout'
+    '/_protected/masters/payroll/_layout': {
+      id: '/_protected/masters/payroll/_layout'
+      path: '/masters/payroll'
+      fullPath: '/masters/payroll'
+      preLoaderRoute: typeof ProtectedMastersPayrollLayoutRouteImport
+      parentRoute: typeof ProtectedMastersPayrollRoute
+    }
+    '/_protected/masters/organization/_layout': {
+      id: '/_protected/masters/organization/_layout'
+      path: '/masters/organization'
+      fullPath: '/masters/organization'
+      preLoaderRoute: typeof ProtectedMastersOrganizationLayoutRouteImport
+      parentRoute: typeof ProtectedMastersOrganizationRoute
+    }
+    '/_protected/masters/payroll/_layout/employee': {
+      id: '/_protected/masters/payroll/_layout/employee'
+      path: '/employee'
+      fullPath: '/masters/payroll/employee'
+      preLoaderRoute: typeof ProtectedMastersPayrollLayoutEmployeeRouteImport
+      parentRoute: typeof ProtectedMastersPayrollLayoutRoute
+    }
+    '/_protected/masters/organization/_layout/state': {
+      id: '/_protected/masters/organization/_layout/state'
+      path: '/state'
+      fullPath: '/masters/organization/state'
+      preLoaderRoute: typeof ProtectedMastersOrganizationLayoutStateRouteImport
+      parentRoute: typeof ProtectedMastersOrganizationLayoutRoute
+    }
+    '/_protected/masters/organization/_layout/currency': {
+      id: '/_protected/masters/organization/_layout/currency'
+      path: '/currency'
+      fullPath: '/masters/organization/currency'
+      preLoaderRoute: typeof ProtectedMastersOrganizationLayoutCurrencyRouteImport
+      parentRoute: typeof ProtectedMastersOrganizationLayoutRoute
+    }
+    '/_protected/masters/organization/_layout/country': {
+      id: '/_protected/masters/organization/_layout/country'
+      path: '/country'
+      fullPath: '/masters/organization/country'
+      preLoaderRoute: typeof ProtectedMastersOrganizationLayoutCountryRouteImport
+      parentRoute: typeof ProtectedMastersOrganizationLayoutRoute
+    }
+    '/_protected/masters/organization/_layout/company': {
+      id: '/_protected/masters/organization/_layout/company'
+      path: '/company'
+      fullPath: '/masters/organization/company'
+      preLoaderRoute: typeof ProtectedMastersOrganizationLayoutCompanyRouteImport
+      parentRoute: typeof ProtectedMastersOrganizationLayoutRoute
+    }
+    '/_protected/administration/_layout/permission/': {
+      id: '/_protected/administration/_layout/permission/'
+      path: '/permission'
+      fullPath: '/administration/permission'
+      preLoaderRoute: typeof ProtectedAdministrationLayoutPermissionIndexRouteImport
+      parentRoute: typeof ProtectedAdministrationLayoutRoute
+    }
+    '/_protected/administration/_layout/app_module_feature/': {
+      id: '/_protected/administration/_layout/app_module_feature/'
+      path: '/app_module_feature'
+      fullPath: '/administration/app_module_feature'
+      preLoaderRoute: typeof ProtectedAdministrationLayoutApp_module_featureIndexRouteImport
+      parentRoute: typeof ProtectedAdministrationLayoutRoute
+    }
+    '/_protected/administration/_layout/app_module/': {
+      id: '/_protected/administration/_layout/app_module/'
+      path: '/app_module'
+      fullPath: '/administration/app_module'
+      preLoaderRoute: typeof ProtectedAdministrationLayoutApp_moduleIndexRouteImport
+      parentRoute: typeof ProtectedAdministrationLayoutRoute
+    }
+    '/_protected/help-center/_layout/topic_section/_layout': {
+      id: '/_protected/help-center/_layout/topic_section/_layout'
       path: '/topic_section'
       fullPath: '/help-center/topic_section'
-      preLoaderRoute: typeof AuthenticatedHelpCenterLayoutTopic_sectionLayoutRouteImport
-      parentRoute: typeof AuthenticatedHelpCenterLayoutTopic_sectionRoute
+      preLoaderRoute: typeof ProtectedHelpCenterLayoutTopic_sectionLayoutRouteImport
+      parentRoute: typeof ProtectedHelpCenterLayoutTopic_sectionRoute
     }
-    '/_authenticated/help-center/_layout/topic_category/_layout': {
-      id: '/_authenticated/help-center/_layout/topic_category/_layout'
+    '/_protected/help-center/_layout/topic_category/_layout': {
+      id: '/_protected/help-center/_layout/topic_category/_layout'
       path: '/topic_category'
       fullPath: '/help-center/topic_category'
-      preLoaderRoute: typeof AuthenticatedHelpCenterLayoutTopic_categoryLayoutRouteImport
-      parentRoute: typeof AuthenticatedHelpCenterLayoutTopic_categoryRoute
+      preLoaderRoute: typeof ProtectedHelpCenterLayoutTopic_categoryLayoutRouteImport
+      parentRoute: typeof ProtectedHelpCenterLayoutTopic_categoryRoute
     }
-    '/_authenticated/help-center/_layout/topic_article/_layout': {
-      id: '/_authenticated/help-center/_layout/topic_article/_layout'
+    '/_protected/help-center/_layout/topic_article/_layout': {
+      id: '/_protected/help-center/_layout/topic_article/_layout'
       path: '/topic_article'
       fullPath: '/help-center/topic_article'
-      preLoaderRoute: typeof AuthenticatedHelpCenterLayoutTopic_articleLayoutRouteImport
-      parentRoute: typeof AuthenticatedHelpCenterLayoutTopic_articleRoute
+      preLoaderRoute: typeof ProtectedHelpCenterLayoutTopic_articleLayoutRouteImport
+      parentRoute: typeof ProtectedHelpCenterLayoutTopic_articleRoute
     }
-    '/_authenticated/help-center/_layout/topic_section/_layout/': {
-      id: '/_authenticated/help-center/_layout/topic_section/_layout/'
+    '/_protected/administration/_layout/user/_layout': {
+      id: '/_protected/administration/_layout/user/_layout'
+      path: '/user'
+      fullPath: '/administration/user'
+      preLoaderRoute: typeof ProtectedAdministrationLayoutUserLayoutRouteImport
+      parentRoute: typeof ProtectedAdministrationLayoutUserRoute
+    }
+    '/_protected/administration/_layout/role/_layout': {
+      id: '/_protected/administration/_layout/role/_layout'
+      path: '/role'
+      fullPath: '/administration/role'
+      preLoaderRoute: typeof ProtectedAdministrationLayoutRoleLayoutRouteImport
+      parentRoute: typeof ProtectedAdministrationLayoutRoleRoute
+    }
+    '/_protected/administration/_layout/role/_layout/$id': {
+      id: '/_protected/administration/_layout/role/_layout/$id'
+      path: '/$id'
+      fullPath: '/administration/role/$id'
+      preLoaderRoute: typeof ProtectedAdministrationLayoutRoleLayoutIdRouteImport
+      parentRoute: typeof ProtectedAdministrationLayoutRoleLayoutRoute
+    }
+    '/_protected/masters/payroll/_layout/shift/': {
+      id: '/_protected/masters/payroll/_layout/shift/'
+      path: '/shift'
+      fullPath: '/masters/payroll/shift'
+      preLoaderRoute: typeof ProtectedMastersPayrollLayoutShiftIndexRouteImport
+      parentRoute: typeof ProtectedMastersPayrollLayoutRoute
+    }
+    '/_protected/masters/payroll/_layout/salary_structure/': {
+      id: '/_protected/masters/payroll/_layout/salary_structure/'
+      path: '/salary_structure'
+      fullPath: '/masters/payroll/salary_structure'
+      preLoaderRoute: typeof ProtectedMastersPayrollLayoutSalary_structureIndexRouteImport
+      parentRoute: typeof ProtectedMastersPayrollLayoutRoute
+    }
+    '/_protected/masters/payroll/_layout/salary_component/': {
+      id: '/_protected/masters/payroll/_layout/salary_component/'
+      path: '/salary_component'
+      fullPath: '/masters/payroll/salary_component'
+      preLoaderRoute: typeof ProtectedMastersPayrollLayoutSalary_componentIndexRouteImport
+      parentRoute: typeof ProtectedMastersPayrollLayoutRoute
+    }
+    '/_protected/masters/payroll/_layout/salary/': {
+      id: '/_protected/masters/payroll/_layout/salary/'
+      path: '/salary'
+      fullPath: '/masters/payroll/salary'
+      preLoaderRoute: typeof ProtectedMastersPayrollLayoutSalaryIndexRouteImport
+      parentRoute: typeof ProtectedMastersPayrollLayoutRoute
+    }
+    '/_protected/masters/payroll/_layout/leave_type/': {
+      id: '/_protected/masters/payroll/_layout/leave_type/'
+      path: '/leave_type'
+      fullPath: '/masters/payroll/leave_type'
+      preLoaderRoute: typeof ProtectedMastersPayrollLayoutLeave_typeIndexRouteImport
+      parentRoute: typeof ProtectedMastersPayrollLayoutRoute
+    }
+    '/_protected/masters/payroll/_layout/holiday/': {
+      id: '/_protected/masters/payroll/_layout/holiday/'
+      path: '/holiday'
+      fullPath: '/masters/payroll/holiday'
+      preLoaderRoute: typeof ProtectedMastersPayrollLayoutHolidayIndexRouteImport
+      parentRoute: typeof ProtectedMastersPayrollLayoutRoute
+    }
+    '/_protected/masters/payroll/_layout/grade/': {
+      id: '/_protected/masters/payroll/_layout/grade/'
+      path: '/grade'
+      fullPath: '/masters/payroll/grade'
+      preLoaderRoute: typeof ProtectedMastersPayrollLayoutGradeIndexRouteImport
+      parentRoute: typeof ProtectedMastersPayrollLayoutRoute
+    }
+    '/_protected/masters/payroll/_layout/employee_group/': {
+      id: '/_protected/masters/payroll/_layout/employee_group/'
+      path: '/employee_group'
+      fullPath: '/masters/payroll/employee_group'
+      preLoaderRoute: typeof ProtectedMastersPayrollLayoutEmployee_groupIndexRouteImport
+      parentRoute: typeof ProtectedMastersPayrollLayoutRoute
+    }
+    '/_protected/masters/payroll/_layout/designation/': {
+      id: '/_protected/masters/payroll/_layout/designation/'
+      path: '/designation'
+      fullPath: '/masters/payroll/designation'
+      preLoaderRoute: typeof ProtectedMastersPayrollLayoutDesignationIndexRouteImport
+      parentRoute: typeof ProtectedMastersPayrollLayoutRoute
+    }
+    '/_protected/masters/payroll/_layout/department/': {
+      id: '/_protected/masters/payroll/_layout/department/'
+      path: '/department'
+      fullPath: '/masters/payroll/department'
+      preLoaderRoute: typeof ProtectedMastersPayrollLayoutDepartmentIndexRouteImport
+      parentRoute: typeof ProtectedMastersPayrollLayoutRoute
+    }
+    '/_protected/masters/payroll/_layout/cost_center/': {
+      id: '/_protected/masters/payroll/_layout/cost_center/'
+      path: '/cost_center'
+      fullPath: '/masters/payroll/cost_center'
+      preLoaderRoute: typeof ProtectedMastersPayrollLayoutCost_centerIndexRouteImport
+      parentRoute: typeof ProtectedMastersPayrollLayoutRoute
+    }
+    '/_protected/masters/payroll/_layout/cost_category/': {
+      id: '/_protected/masters/payroll/_layout/cost_category/'
+      path: '/cost_category'
+      fullPath: '/masters/payroll/cost_category'
+      preLoaderRoute: typeof ProtectedMastersPayrollLayoutCost_categoryIndexRouteImport
+      parentRoute: typeof ProtectedMastersPayrollLayoutRoute
+    }
+    '/_protected/masters/payroll/_layout/cost_allocation_rule/': {
+      id: '/_protected/masters/payroll/_layout/cost_allocation_rule/'
+      path: '/cost_allocation_rule'
+      fullPath: '/masters/payroll/cost_allocation_rule'
+      preLoaderRoute: typeof ProtectedMastersPayrollLayoutCost_allocation_ruleIndexRouteImport
+      parentRoute: typeof ProtectedMastersPayrollLayoutRoute
+    }
+    '/_protected/masters/payroll/_layout/bank/': {
+      id: '/_protected/masters/payroll/_layout/bank/'
+      path: '/bank'
+      fullPath: '/masters/payroll/bank'
+      preLoaderRoute: typeof ProtectedMastersPayrollLayoutBankIndexRouteImport
+      parentRoute: typeof ProtectedMastersPayrollLayoutRoute
+    }
+    '/_protected/masters/organization/_layout/financial_year/': {
+      id: '/_protected/masters/organization/_layout/financial_year/'
+      path: '/financial_year'
+      fullPath: '/masters/organization/financial_year'
+      preLoaderRoute: typeof ProtectedMastersOrganizationLayoutFinancial_yearIndexRouteImport
+      parentRoute: typeof ProtectedMastersOrganizationLayoutRoute
+    }
+    '/_protected/masters/organization/_layout/branch/': {
+      id: '/_protected/masters/organization/_layout/branch/'
+      path: '/branch'
+      fullPath: '/masters/organization/branch'
+      preLoaderRoute: typeof ProtectedMastersOrganizationLayoutBranchIndexRouteImport
+      parentRoute: typeof ProtectedMastersOrganizationLayoutRoute
+    }
+    '/_protected/help-center/_layout/topic_section/_layout/': {
+      id: '/_protected/help-center/_layout/topic_section/_layout/'
       path: '/'
       fullPath: '/help-center/topic_section/'
-      preLoaderRoute: typeof AuthenticatedHelpCenterLayoutTopic_sectionLayoutIndexRouteImport
-      parentRoute: typeof AuthenticatedHelpCenterLayoutTopic_sectionLayoutRoute
+      preLoaderRoute: typeof ProtectedHelpCenterLayoutTopic_sectionLayoutIndexRouteImport
+      parentRoute: typeof ProtectedHelpCenterLayoutTopic_sectionLayoutRoute
     }
-    '/_authenticated/help-center/_layout/topic_category/_layout/': {
-      id: '/_authenticated/help-center/_layout/topic_category/_layout/'
+    '/_protected/help-center/_layout/topic_category/_layout/': {
+      id: '/_protected/help-center/_layout/topic_category/_layout/'
       path: '/'
       fullPath: '/help-center/topic_category/'
-      preLoaderRoute: typeof AuthenticatedHelpCenterLayoutTopic_categoryLayoutIndexRouteImport
-      parentRoute: typeof AuthenticatedHelpCenterLayoutTopic_categoryLayoutRoute
+      preLoaderRoute: typeof ProtectedHelpCenterLayoutTopic_categoryLayoutIndexRouteImport
+      parentRoute: typeof ProtectedHelpCenterLayoutTopic_categoryLayoutRoute
     }
-    '/_authenticated/help-center/_layout/topic_article/_layout/': {
-      id: '/_authenticated/help-center/_layout/topic_article/_layout/'
+    '/_protected/help-center/_layout/topic_article/_layout/': {
+      id: '/_protected/help-center/_layout/topic_article/_layout/'
       path: '/'
       fullPath: '/help-center/topic_article/'
-      preLoaderRoute: typeof AuthenticatedHelpCenterLayoutTopic_articleLayoutIndexRouteImport
-      parentRoute: typeof AuthenticatedHelpCenterLayoutTopic_articleLayoutRoute
+      preLoaderRoute: typeof ProtectedHelpCenterLayoutTopic_articleLayoutIndexRouteImport
+      parentRoute: typeof ProtectedHelpCenterLayoutTopic_articleLayoutRoute
     }
-    '/_authenticated/help-center/_layout/topic_section/_layout/$id': {
-      id: '/_authenticated/help-center/_layout/topic_section/_layout/$id'
+    '/_protected/administration/_layout/user/_layout/': {
+      id: '/_protected/administration/_layout/user/_layout/'
+      path: '/'
+      fullPath: '/administration/user/'
+      preLoaderRoute: typeof ProtectedAdministrationLayoutUserLayoutIndexRouteImport
+      parentRoute: typeof ProtectedAdministrationLayoutUserLayoutRoute
+    }
+    '/_protected/administration/_layout/role/_layout/': {
+      id: '/_protected/administration/_layout/role/_layout/'
+      path: '/'
+      fullPath: '/administration/role/'
+      preLoaderRoute: typeof ProtectedAdministrationLayoutRoleLayoutIndexRouteImport
+      parentRoute: typeof ProtectedAdministrationLayoutRoleLayoutRoute
+    }
+    '/_protected/masters/payroll/_layout/employee/_layout': {
+      id: '/_protected/masters/payroll/_layout/employee/_layout'
+      path: '/employee'
+      fullPath: '/masters/payroll/employee'
+      preLoaderRoute: typeof ProtectedMastersPayrollLayoutEmployeeLayoutRouteImport
+      parentRoute: typeof ProtectedMastersPayrollLayoutEmployeeRoute
+    }
+    '/_protected/masters/organization/_layout/state/_layout': {
+      id: '/_protected/masters/organization/_layout/state/_layout'
+      path: '/state'
+      fullPath: '/masters/organization/state'
+      preLoaderRoute: typeof ProtectedMastersOrganizationLayoutStateLayoutRouteImport
+      parentRoute: typeof ProtectedMastersOrganizationLayoutStateRoute
+    }
+    '/_protected/masters/organization/_layout/currency/_layout': {
+      id: '/_protected/masters/organization/_layout/currency/_layout'
+      path: '/currency'
+      fullPath: '/masters/organization/currency'
+      preLoaderRoute: typeof ProtectedMastersOrganizationLayoutCurrencyLayoutRouteImport
+      parentRoute: typeof ProtectedMastersOrganizationLayoutCurrencyRoute
+    }
+    '/_protected/masters/organization/_layout/country/_layout': {
+      id: '/_protected/masters/organization/_layout/country/_layout'
+      path: '/country'
+      fullPath: '/masters/organization/country'
+      preLoaderRoute: typeof ProtectedMastersOrganizationLayoutCountryLayoutRouteImport
+      parentRoute: typeof ProtectedMastersOrganizationLayoutCountryRoute
+    }
+    '/_protected/masters/organization/_layout/company/_layout': {
+      id: '/_protected/masters/organization/_layout/company/_layout'
+      path: '/company'
+      fullPath: '/masters/organization/company'
+      preLoaderRoute: typeof ProtectedMastersOrganizationLayoutCompanyLayoutRouteImport
+      parentRoute: typeof ProtectedMastersOrganizationLayoutCompanyRoute
+    }
+    '/_protected/help-center/_layout/topic_section/_layout/$id': {
+      id: '/_protected/help-center/_layout/topic_section/_layout/$id'
       path: '/$id'
       fullPath: '/help-center/topic_section/$id'
-      preLoaderRoute: typeof AuthenticatedHelpCenterLayoutTopic_sectionLayoutIdRouteImport
-      parentRoute: typeof AuthenticatedHelpCenterLayoutTopic_sectionLayoutRoute
+      preLoaderRoute: typeof ProtectedHelpCenterLayoutTopic_sectionLayoutIdRouteImport
+      parentRoute: typeof ProtectedHelpCenterLayoutTopic_sectionLayoutRoute
     }
-    '/_authenticated/help-center/_layout/topic_category/_layout/$id': {
-      id: '/_authenticated/help-center/_layout/topic_category/_layout/$id'
+    '/_protected/help-center/_layout/topic_category/_layout/$id': {
+      id: '/_protected/help-center/_layout/topic_category/_layout/$id'
       path: '/$id'
       fullPath: '/help-center/topic_category/$id'
-      preLoaderRoute: typeof AuthenticatedHelpCenterLayoutTopic_categoryLayoutIdRouteImport
-      parentRoute: typeof AuthenticatedHelpCenterLayoutTopic_categoryLayoutRoute
+      preLoaderRoute: typeof ProtectedHelpCenterLayoutTopic_categoryLayoutIdRouteImport
+      parentRoute: typeof ProtectedHelpCenterLayoutTopic_categoryLayoutRoute
     }
-    '/_authenticated/help-center/_layout/topic_article/_layout/$id': {
-      id: '/_authenticated/help-center/_layout/topic_article/_layout/$id'
+    '/_protected/administration/_layout/user/_layout/$id': {
+      id: '/_protected/administration/_layout/user/_layout/$id'
+      path: '/$id'
+      fullPath: '/administration/user/$id'
+      preLoaderRoute: typeof ProtectedAdministrationLayoutUserLayoutIdRouteImport
+      parentRoute: typeof ProtectedAdministrationLayoutUserLayoutRoute
+    }
+    '/_protected/masters/payroll/_layout/employee/_layout/': {
+      id: '/_protected/masters/payroll/_layout/employee/_layout/'
+      path: '/'
+      fullPath: '/masters/payroll/employee/'
+      preLoaderRoute: typeof ProtectedMastersPayrollLayoutEmployeeLayoutIndexRouteImport
+      parentRoute: typeof ProtectedMastersPayrollLayoutEmployeeLayoutRoute
+    }
+    '/_protected/masters/organization/_layout/state/_layout/': {
+      id: '/_protected/masters/organization/_layout/state/_layout/'
+      path: '/'
+      fullPath: '/masters/organization/state/'
+      preLoaderRoute: typeof ProtectedMastersOrganizationLayoutStateLayoutIndexRouteImport
+      parentRoute: typeof ProtectedMastersOrganizationLayoutStateLayoutRoute
+    }
+    '/_protected/masters/organization/_layout/currency/_layout/': {
+      id: '/_protected/masters/organization/_layout/currency/_layout/'
+      path: '/'
+      fullPath: '/masters/organization/currency/'
+      preLoaderRoute: typeof ProtectedMastersOrganizationLayoutCurrencyLayoutIndexRouteImport
+      parentRoute: typeof ProtectedMastersOrganizationLayoutCurrencyLayoutRoute
+    }
+    '/_protected/masters/organization/_layout/country/_layout/': {
+      id: '/_protected/masters/organization/_layout/country/_layout/'
+      path: '/'
+      fullPath: '/masters/organization/country/'
+      preLoaderRoute: typeof ProtectedMastersOrganizationLayoutCountryLayoutIndexRouteImport
+      parentRoute: typeof ProtectedMastersOrganizationLayoutCountryLayoutRoute
+    }
+    '/_protected/masters/organization/_layout/company/_layout/': {
+      id: '/_protected/masters/organization/_layout/company/_layout/'
+      path: '/'
+      fullPath: '/masters/organization/company/'
+      preLoaderRoute: typeof ProtectedMastersOrganizationLayoutCompanyLayoutIndexRouteImport
+      parentRoute: typeof ProtectedMastersOrganizationLayoutCompanyLayoutRoute
+    }
+    '/_protected/help-center/_layout/topic_article/_layout/$id/': {
+      id: '/_protected/help-center/_layout/topic_article/_layout/$id/'
       path: '/$id'
       fullPath: '/help-center/topic_article/$id'
-      preLoaderRoute: typeof AuthenticatedHelpCenterLayoutTopic_articleLayoutIdRouteImport
-      parentRoute: typeof AuthenticatedHelpCenterLayoutTopic_articleLayoutRoute
+      preLoaderRoute: typeof ProtectedHelpCenterLayoutTopic_articleLayoutIdIndexRouteImport
+      parentRoute: typeof ProtectedHelpCenterLayoutTopic_articleLayoutRoute
+    }
+    '/_protected/masters/payroll/_layout/employee/_layout/$id': {
+      id: '/_protected/masters/payroll/_layout/employee/_layout/$id'
+      path: '/$id'
+      fullPath: '/masters/payroll/employee/$id'
+      preLoaderRoute: typeof ProtectedMastersPayrollLayoutEmployeeLayoutIdRouteImport
+      parentRoute: typeof ProtectedMastersPayrollLayoutEmployeeLayoutRoute
+    }
+    '/_protected/masters/organization/_layout/state/_layout/$id': {
+      id: '/_protected/masters/organization/_layout/state/_layout/$id'
+      path: '/$id'
+      fullPath: '/masters/organization/state/$id'
+      preLoaderRoute: typeof ProtectedMastersOrganizationLayoutStateLayoutIdRouteImport
+      parentRoute: typeof ProtectedMastersOrganizationLayoutStateLayoutRoute
+    }
+    '/_protected/masters/organization/_layout/currency/_layout/$id': {
+      id: '/_protected/masters/organization/_layout/currency/_layout/$id'
+      path: '/$id'
+      fullPath: '/masters/organization/currency/$id'
+      preLoaderRoute: typeof ProtectedMastersOrganizationLayoutCurrencyLayoutIdRouteImport
+      parentRoute: typeof ProtectedMastersOrganizationLayoutCurrencyLayoutRoute
+    }
+    '/_protected/masters/organization/_layout/country/_layout/$id': {
+      id: '/_protected/masters/organization/_layout/country/_layout/$id'
+      path: '/$id'
+      fullPath: '/masters/organization/country/$id'
+      preLoaderRoute: typeof ProtectedMastersOrganizationLayoutCountryLayoutIdRouteImport
+      parentRoute: typeof ProtectedMastersOrganizationLayoutCountryLayoutRoute
+    }
+    '/_protected/masters/organization/_layout/company/_layout/$id': {
+      id: '/_protected/masters/organization/_layout/company/_layout/$id'
+      path: '/$id'
+      fullPath: '/masters/organization/company/$id'
+      preLoaderRoute: typeof ProtectedMastersOrganizationLayoutCompanyLayoutIdRouteImport
+      parentRoute: typeof ProtectedMastersOrganizationLayoutCompanyLayoutRoute
+    }
+    '/_protected/help-center/_layout/topic_article/_layout/$id/related-article': {
+      id: '/_protected/help-center/_layout/topic_article/_layout/$id/related-article'
+      path: '/$id/related-article'
+      fullPath: '/help-center/topic_article/$id/related-article'
+      preLoaderRoute: typeof ProtectedHelpCenterLayoutTopic_articleLayoutIdRelatedArticleRouteImport
+      parentRoute: typeof ProtectedHelpCenterLayoutTopic_articleLayoutRoute
+    }
+    '/_protected/administration/_layout/role/_layout/$id/_module': {
+      id: '/_protected/administration/_layout/role/_layout/$id/_module'
+      path: '/$id'
+      fullPath: '/administration/role/$id'
+      preLoaderRoute: typeof ProtectedAdministrationLayoutRoleLayoutIdModuleRouteImport
+      parentRoute: typeof ProtectedAdministrationLayoutRoleLayoutIdRoute
+    }
+    '/_protected/administration/_layout/role/_layout/$id/_module/': {
+      id: '/_protected/administration/_layout/role/_layout/$id/_module/'
+      path: '/'
+      fullPath: '/administration/role/$id/'
+      preLoaderRoute: typeof ProtectedAdministrationLayoutRoleLayoutIdModuleIndexRouteImport
+      parentRoute: typeof ProtectedAdministrationLayoutRoleLayoutIdModuleRoute
+    }
+    '/_protected/administration/_layout/role/_layout/$id/_module/$moduleid': {
+      id: '/_protected/administration/_layout/role/_layout/$id/_module/$moduleid'
+      path: '/$moduleid'
+      fullPath: '/administration/role/$id/$moduleid'
+      preLoaderRoute: typeof ProtectedAdministrationLayoutRoleLayoutIdModuleModuleidRouteImport
+      parentRoute: typeof ProtectedAdministrationLayoutRoleLayoutIdModuleRoute
     }
   }
 }
 
-interface AuthenticatedSettingsRouteRouteChildren {
-  AuthenticatedSettingsAccountRoute: typeof AuthenticatedSettingsAccountRoute
-  AuthenticatedSettingsAppearanceRoute: typeof AuthenticatedSettingsAppearanceRoute
-  AuthenticatedSettingsDisplayRoute: typeof AuthenticatedSettingsDisplayRoute
-  AuthenticatedSettingsNotificationsRoute: typeof AuthenticatedSettingsNotificationsRoute
-  AuthenticatedSettingsIndexRoute: typeof AuthenticatedSettingsIndexRoute
+interface ProtectedSettingsRouteRouteChildren {
+  ProtectedSettingsAccountRoute: typeof ProtectedSettingsAccountRoute
+  ProtectedSettingsAppearanceRoute: typeof ProtectedSettingsAppearanceRoute
+  ProtectedSettingsDisplayRoute: typeof ProtectedSettingsDisplayRoute
+  ProtectedSettingsNotificationsRoute: typeof ProtectedSettingsNotificationsRoute
+  ProtectedSettingsIndexRoute: typeof ProtectedSettingsIndexRoute
 }
 
-const AuthenticatedSettingsRouteRouteChildren: AuthenticatedSettingsRouteRouteChildren =
+const ProtectedSettingsRouteRouteChildren: ProtectedSettingsRouteRouteChildren =
   {
-    AuthenticatedSettingsAccountRoute: AuthenticatedSettingsAccountRoute,
-    AuthenticatedSettingsAppearanceRoute: AuthenticatedSettingsAppearanceRoute,
-    AuthenticatedSettingsDisplayRoute: AuthenticatedSettingsDisplayRoute,
-    AuthenticatedSettingsNotificationsRoute:
-      AuthenticatedSettingsNotificationsRoute,
-    AuthenticatedSettingsIndexRoute: AuthenticatedSettingsIndexRoute,
+    ProtectedSettingsAccountRoute: ProtectedSettingsAccountRoute,
+    ProtectedSettingsAppearanceRoute: ProtectedSettingsAppearanceRoute,
+    ProtectedSettingsDisplayRoute: ProtectedSettingsDisplayRoute,
+    ProtectedSettingsNotificationsRoute: ProtectedSettingsNotificationsRoute,
+    ProtectedSettingsIndexRoute: ProtectedSettingsIndexRoute,
   }
 
-const AuthenticatedSettingsRouteRouteWithChildren =
-  AuthenticatedSettingsRouteRoute._addFileChildren(
-    AuthenticatedSettingsRouteRouteChildren,
+const ProtectedSettingsRouteRouteWithChildren =
+  ProtectedSettingsRouteRoute._addFileChildren(
+    ProtectedSettingsRouteRouteChildren,
   )
 
-interface AuthenticatedHelpCenterLayoutTopic_articleLayoutRouteChildren {
-  AuthenticatedHelpCenterLayoutTopic_articleLayoutIdRoute: typeof AuthenticatedHelpCenterLayoutTopic_articleLayoutIdRoute
-  AuthenticatedHelpCenterLayoutTopic_articleLayoutIndexRoute: typeof AuthenticatedHelpCenterLayoutTopic_articleLayoutIndexRoute
+interface ProtectedAdministrationLayoutRoleLayoutIdModuleRouteChildren {
+  ProtectedAdministrationLayoutRoleLayoutIdModuleModuleidRoute: typeof ProtectedAdministrationLayoutRoleLayoutIdModuleModuleidRoute
+  ProtectedAdministrationLayoutRoleLayoutIdModuleIndexRoute: typeof ProtectedAdministrationLayoutRoleLayoutIdModuleIndexRoute
 }
 
-const AuthenticatedHelpCenterLayoutTopic_articleLayoutRouteChildren: AuthenticatedHelpCenterLayoutTopic_articleLayoutRouteChildren =
+const ProtectedAdministrationLayoutRoleLayoutIdModuleRouteChildren: ProtectedAdministrationLayoutRoleLayoutIdModuleRouteChildren =
   {
-    AuthenticatedHelpCenterLayoutTopic_articleLayoutIdRoute:
-      AuthenticatedHelpCenterLayoutTopic_articleLayoutIdRoute,
-    AuthenticatedHelpCenterLayoutTopic_articleLayoutIndexRoute:
-      AuthenticatedHelpCenterLayoutTopic_articleLayoutIndexRoute,
+    ProtectedAdministrationLayoutRoleLayoutIdModuleModuleidRoute:
+      ProtectedAdministrationLayoutRoleLayoutIdModuleModuleidRoute,
+    ProtectedAdministrationLayoutRoleLayoutIdModuleIndexRoute:
+      ProtectedAdministrationLayoutRoleLayoutIdModuleIndexRoute,
   }
 
-const AuthenticatedHelpCenterLayoutTopic_articleLayoutRouteWithChildren =
-  AuthenticatedHelpCenterLayoutTopic_articleLayoutRoute._addFileChildren(
-    AuthenticatedHelpCenterLayoutTopic_articleLayoutRouteChildren,
+const ProtectedAdministrationLayoutRoleLayoutIdModuleRouteWithChildren =
+  ProtectedAdministrationLayoutRoleLayoutIdModuleRoute._addFileChildren(
+    ProtectedAdministrationLayoutRoleLayoutIdModuleRouteChildren,
   )
 
-interface AuthenticatedHelpCenterLayoutTopic_articleRouteChildren {
-  AuthenticatedHelpCenterLayoutTopic_articleLayoutRoute: typeof AuthenticatedHelpCenterLayoutTopic_articleLayoutRouteWithChildren
+interface ProtectedAdministrationLayoutRoleLayoutIdRouteChildren {
+  ProtectedAdministrationLayoutRoleLayoutIdModuleRoute: typeof ProtectedAdministrationLayoutRoleLayoutIdModuleRouteWithChildren
 }
 
-const AuthenticatedHelpCenterLayoutTopic_articleRouteChildren: AuthenticatedHelpCenterLayoutTopic_articleRouteChildren =
+const ProtectedAdministrationLayoutRoleLayoutIdRouteChildren: ProtectedAdministrationLayoutRoleLayoutIdRouteChildren =
   {
-    AuthenticatedHelpCenterLayoutTopic_articleLayoutRoute:
-      AuthenticatedHelpCenterLayoutTopic_articleLayoutRouteWithChildren,
+    ProtectedAdministrationLayoutRoleLayoutIdModuleRoute:
+      ProtectedAdministrationLayoutRoleLayoutIdModuleRouteWithChildren,
   }
 
-const AuthenticatedHelpCenterLayoutTopic_articleRouteWithChildren =
-  AuthenticatedHelpCenterLayoutTopic_articleRoute._addFileChildren(
-    AuthenticatedHelpCenterLayoutTopic_articleRouteChildren,
+const ProtectedAdministrationLayoutRoleLayoutIdRouteWithChildren =
+  ProtectedAdministrationLayoutRoleLayoutIdRoute._addFileChildren(
+    ProtectedAdministrationLayoutRoleLayoutIdRouteChildren,
   )
 
-interface AuthenticatedHelpCenterLayoutTopic_categoryLayoutRouteChildren {
-  AuthenticatedHelpCenterLayoutTopic_categoryLayoutIdRoute: typeof AuthenticatedHelpCenterLayoutTopic_categoryLayoutIdRoute
-  AuthenticatedHelpCenterLayoutTopic_categoryLayoutIndexRoute: typeof AuthenticatedHelpCenterLayoutTopic_categoryLayoutIndexRoute
+interface ProtectedAdministrationLayoutRoleLayoutRouteChildren {
+  ProtectedAdministrationLayoutRoleLayoutIndexRoute: typeof ProtectedAdministrationLayoutRoleLayoutIndexRoute
+  ProtectedAdministrationLayoutRoleLayoutIdRoute: typeof ProtectedAdministrationLayoutRoleLayoutIdRouteWithChildren
 }
 
-const AuthenticatedHelpCenterLayoutTopic_categoryLayoutRouteChildren: AuthenticatedHelpCenterLayoutTopic_categoryLayoutRouteChildren =
+const ProtectedAdministrationLayoutRoleLayoutRouteChildren: ProtectedAdministrationLayoutRoleLayoutRouteChildren =
   {
-    AuthenticatedHelpCenterLayoutTopic_categoryLayoutIdRoute:
-      AuthenticatedHelpCenterLayoutTopic_categoryLayoutIdRoute,
-    AuthenticatedHelpCenterLayoutTopic_categoryLayoutIndexRoute:
-      AuthenticatedHelpCenterLayoutTopic_categoryLayoutIndexRoute,
+    ProtectedAdministrationLayoutRoleLayoutIndexRoute:
+      ProtectedAdministrationLayoutRoleLayoutIndexRoute,
+    ProtectedAdministrationLayoutRoleLayoutIdRoute:
+      ProtectedAdministrationLayoutRoleLayoutIdRouteWithChildren,
   }
 
-const AuthenticatedHelpCenterLayoutTopic_categoryLayoutRouteWithChildren =
-  AuthenticatedHelpCenterLayoutTopic_categoryLayoutRoute._addFileChildren(
-    AuthenticatedHelpCenterLayoutTopic_categoryLayoutRouteChildren,
+const ProtectedAdministrationLayoutRoleLayoutRouteWithChildren =
+  ProtectedAdministrationLayoutRoleLayoutRoute._addFileChildren(
+    ProtectedAdministrationLayoutRoleLayoutRouteChildren,
   )
 
-interface AuthenticatedHelpCenterLayoutTopic_categoryRouteChildren {
-  AuthenticatedHelpCenterLayoutTopic_categoryLayoutRoute: typeof AuthenticatedHelpCenterLayoutTopic_categoryLayoutRouteWithChildren
+interface ProtectedAdministrationLayoutRoleRouteChildren {
+  ProtectedAdministrationLayoutRoleLayoutRoute: typeof ProtectedAdministrationLayoutRoleLayoutRouteWithChildren
 }
 
-const AuthenticatedHelpCenterLayoutTopic_categoryRouteChildren: AuthenticatedHelpCenterLayoutTopic_categoryRouteChildren =
+const ProtectedAdministrationLayoutRoleRouteChildren: ProtectedAdministrationLayoutRoleRouteChildren =
   {
-    AuthenticatedHelpCenterLayoutTopic_categoryLayoutRoute:
-      AuthenticatedHelpCenterLayoutTopic_categoryLayoutRouteWithChildren,
+    ProtectedAdministrationLayoutRoleLayoutRoute:
+      ProtectedAdministrationLayoutRoleLayoutRouteWithChildren,
   }
 
-const AuthenticatedHelpCenterLayoutTopic_categoryRouteWithChildren =
-  AuthenticatedHelpCenterLayoutTopic_categoryRoute._addFileChildren(
-    AuthenticatedHelpCenterLayoutTopic_categoryRouteChildren,
+const ProtectedAdministrationLayoutRoleRouteWithChildren =
+  ProtectedAdministrationLayoutRoleRoute._addFileChildren(
+    ProtectedAdministrationLayoutRoleRouteChildren,
   )
 
-interface AuthenticatedHelpCenterLayoutTopic_sectionLayoutRouteChildren {
-  AuthenticatedHelpCenterLayoutTopic_sectionLayoutIdRoute: typeof AuthenticatedHelpCenterLayoutTopic_sectionLayoutIdRoute
-  AuthenticatedHelpCenterLayoutTopic_sectionLayoutIndexRoute: typeof AuthenticatedHelpCenterLayoutTopic_sectionLayoutIndexRoute
+interface ProtectedAdministrationLayoutUserLayoutRouteChildren {
+  ProtectedAdministrationLayoutUserLayoutIdRoute: typeof ProtectedAdministrationLayoutUserLayoutIdRoute
+  ProtectedAdministrationLayoutUserLayoutIndexRoute: typeof ProtectedAdministrationLayoutUserLayoutIndexRoute
 }
 
-const AuthenticatedHelpCenterLayoutTopic_sectionLayoutRouteChildren: AuthenticatedHelpCenterLayoutTopic_sectionLayoutRouteChildren =
+const ProtectedAdministrationLayoutUserLayoutRouteChildren: ProtectedAdministrationLayoutUserLayoutRouteChildren =
   {
-    AuthenticatedHelpCenterLayoutTopic_sectionLayoutIdRoute:
-      AuthenticatedHelpCenterLayoutTopic_sectionLayoutIdRoute,
-    AuthenticatedHelpCenterLayoutTopic_sectionLayoutIndexRoute:
-      AuthenticatedHelpCenterLayoutTopic_sectionLayoutIndexRoute,
+    ProtectedAdministrationLayoutUserLayoutIdRoute:
+      ProtectedAdministrationLayoutUserLayoutIdRoute,
+    ProtectedAdministrationLayoutUserLayoutIndexRoute:
+      ProtectedAdministrationLayoutUserLayoutIndexRoute,
   }
 
-const AuthenticatedHelpCenterLayoutTopic_sectionLayoutRouteWithChildren =
-  AuthenticatedHelpCenterLayoutTopic_sectionLayoutRoute._addFileChildren(
-    AuthenticatedHelpCenterLayoutTopic_sectionLayoutRouteChildren,
+const ProtectedAdministrationLayoutUserLayoutRouteWithChildren =
+  ProtectedAdministrationLayoutUserLayoutRoute._addFileChildren(
+    ProtectedAdministrationLayoutUserLayoutRouteChildren,
   )
 
-interface AuthenticatedHelpCenterLayoutTopic_sectionRouteChildren {
-  AuthenticatedHelpCenterLayoutTopic_sectionLayoutRoute: typeof AuthenticatedHelpCenterLayoutTopic_sectionLayoutRouteWithChildren
+interface ProtectedAdministrationLayoutUserRouteChildren {
+  ProtectedAdministrationLayoutUserLayoutRoute: typeof ProtectedAdministrationLayoutUserLayoutRouteWithChildren
 }
 
-const AuthenticatedHelpCenterLayoutTopic_sectionRouteChildren: AuthenticatedHelpCenterLayoutTopic_sectionRouteChildren =
+const ProtectedAdministrationLayoutUserRouteChildren: ProtectedAdministrationLayoutUserRouteChildren =
   {
-    AuthenticatedHelpCenterLayoutTopic_sectionLayoutRoute:
-      AuthenticatedHelpCenterLayoutTopic_sectionLayoutRouteWithChildren,
+    ProtectedAdministrationLayoutUserLayoutRoute:
+      ProtectedAdministrationLayoutUserLayoutRouteWithChildren,
   }
 
-const AuthenticatedHelpCenterLayoutTopic_sectionRouteWithChildren =
-  AuthenticatedHelpCenterLayoutTopic_sectionRoute._addFileChildren(
-    AuthenticatedHelpCenterLayoutTopic_sectionRouteChildren,
+const ProtectedAdministrationLayoutUserRouteWithChildren =
+  ProtectedAdministrationLayoutUserRoute._addFileChildren(
+    ProtectedAdministrationLayoutUserRouteChildren,
   )
 
-interface AuthenticatedHelpCenterLayoutRouteChildren {
-  AuthenticatedHelpCenterLayoutIndexRoute: typeof AuthenticatedHelpCenterLayoutIndexRoute
-  AuthenticatedHelpCenterLayoutTopic_articleRoute: typeof AuthenticatedHelpCenterLayoutTopic_articleRouteWithChildren
-  AuthenticatedHelpCenterLayoutTopic_categoryRoute: typeof AuthenticatedHelpCenterLayoutTopic_categoryRouteWithChildren
-  AuthenticatedHelpCenterLayoutTopic_sectionRoute: typeof AuthenticatedHelpCenterLayoutTopic_sectionRouteWithChildren
+interface ProtectedAdministrationLayoutRouteChildren {
+  ProtectedAdministrationLayoutRoleRoute: typeof ProtectedAdministrationLayoutRoleRouteWithChildren
+  ProtectedAdministrationLayoutUserRoute: typeof ProtectedAdministrationLayoutUserRouteWithChildren
+  ProtectedAdministrationLayoutApp_moduleIndexRoute: typeof ProtectedAdministrationLayoutApp_moduleIndexRoute
+  ProtectedAdministrationLayoutApp_module_featureIndexRoute: typeof ProtectedAdministrationLayoutApp_module_featureIndexRoute
+  ProtectedAdministrationLayoutPermissionIndexRoute: typeof ProtectedAdministrationLayoutPermissionIndexRoute
 }
 
-const AuthenticatedHelpCenterLayoutRouteChildren: AuthenticatedHelpCenterLayoutRouteChildren =
+const ProtectedAdministrationLayoutRouteChildren: ProtectedAdministrationLayoutRouteChildren =
   {
-    AuthenticatedHelpCenterLayoutIndexRoute:
-      AuthenticatedHelpCenterLayoutIndexRoute,
-    AuthenticatedHelpCenterLayoutTopic_articleRoute:
-      AuthenticatedHelpCenterLayoutTopic_articleRouteWithChildren,
-    AuthenticatedHelpCenterLayoutTopic_categoryRoute:
-      AuthenticatedHelpCenterLayoutTopic_categoryRouteWithChildren,
-    AuthenticatedHelpCenterLayoutTopic_sectionRoute:
-      AuthenticatedHelpCenterLayoutTopic_sectionRouteWithChildren,
+    ProtectedAdministrationLayoutRoleRoute:
+      ProtectedAdministrationLayoutRoleRouteWithChildren,
+    ProtectedAdministrationLayoutUserRoute:
+      ProtectedAdministrationLayoutUserRouteWithChildren,
+    ProtectedAdministrationLayoutApp_moduleIndexRoute:
+      ProtectedAdministrationLayoutApp_moduleIndexRoute,
+    ProtectedAdministrationLayoutApp_module_featureIndexRoute:
+      ProtectedAdministrationLayoutApp_module_featureIndexRoute,
+    ProtectedAdministrationLayoutPermissionIndexRoute:
+      ProtectedAdministrationLayoutPermissionIndexRoute,
   }
 
-const AuthenticatedHelpCenterLayoutRouteWithChildren =
-  AuthenticatedHelpCenterLayoutRoute._addFileChildren(
-    AuthenticatedHelpCenterLayoutRouteChildren,
+const ProtectedAdministrationLayoutRouteWithChildren =
+  ProtectedAdministrationLayoutRoute._addFileChildren(
+    ProtectedAdministrationLayoutRouteChildren,
   )
 
-interface AuthenticatedHelpCenterRouteChildren {
-  AuthenticatedHelpCenterLayoutRoute: typeof AuthenticatedHelpCenterLayoutRouteWithChildren
+interface ProtectedAdministrationRouteChildren {
+  ProtectedAdministrationLayoutRoute: typeof ProtectedAdministrationLayoutRouteWithChildren
 }
 
-const AuthenticatedHelpCenterRouteChildren: AuthenticatedHelpCenterRouteChildren =
+const ProtectedAdministrationRouteChildren: ProtectedAdministrationRouteChildren =
   {
-    AuthenticatedHelpCenterLayoutRoute:
-      AuthenticatedHelpCenterLayoutRouteWithChildren,
+    ProtectedAdministrationLayoutRoute:
+      ProtectedAdministrationLayoutRouteWithChildren,
   }
 
-const AuthenticatedHelpCenterRouteWithChildren =
-  AuthenticatedHelpCenterRoute._addFileChildren(
-    AuthenticatedHelpCenterRouteChildren,
+const ProtectedAdministrationRouteWithChildren =
+  ProtectedAdministrationRoute._addFileChildren(
+    ProtectedAdministrationRouteChildren,
   )
 
-interface AuthenticatedRouteChildren {
-  AuthenticatedSettingsRouteRoute: typeof AuthenticatedSettingsRouteRouteWithChildren
-  AuthenticatedChartsRoute: typeof AuthenticatedChartsRoute
-  AuthenticatedDashboardRoute: typeof AuthenticatedDashboardRoute
-  AuthenticatedauthProfileRoute: typeof AuthenticatedauthProfileRoute
-  AuthenticatedHelpCenterRoute: typeof AuthenticatedHelpCenterRouteWithChildren
+interface ProtectedHelpCenterLayoutTopic_articleLayoutRouteChildren {
+  ProtectedHelpCenterLayoutTopic_articleLayoutIndexRoute: typeof ProtectedHelpCenterLayoutTopic_articleLayoutIndexRoute
+  ProtectedHelpCenterLayoutTopic_articleLayoutIdRelatedArticleRoute: typeof ProtectedHelpCenterLayoutTopic_articleLayoutIdRelatedArticleRoute
+  ProtectedHelpCenterLayoutTopic_articleLayoutIdIndexRoute: typeof ProtectedHelpCenterLayoutTopic_articleLayoutIdIndexRoute
 }
 
-const AuthenticatedRouteChildren: AuthenticatedRouteChildren = {
-  AuthenticatedSettingsRouteRoute: AuthenticatedSettingsRouteRouteWithChildren,
-  AuthenticatedChartsRoute: AuthenticatedChartsRoute,
-  AuthenticatedDashboardRoute: AuthenticatedDashboardRoute,
-  AuthenticatedauthProfileRoute: AuthenticatedauthProfileRoute,
-  AuthenticatedHelpCenterRoute: AuthenticatedHelpCenterRouteWithChildren,
+const ProtectedHelpCenterLayoutTopic_articleLayoutRouteChildren: ProtectedHelpCenterLayoutTopic_articleLayoutRouteChildren =
+  {
+    ProtectedHelpCenterLayoutTopic_articleLayoutIndexRoute:
+      ProtectedHelpCenterLayoutTopic_articleLayoutIndexRoute,
+    ProtectedHelpCenterLayoutTopic_articleLayoutIdRelatedArticleRoute:
+      ProtectedHelpCenterLayoutTopic_articleLayoutIdRelatedArticleRoute,
+    ProtectedHelpCenterLayoutTopic_articleLayoutIdIndexRoute:
+      ProtectedHelpCenterLayoutTopic_articleLayoutIdIndexRoute,
+  }
+
+const ProtectedHelpCenterLayoutTopic_articleLayoutRouteWithChildren =
+  ProtectedHelpCenterLayoutTopic_articleLayoutRoute._addFileChildren(
+    ProtectedHelpCenterLayoutTopic_articleLayoutRouteChildren,
+  )
+
+interface ProtectedHelpCenterLayoutTopic_articleRouteChildren {
+  ProtectedHelpCenterLayoutTopic_articleLayoutRoute: typeof ProtectedHelpCenterLayoutTopic_articleLayoutRouteWithChildren
 }
 
-const AuthenticatedRouteWithChildren = AuthenticatedRoute._addFileChildren(
-  AuthenticatedRouteChildren,
+const ProtectedHelpCenterLayoutTopic_articleRouteChildren: ProtectedHelpCenterLayoutTopic_articleRouteChildren =
+  {
+    ProtectedHelpCenterLayoutTopic_articleLayoutRoute:
+      ProtectedHelpCenterLayoutTopic_articleLayoutRouteWithChildren,
+  }
+
+const ProtectedHelpCenterLayoutTopic_articleRouteWithChildren =
+  ProtectedHelpCenterLayoutTopic_articleRoute._addFileChildren(
+    ProtectedHelpCenterLayoutTopic_articleRouteChildren,
+  )
+
+interface ProtectedHelpCenterLayoutTopic_categoryLayoutRouteChildren {
+  ProtectedHelpCenterLayoutTopic_categoryLayoutIdRoute: typeof ProtectedHelpCenterLayoutTopic_categoryLayoutIdRoute
+  ProtectedHelpCenterLayoutTopic_categoryLayoutIndexRoute: typeof ProtectedHelpCenterLayoutTopic_categoryLayoutIndexRoute
+}
+
+const ProtectedHelpCenterLayoutTopic_categoryLayoutRouteChildren: ProtectedHelpCenterLayoutTopic_categoryLayoutRouteChildren =
+  {
+    ProtectedHelpCenterLayoutTopic_categoryLayoutIdRoute:
+      ProtectedHelpCenterLayoutTopic_categoryLayoutIdRoute,
+    ProtectedHelpCenterLayoutTopic_categoryLayoutIndexRoute:
+      ProtectedHelpCenterLayoutTopic_categoryLayoutIndexRoute,
+  }
+
+const ProtectedHelpCenterLayoutTopic_categoryLayoutRouteWithChildren =
+  ProtectedHelpCenterLayoutTopic_categoryLayoutRoute._addFileChildren(
+    ProtectedHelpCenterLayoutTopic_categoryLayoutRouteChildren,
+  )
+
+interface ProtectedHelpCenterLayoutTopic_categoryRouteChildren {
+  ProtectedHelpCenterLayoutTopic_categoryLayoutRoute: typeof ProtectedHelpCenterLayoutTopic_categoryLayoutRouteWithChildren
+}
+
+const ProtectedHelpCenterLayoutTopic_categoryRouteChildren: ProtectedHelpCenterLayoutTopic_categoryRouteChildren =
+  {
+    ProtectedHelpCenterLayoutTopic_categoryLayoutRoute:
+      ProtectedHelpCenterLayoutTopic_categoryLayoutRouteWithChildren,
+  }
+
+const ProtectedHelpCenterLayoutTopic_categoryRouteWithChildren =
+  ProtectedHelpCenterLayoutTopic_categoryRoute._addFileChildren(
+    ProtectedHelpCenterLayoutTopic_categoryRouteChildren,
+  )
+
+interface ProtectedHelpCenterLayoutTopic_sectionLayoutRouteChildren {
+  ProtectedHelpCenterLayoutTopic_sectionLayoutIdRoute: typeof ProtectedHelpCenterLayoutTopic_sectionLayoutIdRoute
+  ProtectedHelpCenterLayoutTopic_sectionLayoutIndexRoute: typeof ProtectedHelpCenterLayoutTopic_sectionLayoutIndexRoute
+}
+
+const ProtectedHelpCenterLayoutTopic_sectionLayoutRouteChildren: ProtectedHelpCenterLayoutTopic_sectionLayoutRouteChildren =
+  {
+    ProtectedHelpCenterLayoutTopic_sectionLayoutIdRoute:
+      ProtectedHelpCenterLayoutTopic_sectionLayoutIdRoute,
+    ProtectedHelpCenterLayoutTopic_sectionLayoutIndexRoute:
+      ProtectedHelpCenterLayoutTopic_sectionLayoutIndexRoute,
+  }
+
+const ProtectedHelpCenterLayoutTopic_sectionLayoutRouteWithChildren =
+  ProtectedHelpCenterLayoutTopic_sectionLayoutRoute._addFileChildren(
+    ProtectedHelpCenterLayoutTopic_sectionLayoutRouteChildren,
+  )
+
+interface ProtectedHelpCenterLayoutTopic_sectionRouteChildren {
+  ProtectedHelpCenterLayoutTopic_sectionLayoutRoute: typeof ProtectedHelpCenterLayoutTopic_sectionLayoutRouteWithChildren
+}
+
+const ProtectedHelpCenterLayoutTopic_sectionRouteChildren: ProtectedHelpCenterLayoutTopic_sectionRouteChildren =
+  {
+    ProtectedHelpCenterLayoutTopic_sectionLayoutRoute:
+      ProtectedHelpCenterLayoutTopic_sectionLayoutRouteWithChildren,
+  }
+
+const ProtectedHelpCenterLayoutTopic_sectionRouteWithChildren =
+  ProtectedHelpCenterLayoutTopic_sectionRoute._addFileChildren(
+    ProtectedHelpCenterLayoutTopic_sectionRouteChildren,
+  )
+
+interface ProtectedHelpCenterLayoutRouteChildren {
+  ProtectedHelpCenterLayoutIndexRoute: typeof ProtectedHelpCenterLayoutIndexRoute
+  ProtectedHelpCenterLayoutTopic_articleRoute: typeof ProtectedHelpCenterLayoutTopic_articleRouteWithChildren
+  ProtectedHelpCenterLayoutTopic_categoryRoute: typeof ProtectedHelpCenterLayoutTopic_categoryRouteWithChildren
+  ProtectedHelpCenterLayoutTopic_sectionRoute: typeof ProtectedHelpCenterLayoutTopic_sectionRouteWithChildren
+}
+
+const ProtectedHelpCenterLayoutRouteChildren: ProtectedHelpCenterLayoutRouteChildren =
+  {
+    ProtectedHelpCenterLayoutIndexRoute: ProtectedHelpCenterLayoutIndexRoute,
+    ProtectedHelpCenterLayoutTopic_articleRoute:
+      ProtectedHelpCenterLayoutTopic_articleRouteWithChildren,
+    ProtectedHelpCenterLayoutTopic_categoryRoute:
+      ProtectedHelpCenterLayoutTopic_categoryRouteWithChildren,
+    ProtectedHelpCenterLayoutTopic_sectionRoute:
+      ProtectedHelpCenterLayoutTopic_sectionRouteWithChildren,
+  }
+
+const ProtectedHelpCenterLayoutRouteWithChildren =
+  ProtectedHelpCenterLayoutRoute._addFileChildren(
+    ProtectedHelpCenterLayoutRouteChildren,
+  )
+
+interface ProtectedHelpCenterRouteChildren {
+  ProtectedHelpCenterLayoutRoute: typeof ProtectedHelpCenterLayoutRouteWithChildren
+}
+
+const ProtectedHelpCenterRouteChildren: ProtectedHelpCenterRouteChildren = {
+  ProtectedHelpCenterLayoutRoute: ProtectedHelpCenterLayoutRouteWithChildren,
+}
+
+const ProtectedHelpCenterRouteWithChildren =
+  ProtectedHelpCenterRoute._addFileChildren(ProtectedHelpCenterRouteChildren)
+
+interface ProtectedMastersOrganizationLayoutCompanyLayoutRouteChildren {
+  ProtectedMastersOrganizationLayoutCompanyLayoutIdRoute: typeof ProtectedMastersOrganizationLayoutCompanyLayoutIdRoute
+  ProtectedMastersOrganizationLayoutCompanyLayoutIndexRoute: typeof ProtectedMastersOrganizationLayoutCompanyLayoutIndexRoute
+}
+
+const ProtectedMastersOrganizationLayoutCompanyLayoutRouteChildren: ProtectedMastersOrganizationLayoutCompanyLayoutRouteChildren =
+  {
+    ProtectedMastersOrganizationLayoutCompanyLayoutIdRoute:
+      ProtectedMastersOrganizationLayoutCompanyLayoutIdRoute,
+    ProtectedMastersOrganizationLayoutCompanyLayoutIndexRoute:
+      ProtectedMastersOrganizationLayoutCompanyLayoutIndexRoute,
+  }
+
+const ProtectedMastersOrganizationLayoutCompanyLayoutRouteWithChildren =
+  ProtectedMastersOrganizationLayoutCompanyLayoutRoute._addFileChildren(
+    ProtectedMastersOrganizationLayoutCompanyLayoutRouteChildren,
+  )
+
+interface ProtectedMastersOrganizationLayoutCompanyRouteChildren {
+  ProtectedMastersOrganizationLayoutCompanyLayoutRoute: typeof ProtectedMastersOrganizationLayoutCompanyLayoutRouteWithChildren
+}
+
+const ProtectedMastersOrganizationLayoutCompanyRouteChildren: ProtectedMastersOrganizationLayoutCompanyRouteChildren =
+  {
+    ProtectedMastersOrganizationLayoutCompanyLayoutRoute:
+      ProtectedMastersOrganizationLayoutCompanyLayoutRouteWithChildren,
+  }
+
+const ProtectedMastersOrganizationLayoutCompanyRouteWithChildren =
+  ProtectedMastersOrganizationLayoutCompanyRoute._addFileChildren(
+    ProtectedMastersOrganizationLayoutCompanyRouteChildren,
+  )
+
+interface ProtectedMastersOrganizationLayoutCountryLayoutRouteChildren {
+  ProtectedMastersOrganizationLayoutCountryLayoutIdRoute: typeof ProtectedMastersOrganizationLayoutCountryLayoutIdRoute
+  ProtectedMastersOrganizationLayoutCountryLayoutIndexRoute: typeof ProtectedMastersOrganizationLayoutCountryLayoutIndexRoute
+}
+
+const ProtectedMastersOrganizationLayoutCountryLayoutRouteChildren: ProtectedMastersOrganizationLayoutCountryLayoutRouteChildren =
+  {
+    ProtectedMastersOrganizationLayoutCountryLayoutIdRoute:
+      ProtectedMastersOrganizationLayoutCountryLayoutIdRoute,
+    ProtectedMastersOrganizationLayoutCountryLayoutIndexRoute:
+      ProtectedMastersOrganizationLayoutCountryLayoutIndexRoute,
+  }
+
+const ProtectedMastersOrganizationLayoutCountryLayoutRouteWithChildren =
+  ProtectedMastersOrganizationLayoutCountryLayoutRoute._addFileChildren(
+    ProtectedMastersOrganizationLayoutCountryLayoutRouteChildren,
+  )
+
+interface ProtectedMastersOrganizationLayoutCountryRouteChildren {
+  ProtectedMastersOrganizationLayoutCountryLayoutRoute: typeof ProtectedMastersOrganizationLayoutCountryLayoutRouteWithChildren
+}
+
+const ProtectedMastersOrganizationLayoutCountryRouteChildren: ProtectedMastersOrganizationLayoutCountryRouteChildren =
+  {
+    ProtectedMastersOrganizationLayoutCountryLayoutRoute:
+      ProtectedMastersOrganizationLayoutCountryLayoutRouteWithChildren,
+  }
+
+const ProtectedMastersOrganizationLayoutCountryRouteWithChildren =
+  ProtectedMastersOrganizationLayoutCountryRoute._addFileChildren(
+    ProtectedMastersOrganizationLayoutCountryRouteChildren,
+  )
+
+interface ProtectedMastersOrganizationLayoutCurrencyLayoutRouteChildren {
+  ProtectedMastersOrganizationLayoutCurrencyLayoutIdRoute: typeof ProtectedMastersOrganizationLayoutCurrencyLayoutIdRoute
+  ProtectedMastersOrganizationLayoutCurrencyLayoutIndexRoute: typeof ProtectedMastersOrganizationLayoutCurrencyLayoutIndexRoute
+}
+
+const ProtectedMastersOrganizationLayoutCurrencyLayoutRouteChildren: ProtectedMastersOrganizationLayoutCurrencyLayoutRouteChildren =
+  {
+    ProtectedMastersOrganizationLayoutCurrencyLayoutIdRoute:
+      ProtectedMastersOrganizationLayoutCurrencyLayoutIdRoute,
+    ProtectedMastersOrganizationLayoutCurrencyLayoutIndexRoute:
+      ProtectedMastersOrganizationLayoutCurrencyLayoutIndexRoute,
+  }
+
+const ProtectedMastersOrganizationLayoutCurrencyLayoutRouteWithChildren =
+  ProtectedMastersOrganizationLayoutCurrencyLayoutRoute._addFileChildren(
+    ProtectedMastersOrganizationLayoutCurrencyLayoutRouteChildren,
+  )
+
+interface ProtectedMastersOrganizationLayoutCurrencyRouteChildren {
+  ProtectedMastersOrganizationLayoutCurrencyLayoutRoute: typeof ProtectedMastersOrganizationLayoutCurrencyLayoutRouteWithChildren
+}
+
+const ProtectedMastersOrganizationLayoutCurrencyRouteChildren: ProtectedMastersOrganizationLayoutCurrencyRouteChildren =
+  {
+    ProtectedMastersOrganizationLayoutCurrencyLayoutRoute:
+      ProtectedMastersOrganizationLayoutCurrencyLayoutRouteWithChildren,
+  }
+
+const ProtectedMastersOrganizationLayoutCurrencyRouteWithChildren =
+  ProtectedMastersOrganizationLayoutCurrencyRoute._addFileChildren(
+    ProtectedMastersOrganizationLayoutCurrencyRouteChildren,
+  )
+
+interface ProtectedMastersOrganizationLayoutStateLayoutRouteChildren {
+  ProtectedMastersOrganizationLayoutStateLayoutIdRoute: typeof ProtectedMastersOrganizationLayoutStateLayoutIdRoute
+  ProtectedMastersOrganizationLayoutStateLayoutIndexRoute: typeof ProtectedMastersOrganizationLayoutStateLayoutIndexRoute
+}
+
+const ProtectedMastersOrganizationLayoutStateLayoutRouteChildren: ProtectedMastersOrganizationLayoutStateLayoutRouteChildren =
+  {
+    ProtectedMastersOrganizationLayoutStateLayoutIdRoute:
+      ProtectedMastersOrganizationLayoutStateLayoutIdRoute,
+    ProtectedMastersOrganizationLayoutStateLayoutIndexRoute:
+      ProtectedMastersOrganizationLayoutStateLayoutIndexRoute,
+  }
+
+const ProtectedMastersOrganizationLayoutStateLayoutRouteWithChildren =
+  ProtectedMastersOrganizationLayoutStateLayoutRoute._addFileChildren(
+    ProtectedMastersOrganizationLayoutStateLayoutRouteChildren,
+  )
+
+interface ProtectedMastersOrganizationLayoutStateRouteChildren {
+  ProtectedMastersOrganizationLayoutStateLayoutRoute: typeof ProtectedMastersOrganizationLayoutStateLayoutRouteWithChildren
+}
+
+const ProtectedMastersOrganizationLayoutStateRouteChildren: ProtectedMastersOrganizationLayoutStateRouteChildren =
+  {
+    ProtectedMastersOrganizationLayoutStateLayoutRoute:
+      ProtectedMastersOrganizationLayoutStateLayoutRouteWithChildren,
+  }
+
+const ProtectedMastersOrganizationLayoutStateRouteWithChildren =
+  ProtectedMastersOrganizationLayoutStateRoute._addFileChildren(
+    ProtectedMastersOrganizationLayoutStateRouteChildren,
+  )
+
+interface ProtectedMastersOrganizationLayoutRouteChildren {
+  ProtectedMastersOrganizationLayoutCompanyRoute: typeof ProtectedMastersOrganizationLayoutCompanyRouteWithChildren
+  ProtectedMastersOrganizationLayoutCountryRoute: typeof ProtectedMastersOrganizationLayoutCountryRouteWithChildren
+  ProtectedMastersOrganizationLayoutCurrencyRoute: typeof ProtectedMastersOrganizationLayoutCurrencyRouteWithChildren
+  ProtectedMastersOrganizationLayoutStateRoute: typeof ProtectedMastersOrganizationLayoutStateRouteWithChildren
+  ProtectedMastersOrganizationLayoutBranchIndexRoute: typeof ProtectedMastersOrganizationLayoutBranchIndexRoute
+  ProtectedMastersOrganizationLayoutFinancial_yearIndexRoute: typeof ProtectedMastersOrganizationLayoutFinancial_yearIndexRoute
+}
+
+const ProtectedMastersOrganizationLayoutRouteChildren: ProtectedMastersOrganizationLayoutRouteChildren =
+  {
+    ProtectedMastersOrganizationLayoutCompanyRoute:
+      ProtectedMastersOrganizationLayoutCompanyRouteWithChildren,
+    ProtectedMastersOrganizationLayoutCountryRoute:
+      ProtectedMastersOrganizationLayoutCountryRouteWithChildren,
+    ProtectedMastersOrganizationLayoutCurrencyRoute:
+      ProtectedMastersOrganizationLayoutCurrencyRouteWithChildren,
+    ProtectedMastersOrganizationLayoutStateRoute:
+      ProtectedMastersOrganizationLayoutStateRouteWithChildren,
+    ProtectedMastersOrganizationLayoutBranchIndexRoute:
+      ProtectedMastersOrganizationLayoutBranchIndexRoute,
+    ProtectedMastersOrganizationLayoutFinancial_yearIndexRoute:
+      ProtectedMastersOrganizationLayoutFinancial_yearIndexRoute,
+  }
+
+const ProtectedMastersOrganizationLayoutRouteWithChildren =
+  ProtectedMastersOrganizationLayoutRoute._addFileChildren(
+    ProtectedMastersOrganizationLayoutRouteChildren,
+  )
+
+interface ProtectedMastersOrganizationRouteChildren {
+  ProtectedMastersOrganizationLayoutRoute: typeof ProtectedMastersOrganizationLayoutRouteWithChildren
+}
+
+const ProtectedMastersOrganizationRouteChildren: ProtectedMastersOrganizationRouteChildren =
+  {
+    ProtectedMastersOrganizationLayoutRoute:
+      ProtectedMastersOrganizationLayoutRouteWithChildren,
+  }
+
+const ProtectedMastersOrganizationRouteWithChildren =
+  ProtectedMastersOrganizationRoute._addFileChildren(
+    ProtectedMastersOrganizationRouteChildren,
+  )
+
+interface ProtectedMastersPayrollLayoutEmployeeLayoutRouteChildren {
+  ProtectedMastersPayrollLayoutEmployeeLayoutIdRoute: typeof ProtectedMastersPayrollLayoutEmployeeLayoutIdRoute
+  ProtectedMastersPayrollLayoutEmployeeLayoutIndexRoute: typeof ProtectedMastersPayrollLayoutEmployeeLayoutIndexRoute
+}
+
+const ProtectedMastersPayrollLayoutEmployeeLayoutRouteChildren: ProtectedMastersPayrollLayoutEmployeeLayoutRouteChildren =
+  {
+    ProtectedMastersPayrollLayoutEmployeeLayoutIdRoute:
+      ProtectedMastersPayrollLayoutEmployeeLayoutIdRoute,
+    ProtectedMastersPayrollLayoutEmployeeLayoutIndexRoute:
+      ProtectedMastersPayrollLayoutEmployeeLayoutIndexRoute,
+  }
+
+const ProtectedMastersPayrollLayoutEmployeeLayoutRouteWithChildren =
+  ProtectedMastersPayrollLayoutEmployeeLayoutRoute._addFileChildren(
+    ProtectedMastersPayrollLayoutEmployeeLayoutRouteChildren,
+  )
+
+interface ProtectedMastersPayrollLayoutEmployeeRouteChildren {
+  ProtectedMastersPayrollLayoutEmployeeLayoutRoute: typeof ProtectedMastersPayrollLayoutEmployeeLayoutRouteWithChildren
+}
+
+const ProtectedMastersPayrollLayoutEmployeeRouteChildren: ProtectedMastersPayrollLayoutEmployeeRouteChildren =
+  {
+    ProtectedMastersPayrollLayoutEmployeeLayoutRoute:
+      ProtectedMastersPayrollLayoutEmployeeLayoutRouteWithChildren,
+  }
+
+const ProtectedMastersPayrollLayoutEmployeeRouteWithChildren =
+  ProtectedMastersPayrollLayoutEmployeeRoute._addFileChildren(
+    ProtectedMastersPayrollLayoutEmployeeRouteChildren,
+  )
+
+interface ProtectedMastersPayrollLayoutRouteChildren {
+  ProtectedMastersPayrollLayoutEmployeeRoute: typeof ProtectedMastersPayrollLayoutEmployeeRouteWithChildren
+  ProtectedMastersPayrollLayoutBankIndexRoute: typeof ProtectedMastersPayrollLayoutBankIndexRoute
+  ProtectedMastersPayrollLayoutCost_allocation_ruleIndexRoute: typeof ProtectedMastersPayrollLayoutCost_allocation_ruleIndexRoute
+  ProtectedMastersPayrollLayoutCost_categoryIndexRoute: typeof ProtectedMastersPayrollLayoutCost_categoryIndexRoute
+  ProtectedMastersPayrollLayoutCost_centerIndexRoute: typeof ProtectedMastersPayrollLayoutCost_centerIndexRoute
+  ProtectedMastersPayrollLayoutDepartmentIndexRoute: typeof ProtectedMastersPayrollLayoutDepartmentIndexRoute
+  ProtectedMastersPayrollLayoutDesignationIndexRoute: typeof ProtectedMastersPayrollLayoutDesignationIndexRoute
+  ProtectedMastersPayrollLayoutEmployee_groupIndexRoute: typeof ProtectedMastersPayrollLayoutEmployee_groupIndexRoute
+  ProtectedMastersPayrollLayoutGradeIndexRoute: typeof ProtectedMastersPayrollLayoutGradeIndexRoute
+  ProtectedMastersPayrollLayoutHolidayIndexRoute: typeof ProtectedMastersPayrollLayoutHolidayIndexRoute
+  ProtectedMastersPayrollLayoutLeave_typeIndexRoute: typeof ProtectedMastersPayrollLayoutLeave_typeIndexRoute
+  ProtectedMastersPayrollLayoutSalaryIndexRoute: typeof ProtectedMastersPayrollLayoutSalaryIndexRoute
+  ProtectedMastersPayrollLayoutSalary_componentIndexRoute: typeof ProtectedMastersPayrollLayoutSalary_componentIndexRoute
+  ProtectedMastersPayrollLayoutSalary_structureIndexRoute: typeof ProtectedMastersPayrollLayoutSalary_structureIndexRoute
+  ProtectedMastersPayrollLayoutShiftIndexRoute: typeof ProtectedMastersPayrollLayoutShiftIndexRoute
+}
+
+const ProtectedMastersPayrollLayoutRouteChildren: ProtectedMastersPayrollLayoutRouteChildren =
+  {
+    ProtectedMastersPayrollLayoutEmployeeRoute:
+      ProtectedMastersPayrollLayoutEmployeeRouteWithChildren,
+    ProtectedMastersPayrollLayoutBankIndexRoute:
+      ProtectedMastersPayrollLayoutBankIndexRoute,
+    ProtectedMastersPayrollLayoutCost_allocation_ruleIndexRoute:
+      ProtectedMastersPayrollLayoutCost_allocation_ruleIndexRoute,
+    ProtectedMastersPayrollLayoutCost_categoryIndexRoute:
+      ProtectedMastersPayrollLayoutCost_categoryIndexRoute,
+    ProtectedMastersPayrollLayoutCost_centerIndexRoute:
+      ProtectedMastersPayrollLayoutCost_centerIndexRoute,
+    ProtectedMastersPayrollLayoutDepartmentIndexRoute:
+      ProtectedMastersPayrollLayoutDepartmentIndexRoute,
+    ProtectedMastersPayrollLayoutDesignationIndexRoute:
+      ProtectedMastersPayrollLayoutDesignationIndexRoute,
+    ProtectedMastersPayrollLayoutEmployee_groupIndexRoute:
+      ProtectedMastersPayrollLayoutEmployee_groupIndexRoute,
+    ProtectedMastersPayrollLayoutGradeIndexRoute:
+      ProtectedMastersPayrollLayoutGradeIndexRoute,
+    ProtectedMastersPayrollLayoutHolidayIndexRoute:
+      ProtectedMastersPayrollLayoutHolidayIndexRoute,
+    ProtectedMastersPayrollLayoutLeave_typeIndexRoute:
+      ProtectedMastersPayrollLayoutLeave_typeIndexRoute,
+    ProtectedMastersPayrollLayoutSalaryIndexRoute:
+      ProtectedMastersPayrollLayoutSalaryIndexRoute,
+    ProtectedMastersPayrollLayoutSalary_componentIndexRoute:
+      ProtectedMastersPayrollLayoutSalary_componentIndexRoute,
+    ProtectedMastersPayrollLayoutSalary_structureIndexRoute:
+      ProtectedMastersPayrollLayoutSalary_structureIndexRoute,
+    ProtectedMastersPayrollLayoutShiftIndexRoute:
+      ProtectedMastersPayrollLayoutShiftIndexRoute,
+  }
+
+const ProtectedMastersPayrollLayoutRouteWithChildren =
+  ProtectedMastersPayrollLayoutRoute._addFileChildren(
+    ProtectedMastersPayrollLayoutRouteChildren,
+  )
+
+interface ProtectedMastersPayrollRouteChildren {
+  ProtectedMastersPayrollLayoutRoute: typeof ProtectedMastersPayrollLayoutRouteWithChildren
+}
+
+const ProtectedMastersPayrollRouteChildren: ProtectedMastersPayrollRouteChildren =
+  {
+    ProtectedMastersPayrollLayoutRoute:
+      ProtectedMastersPayrollLayoutRouteWithChildren,
+  }
+
+const ProtectedMastersPayrollRouteWithChildren =
+  ProtectedMastersPayrollRoute._addFileChildren(
+    ProtectedMastersPayrollRouteChildren,
+  )
+
+interface ProtectedRouteChildren {
+  ProtectedSettingsRouteRoute: typeof ProtectedSettingsRouteRouteWithChildren
+  ProtectedChartsRoute: typeof ProtectedChartsRoute
+  ProtectedDashboardRoute: typeof ProtectedDashboardRoute
+  ProtectedauthProfileRoute: typeof ProtectedauthProfileRoute
+  ProtectedAdministrationRoute: typeof ProtectedAdministrationRouteWithChildren
+  ProtectedHelpCenterRoute: typeof ProtectedHelpCenterRouteWithChildren
+  ProtectedMastersOrganizationRoute: typeof ProtectedMastersOrganizationRouteWithChildren
+  ProtectedMastersPayrollRoute: typeof ProtectedMastersPayrollRouteWithChildren
+}
+
+const ProtectedRouteChildren: ProtectedRouteChildren = {
+  ProtectedSettingsRouteRoute: ProtectedSettingsRouteRouteWithChildren,
+  ProtectedChartsRoute: ProtectedChartsRoute,
+  ProtectedDashboardRoute: ProtectedDashboardRoute,
+  ProtectedauthProfileRoute: ProtectedauthProfileRoute,
+  ProtectedAdministrationRoute: ProtectedAdministrationRouteWithChildren,
+  ProtectedHelpCenterRoute: ProtectedHelpCenterRouteWithChildren,
+  ProtectedMastersOrganizationRoute:
+    ProtectedMastersOrganizationRouteWithChildren,
+  ProtectedMastersPayrollRoute: ProtectedMastersPayrollRouteWithChildren,
+}
+
+const ProtectedRouteWithChildren = ProtectedRoute._addFileChildren(
+  ProtectedRouteChildren,
 )
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  AuthenticatedRoute: AuthenticatedRouteWithChildren,
+  ProtectedRoute: ProtectedRouteWithChildren,
   authOtpRoute: authOtpRoute,
   authSignInRoute: authSignInRoute,
-  DemoStorybookRoute: DemoStorybookRoute,
-  DemoTableRoute: DemoTableRoute,
-  DemoTanstackQueryRoute: DemoTanstackQueryRoute,
   authForgotPasswordLazyRoute: authForgotPasswordLazyRoute,
   authSignIn2LazyRoute: authSignIn2LazyRoute,
   authSignUpLazyRoute: authSignUpLazyRoute,
@@ -1070,8 +2480,6 @@ const rootRouteChildren: RootRouteChildren = {
   errors404LazyRoute: errors404LazyRoute,
   errors500LazyRoute: errors500LazyRoute,
   errors503LazyRoute: errors503LazyRoute,
-  DemoFormAddressRoute: DemoFormAddressRoute,
-  DemoFormSimpleRoute: DemoFormSimpleRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

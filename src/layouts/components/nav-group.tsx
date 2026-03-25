@@ -37,21 +37,22 @@ export function NavGroup({ title, items }: NavGroup) {
 
   return (
     <SidebarGroup>
-      <SidebarGroupLabel>{title}</SidebarGroupLabel>
+      {items.map((item) => item.visible).length > 0 && <SidebarGroupLabel>{title}</SidebarGroupLabel>}
       <SidebarMenu>
         {items.map((item) => {
           const key = `${item.title}-${item.url}`
 
           if (!item.items)
 
-            return <SidebarMenuLink key={key} item={item} href={href} />
+            return item.visible && <SidebarMenuLink key={key} item={item} href={href} />
 
           if (state === 'collapsed')
             return (
+              item.visible &&
               <SidebarMenuCollapsedDropdown key={key} item={item} href={href} />
             )
 
-          return <SidebarMenuCollapsible key={key} item={item} href={href} />
+          return item.visible && <SidebarMenuCollapsible key={key} item={item} href={href} />
         })}
       </SidebarMenu>
     </SidebarGroup>
@@ -75,7 +76,7 @@ const SidebarMenuLink = ({ item, href }: { item: NavLink; href: string }) => {
         <Link to={item.url} onClick={() => setOpenMobile(false)}>
           {item.icon && <item.icon />}
           <span>{item.title}</span>
-          {item.badge && <NavBadge>{item.badge}</NavBadge>}
+          {item.badge && <NavBadge>{item.badge} </NavBadge>}
         </Link>
       </SidebarMenuButton>
     </SidebarMenuItem>
@@ -90,6 +91,7 @@ const SidebarMenuCollapsible = ({
   href: string
 }) => {
   const { setOpenMobile } = useSidebar()
+  if (!item.visible) return null;
   return (
     <Collapsible
       asChild
@@ -98,16 +100,19 @@ const SidebarMenuCollapsible = ({
     >
       <SidebarMenuItem>
         <CollapsibleTrigger asChild>
+          {item.visible &&
           <SidebarMenuButton tooltip={item.title}>
             {item.icon && <item.icon />}
-            <span>{item.title}</span>
+              <span>{item.title} </span>
             {item.badge && <NavBadge>{item.badge}</NavBadge>}
             <ChevronRight className='ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90' />
           </SidebarMenuButton>
+          }
         </CollapsibleTrigger>
         <CollapsibleContent className='CollapsibleContent'>
           <SidebarMenuSub>
-            {item.items.map((subItem) => (
+            {item.visible && item.items.map((subItem) => (
+              subItem.visible &&
               <SidebarMenuSubItem key={subItem.title}>
                 <SidebarMenuSubButton
                   asChild
@@ -115,7 +120,7 @@ const SidebarMenuCollapsible = ({
                 >
                   <Link to={subItem.url} onClick={() => setOpenMobile(false)}>
                     {subItem.icon && <subItem.icon />}
-                    <span>{subItem.title}</span>
+                      <span>{subItem.title} </span>
                     {subItem.badge && <NavBadge>{subItem.badge}</NavBadge>}
                   </Link>
                 </SidebarMenuSubButton>
@@ -135,6 +140,7 @@ const SidebarMenuCollapsedDropdown = ({
   item: NavCollapsible
   href: string
 }) => {
+  if (!item.visible) return null;
   return (
     <SidebarMenuItem>
       <DropdownMenu>
@@ -154,7 +160,7 @@ const SidebarMenuCollapsedDropdown = ({
             {item.title} {item.badge ? `(${item.badge})` : ''}
           </DropdownMenuLabel>
           <DropdownMenuSeparator />
-          {item.items.map((sub) => (
+          {item.visible && item.items.map((sub) => (
             <DropdownMenuItem key={`${sub.title}-${sub.url}`} asChild>
               <Link
                 to={sub.url}

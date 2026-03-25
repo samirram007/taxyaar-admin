@@ -84,7 +84,23 @@ export const columns: ColumnDef<TopicArticle>[] = [
       </div>
     ),
   },
+  {
+    accessorKey: 'updatedBy',
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title='UpdateInfo' />
+    ),
+    cell: ({ row }) => {
+      const updatedBy = row.original.updater?.name ?? row.getValue('updater.name')
+      if (!updatedBy) return null
+      return (
+        <div className='flex flex-col gap-1' >
+          <div>{updatedBy}</div>
+          <div className='text-sm text-muted-foreground'>{row.original.updatedAt?.toLocaleString()}</div>
 
+        </div >
+      )
+    }
+  },
   {
     accessorKey: 'status',
     header: ({ column }) => (

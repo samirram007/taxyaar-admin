@@ -8,9 +8,6 @@ import { Main } from '@/layouts/components/main'
 import { ActionPages } from './components/action-page'
 import { type TopicSection } from './data/schema'
 
-import { Route as HelpCenterRouteTo } from '@/routes/_authenticated/help-center/_layout'
-import { Link } from '@tanstack/react-router'
-import { ArrowLeft } from 'lucide-react'
 import { useHelpCenter } from '@/features/help-center/contexts/help_center-context'
 import { useEffect } from 'react'
 // Import the correct type for transporterListSchema

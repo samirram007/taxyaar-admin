@@ -41,7 +41,7 @@ const EditorContent = ({ form }: Props) => {
     return (
         <div className="min-h-[300px] bg-gray-50 dark:bg-gray-900">
             <div className="!min-h-[inherit] grid grid-rows-1 grid-cols-1   gap-6">
-                <Card className="shadow-lg rounded-2xl">
+                <Card className="shadow-none rounded-md">
                     <CardHeader className="flex flex-row items-center justify-between">
                         <CardTitle className="text-lg font-semibold">Content</CardTitle>
                         <div className="flex items-center gap-3">
@@ -65,7 +65,7 @@ const EditorContent = ({ form }: Props) => {
                             </Button> */}
                         </div>
                     </CardHeader>
-                    <CardContent className="!min-h-[inherit] px-0">
+                    <CardContent className="!min-h-[inherit] px-0 ">
                         {activeTab === "code" && <CodeTab />}
                         {activeTab === "writer" && <EditorTab />}
                     </CardContent>
