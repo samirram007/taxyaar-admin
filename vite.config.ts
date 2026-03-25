@@ -11,7 +11,7 @@ export default defineConfig({
 
     proxy: {
       '/api': {
-        target: 'https://taxyaar-api.local', // Your Laravel backend URL
+        target: 'https://taxyaar-backend.test', // Your Laravel backend URL
         changeOrigin: true, // Ensures the host header is rewritten to the target
         secure: false, // For local HTTP servers (set to true for HTTPS in production)
         // rewrite: (path) => path.replace(/^\/api/, ''), // Optional: removes /api prefix if needed
