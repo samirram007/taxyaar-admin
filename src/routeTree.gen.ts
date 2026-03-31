@@ -29,6 +29,7 @@ import { Route as ProtectedauthProfileRouteImport } from './routes/_protected/(a
 import { Route as ProtectedHelpCenterLayoutIndexRouteImport } from './routes/_protected/help-center/_layout/index'
 import { Route as ProtectedMastersPayrollLayoutRouteImport } from './routes/_protected/masters/payroll/_layout'
 import { Route as ProtectedMastersOrganizationLayoutRouteImport } from './routes/_protected/masters/organization/_layout'
+import { Route as ProtectedMastersCustomer_supportLayoutRouteImport } from './routes/_protected/masters/customer_support/_layout'
 import { Route as ProtectedAdministrationLayoutPermissionIndexRouteImport } from './routes/_protected/administration/_layout/permission/index'
 import { Route as ProtectedAdministrationLayoutApp_module_featureIndexRouteImport } from './routes/_protected/administration/_layout/app_module_feature/index'
 import { Route as ProtectedAdministrationLayoutApp_moduleIndexRouteImport } from './routes/_protected/administration/_layout/app_module/index'
@@ -53,6 +54,9 @@ import { Route as ProtectedMastersPayrollLayoutCost_allocation_ruleIndexRouteImp
 import { Route as ProtectedMastersPayrollLayoutBankIndexRouteImport } from './routes/_protected/masters/payroll/_layout/bank/index'
 import { Route as ProtectedMastersOrganizationLayoutFinancial_yearIndexRouteImport } from './routes/_protected/masters/organization/_layout/financial_year/index'
 import { Route as ProtectedMastersOrganizationLayoutBranchIndexRouteImport } from './routes/_protected/masters/organization/_layout/branch/index'
+import { Route as ProtectedMastersCustomer_supportLayoutTicket_typesIndexRouteImport } from './routes/_protected/masters/customer_support/_layout/ticket_types/index'
+import { Route as ProtectedMastersCustomer_supportLayoutTicket_statusesIndexRouteImport } from './routes/_protected/masters/customer_support/_layout/ticket_statuses/index'
+import { Route as ProtectedMastersCustomer_supportLayoutRequestsIndexRouteImport } from './routes/_protected/masters/customer_support/_layout/requests/index'
 import { Route as ProtectedHelpCenterLayoutTopic_sectionLayoutIndexRouteImport } from './routes/_protected/help-center/_layout/topic_section/_layout/index'
 import { Route as ProtectedHelpCenterLayoutTopic_categoryLayoutIndexRouteImport } from './routes/_protected/help-center/_layout/topic_category/_layout/index'
 import { Route as ProtectedHelpCenterLayoutTopic_articleLayoutIndexRouteImport } from './routes/_protected/help-center/_layout/topic_article/_layout/index'
@@ -104,6 +108,9 @@ const ProtectedMastersPayrollRouteImport = createFileRoute(
 )()
 const ProtectedMastersOrganizationRouteImport = createFileRoute(
   '/_protected/masters/organization',
+)()
+const ProtectedMastersCustomer_supportRouteImport = createFileRoute(
+  '/_protected/masters/customer_support',
 )()
 const ProtectedHelpCenterLayoutTopic_sectionRouteImport = createFileRoute(
   '/_protected/help-center/_layout/topic_section',
@@ -259,6 +266,12 @@ const ProtectedMastersOrganizationRoute =
     path: '/masters/organization',
     getParentRoute: () => ProtectedRoute,
   } as any)
+const ProtectedMastersCustomer_supportRoute =
+  ProtectedMastersCustomer_supportRouteImport.update({
+    id: '/masters/customer_support',
+    path: '/masters/customer_support',
+    getParentRoute: () => ProtectedRoute,
+  } as any)
 const ProtectedSettingsIndexRoute = ProtectedSettingsIndexRouteImport.update({
   id: '/',
   path: '/',
@@ -348,6 +361,11 @@ const ProtectedMastersOrganizationLayoutRoute =
   ProtectedMastersOrganizationLayoutRouteImport.update({
     id: '/_layout',
     getParentRoute: () => ProtectedMastersOrganizationRoute,
+  } as any)
+const ProtectedMastersCustomer_supportLayoutRoute =
+  ProtectedMastersCustomer_supportLayoutRouteImport.update({
+    id: '/_layout',
+    getParentRoute: () => ProtectedMastersCustomer_supportRoute,
   } as any)
 const ProtectedMastersPayrollLayoutEmployeeRoute =
   ProtectedMastersPayrollLayoutEmployeeRouteImport.update({
@@ -523,6 +541,24 @@ const ProtectedMastersOrganizationLayoutBranchIndexRoute =
     id: '/branch/',
     path: '/branch/',
     getParentRoute: () => ProtectedMastersOrganizationLayoutRoute,
+  } as any)
+const ProtectedMastersCustomer_supportLayoutTicket_typesIndexRoute =
+  ProtectedMastersCustomer_supportLayoutTicket_typesIndexRouteImport.update({
+    id: '/ticket_types/',
+    path: '/ticket_types/',
+    getParentRoute: () => ProtectedMastersCustomer_supportLayoutRoute,
+  } as any)
+const ProtectedMastersCustomer_supportLayoutTicket_statusesIndexRoute =
+  ProtectedMastersCustomer_supportLayoutTicket_statusesIndexRouteImport.update({
+    id: '/ticket_statuses/',
+    path: '/ticket_statuses/',
+    getParentRoute: () => ProtectedMastersCustomer_supportLayoutRoute,
+  } as any)
+const ProtectedMastersCustomer_supportLayoutRequestsIndexRoute =
+  ProtectedMastersCustomer_supportLayoutRequestsIndexRouteImport.update({
+    id: '/requests/',
+    path: '/requests/',
+    getParentRoute: () => ProtectedMastersCustomer_supportLayoutRoute,
   } as any)
 const ProtectedHelpCenterLayoutTopic_sectionLayoutIndexRoute =
   ProtectedHelpCenterLayoutTopic_sectionLayoutIndexRouteImport.update({
@@ -713,6 +749,7 @@ export interface FileRoutesByFullPath {
   '/settings/display': typeof ProtectedSettingsDisplayRoute
   '/settings/notifications': typeof ProtectedSettingsNotificationsRoute
   '/settings/': typeof ProtectedSettingsIndexRoute
+  '/masters/customer_support': typeof ProtectedMastersCustomer_supportLayoutRouteWithChildren
   '/masters/organization': typeof ProtectedMastersOrganizationLayoutRouteWithChildren
   '/masters/payroll': typeof ProtectedMastersPayrollLayoutRouteWithChildren
   '/help-center/': typeof ProtectedHelpCenterLayoutIndexRoute
@@ -737,6 +774,9 @@ export interface FileRoutesByFullPath {
   '/help-center/topic_article/': typeof ProtectedHelpCenterLayoutTopic_articleLayoutIndexRoute
   '/help-center/topic_category/': typeof ProtectedHelpCenterLayoutTopic_categoryLayoutIndexRoute
   '/help-center/topic_section/': typeof ProtectedHelpCenterLayoutTopic_sectionLayoutIndexRoute
+  '/masters/customer_support/requests': typeof ProtectedMastersCustomer_supportLayoutRequestsIndexRoute
+  '/masters/customer_support/ticket_statuses': typeof ProtectedMastersCustomer_supportLayoutTicket_statusesIndexRoute
+  '/masters/customer_support/ticket_types': typeof ProtectedMastersCustomer_supportLayoutTicket_typesIndexRoute
   '/masters/organization/branch': typeof ProtectedMastersOrganizationLayoutBranchIndexRoute
   '/masters/organization/financial_year': typeof ProtectedMastersOrganizationLayoutFinancial_yearIndexRoute
   '/masters/payroll/bank': typeof ProtectedMastersPayrollLayoutBankIndexRoute
@@ -792,6 +832,7 @@ export interface FileRoutesByTo {
   '/settings/display': typeof ProtectedSettingsDisplayRoute
   '/settings/notifications': typeof ProtectedSettingsNotificationsRoute
   '/settings': typeof ProtectedSettingsIndexRoute
+  '/masters/customer_support': typeof ProtectedMastersCustomer_supportLayoutRouteWithChildren
   '/masters/organization': typeof ProtectedMastersOrganizationLayoutRouteWithChildren
   '/masters/payroll': typeof ProtectedMastersPayrollLayoutRouteWithChildren
   '/administration/role': typeof ProtectedAdministrationLayoutRoleLayoutIndexRoute
@@ -810,6 +851,9 @@ export interface FileRoutesByTo {
   '/masters/organization/currency': typeof ProtectedMastersOrganizationLayoutCurrencyLayoutIndexRoute
   '/masters/organization/state': typeof ProtectedMastersOrganizationLayoutStateLayoutIndexRoute
   '/masters/payroll/employee': typeof ProtectedMastersPayrollLayoutEmployeeLayoutIndexRoute
+  '/masters/customer_support/requests': typeof ProtectedMastersCustomer_supportLayoutRequestsIndexRoute
+  '/masters/customer_support/ticket_statuses': typeof ProtectedMastersCustomer_supportLayoutTicket_statusesIndexRoute
+  '/masters/customer_support/ticket_types': typeof ProtectedMastersCustomer_supportLayoutTicket_typesIndexRoute
   '/masters/organization/branch': typeof ProtectedMastersOrganizationLayoutBranchIndexRoute
   '/masters/organization/financial_year': typeof ProtectedMastersOrganizationLayoutFinancial_yearIndexRoute
   '/masters/payroll/bank': typeof ProtectedMastersPayrollLayoutBankIndexRoute
@@ -864,6 +908,8 @@ export interface FileRoutesById {
   '/_protected/settings/display': typeof ProtectedSettingsDisplayRoute
   '/_protected/settings/notifications': typeof ProtectedSettingsNotificationsRoute
   '/_protected/settings/': typeof ProtectedSettingsIndexRoute
+  '/_protected/masters/customer_support': typeof ProtectedMastersCustomer_supportRouteWithChildren
+  '/_protected/masters/customer_support/_layout': typeof ProtectedMastersCustomer_supportLayoutRouteWithChildren
   '/_protected/masters/organization': typeof ProtectedMastersOrganizationRouteWithChildren
   '/_protected/masters/organization/_layout': typeof ProtectedMastersOrganizationLayoutRouteWithChildren
   '/_protected/masters/payroll': typeof ProtectedMastersPayrollRouteWithChildren
@@ -900,6 +946,9 @@ export interface FileRoutesById {
   '/_protected/help-center/_layout/topic_article/_layout/': typeof ProtectedHelpCenterLayoutTopic_articleLayoutIndexRoute
   '/_protected/help-center/_layout/topic_category/_layout/': typeof ProtectedHelpCenterLayoutTopic_categoryLayoutIndexRoute
   '/_protected/help-center/_layout/topic_section/_layout/': typeof ProtectedHelpCenterLayoutTopic_sectionLayoutIndexRoute
+  '/_protected/masters/customer_support/_layout/requests/': typeof ProtectedMastersCustomer_supportLayoutRequestsIndexRoute
+  '/_protected/masters/customer_support/_layout/ticket_statuses/': typeof ProtectedMastersCustomer_supportLayoutTicket_statusesIndexRoute
+  '/_protected/masters/customer_support/_layout/ticket_types/': typeof ProtectedMastersCustomer_supportLayoutTicket_typesIndexRoute
   '/_protected/masters/organization/_layout/branch/': typeof ProtectedMastersOrganizationLayoutBranchIndexRoute
   '/_protected/masters/organization/_layout/financial_year/': typeof ProtectedMastersOrganizationLayoutFinancial_yearIndexRoute
   '/_protected/masters/payroll/_layout/bank/': typeof ProtectedMastersPayrollLayoutBankIndexRoute
@@ -959,6 +1008,7 @@ export interface FileRouteTypes {
     | '/settings/display'
     | '/settings/notifications'
     | '/settings/'
+    | '/masters/customer_support'
     | '/masters/organization'
     | '/masters/payroll'
     | '/help-center/'
@@ -983,6 +1033,9 @@ export interface FileRouteTypes {
     | '/help-center/topic_article/'
     | '/help-center/topic_category/'
     | '/help-center/topic_section/'
+    | '/masters/customer_support/requests'
+    | '/masters/customer_support/ticket_statuses'
+    | '/masters/customer_support/ticket_types'
     | '/masters/organization/branch'
     | '/masters/organization/financial_year'
     | '/masters/payroll/bank'
@@ -1038,6 +1091,7 @@ export interface FileRouteTypes {
     | '/settings/display'
     | '/settings/notifications'
     | '/settings'
+    | '/masters/customer_support'
     | '/masters/organization'
     | '/masters/payroll'
     | '/administration/role'
@@ -1056,6 +1110,9 @@ export interface FileRouteTypes {
     | '/masters/organization/currency'
     | '/masters/organization/state'
     | '/masters/payroll/employee'
+    | '/masters/customer_support/requests'
+    | '/masters/customer_support/ticket_statuses'
+    | '/masters/customer_support/ticket_types'
     | '/masters/organization/branch'
     | '/masters/organization/financial_year'
     | '/masters/payroll/bank'
@@ -1109,6 +1166,8 @@ export interface FileRouteTypes {
     | '/_protected/settings/display'
     | '/_protected/settings/notifications'
     | '/_protected/settings/'
+    | '/_protected/masters/customer_support'
+    | '/_protected/masters/customer_support/_layout'
     | '/_protected/masters/organization'
     | '/_protected/masters/organization/_layout'
     | '/_protected/masters/payroll'
@@ -1145,6 +1204,9 @@ export interface FileRouteTypes {
     | '/_protected/help-center/_layout/topic_article/_layout/'
     | '/_protected/help-center/_layout/topic_category/_layout/'
     | '/_protected/help-center/_layout/topic_section/_layout/'
+    | '/_protected/masters/customer_support/_layout/requests/'
+    | '/_protected/masters/customer_support/_layout/ticket_statuses/'
+    | '/_protected/masters/customer_support/_layout/ticket_types/'
     | '/_protected/masters/organization/_layout/branch/'
     | '/_protected/masters/organization/_layout/financial_year/'
     | '/_protected/masters/payroll/_layout/bank/'
@@ -1337,6 +1399,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProtectedMastersOrganizationRouteImport
       parentRoute: typeof ProtectedRoute
     }
+    '/_protected/masters/customer_support': {
+      id: '/_protected/masters/customer_support'
+      path: '/masters/customer_support'
+      fullPath: '/masters/customer_support'
+      preLoaderRoute: typeof ProtectedMastersCustomer_supportRouteImport
+      parentRoute: typeof ProtectedRoute
+    }
     '/_protected/settings/': {
       id: '/_protected/settings/'
       path: '/'
@@ -1448,6 +1517,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/masters/organization'
       preLoaderRoute: typeof ProtectedMastersOrganizationLayoutRouteImport
       parentRoute: typeof ProtectedMastersOrganizationRoute
+    }
+    '/_protected/masters/customer_support/_layout': {
+      id: '/_protected/masters/customer_support/_layout'
+      path: '/masters/customer_support'
+      fullPath: '/masters/customer_support'
+      preLoaderRoute: typeof ProtectedMastersCustomer_supportLayoutRouteImport
+      parentRoute: typeof ProtectedMastersCustomer_supportRoute
     }
     '/_protected/masters/payroll/_layout/employee': {
       id: '/_protected/masters/payroll/_layout/employee'
@@ -1658,6 +1734,27 @@ declare module '@tanstack/react-router' {
       fullPath: '/masters/organization/branch'
       preLoaderRoute: typeof ProtectedMastersOrganizationLayoutBranchIndexRouteImport
       parentRoute: typeof ProtectedMastersOrganizationLayoutRoute
+    }
+    '/_protected/masters/customer_support/_layout/ticket_types/': {
+      id: '/_protected/masters/customer_support/_layout/ticket_types/'
+      path: '/ticket_types'
+      fullPath: '/masters/customer_support/ticket_types'
+      preLoaderRoute: typeof ProtectedMastersCustomer_supportLayoutTicket_typesIndexRouteImport
+      parentRoute: typeof ProtectedMastersCustomer_supportLayoutRoute
+    }
+    '/_protected/masters/customer_support/_layout/ticket_statuses/': {
+      id: '/_protected/masters/customer_support/_layout/ticket_statuses/'
+      path: '/ticket_statuses'
+      fullPath: '/masters/customer_support/ticket_statuses'
+      preLoaderRoute: typeof ProtectedMastersCustomer_supportLayoutTicket_statusesIndexRouteImport
+      parentRoute: typeof ProtectedMastersCustomer_supportLayoutRoute
+    }
+    '/_protected/masters/customer_support/_layout/requests/': {
+      id: '/_protected/masters/customer_support/_layout/requests/'
+      path: '/requests'
+      fullPath: '/masters/customer_support/requests'
+      preLoaderRoute: typeof ProtectedMastersCustomer_supportLayoutRequestsIndexRouteImport
+      parentRoute: typeof ProtectedMastersCustomer_supportLayoutRoute
     }
     '/_protected/help-center/_layout/topic_section/_layout/': {
       id: '/_protected/help-center/_layout/topic_section/_layout/'
@@ -2157,6 +2254,42 @@ const ProtectedHelpCenterRouteChildren: ProtectedHelpCenterRouteChildren = {
 const ProtectedHelpCenterRouteWithChildren =
   ProtectedHelpCenterRoute._addFileChildren(ProtectedHelpCenterRouteChildren)
 
+interface ProtectedMastersCustomer_supportLayoutRouteChildren {
+  ProtectedMastersCustomer_supportLayoutRequestsIndexRoute: typeof ProtectedMastersCustomer_supportLayoutRequestsIndexRoute
+  ProtectedMastersCustomer_supportLayoutTicket_statusesIndexRoute: typeof ProtectedMastersCustomer_supportLayoutTicket_statusesIndexRoute
+  ProtectedMastersCustomer_supportLayoutTicket_typesIndexRoute: typeof ProtectedMastersCustomer_supportLayoutTicket_typesIndexRoute
+}
+
+const ProtectedMastersCustomer_supportLayoutRouteChildren: ProtectedMastersCustomer_supportLayoutRouteChildren =
+  {
+    ProtectedMastersCustomer_supportLayoutRequestsIndexRoute:
+      ProtectedMastersCustomer_supportLayoutRequestsIndexRoute,
+    ProtectedMastersCustomer_supportLayoutTicket_statusesIndexRoute:
+      ProtectedMastersCustomer_supportLayoutTicket_statusesIndexRoute,
+    ProtectedMastersCustomer_supportLayoutTicket_typesIndexRoute:
+      ProtectedMastersCustomer_supportLayoutTicket_typesIndexRoute,
+  }
+
+const ProtectedMastersCustomer_supportLayoutRouteWithChildren =
+  ProtectedMastersCustomer_supportLayoutRoute._addFileChildren(
+    ProtectedMastersCustomer_supportLayoutRouteChildren,
+  )
+
+interface ProtectedMastersCustomer_supportRouteChildren {
+  ProtectedMastersCustomer_supportLayoutRoute: typeof ProtectedMastersCustomer_supportLayoutRouteWithChildren
+}
+
+const ProtectedMastersCustomer_supportRouteChildren: ProtectedMastersCustomer_supportRouteChildren =
+  {
+    ProtectedMastersCustomer_supportLayoutRoute:
+      ProtectedMastersCustomer_supportLayoutRouteWithChildren,
+  }
+
+const ProtectedMastersCustomer_supportRouteWithChildren =
+  ProtectedMastersCustomer_supportRoute._addFileChildren(
+    ProtectedMastersCustomer_supportRouteChildren,
+  )
+
 interface ProtectedMastersOrganizationLayoutCompanyLayoutRouteChildren {
   ProtectedMastersOrganizationLayoutCompanyLayoutIdRoute: typeof ProtectedMastersOrganizationLayoutCompanyLayoutIdRoute
   ProtectedMastersOrganizationLayoutCompanyLayoutIndexRoute: typeof ProtectedMastersOrganizationLayoutCompanyLayoutIndexRoute
@@ -2446,6 +2579,7 @@ interface ProtectedRouteChildren {
   ProtectedauthProfileRoute: typeof ProtectedauthProfileRoute
   ProtectedAdministrationRoute: typeof ProtectedAdministrationRouteWithChildren
   ProtectedHelpCenterRoute: typeof ProtectedHelpCenterRouteWithChildren
+  ProtectedMastersCustomer_supportRoute: typeof ProtectedMastersCustomer_supportRouteWithChildren
   ProtectedMastersOrganizationRoute: typeof ProtectedMastersOrganizationRouteWithChildren
   ProtectedMastersPayrollRoute: typeof ProtectedMastersPayrollRouteWithChildren
 }
@@ -2457,6 +2591,8 @@ const ProtectedRouteChildren: ProtectedRouteChildren = {
   ProtectedauthProfileRoute: ProtectedauthProfileRoute,
   ProtectedAdministrationRoute: ProtectedAdministrationRouteWithChildren,
   ProtectedHelpCenterRoute: ProtectedHelpCenterRouteWithChildren,
+  ProtectedMastersCustomer_supportRoute:
+    ProtectedMastersCustomer_supportRouteWithChildren,
   ProtectedMastersOrganizationRoute:
     ProtectedMastersOrganizationRouteWithChildren,
   ProtectedMastersPayrollRoute: ProtectedMastersPayrollRouteWithChildren,

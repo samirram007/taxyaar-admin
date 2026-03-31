@@ -73,8 +73,31 @@ export const sidebarData: SidebarData = {
           url: '/help-center',
           icon: IconHelp,
         },
-
-
+        {
+          title: "Customer Requests",
+          visible: true,
+          icon: IconHelp,
+          items: [
+            {
+              title: 'Requests',
+              visible: true,
+              url: '/masters/customer_support/requests',
+              icon: IconUserCog
+            },
+            {
+              title: 'Ticket Types',
+              visible: true,
+              url: '/masters/customer_support/ticket_types',
+              icon: IconUserCog
+            },
+            {
+              title: 'Ticket Status',
+              visible: true,
+              url: '/masters/customer_support/ticket_statuses',
+              icon: IconUserCog
+            }
+          ]
+        }
       ],
     },
     {
@@ -170,8 +193,7 @@ export const sidebarData: SidebarData = {
             },
 
           ]
-        },
-
+        }
       ],
     },
     {
