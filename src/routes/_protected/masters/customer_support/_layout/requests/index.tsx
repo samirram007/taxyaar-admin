@@ -1,11 +1,11 @@
-import { requestsQueryOptions } from '@/features/modules/requests/data/queryOptions';
+import { requestsQueryOptions } from '@/features/modules/tickets/data/queryOptions';
 import { useSuspenseQuery } from '@tanstack/react-query';
 import { createFileRoute } from '@tanstack/react-router'
 import { Loader } from 'lucide-react';
 import React, { Suspense } from 'react';
 
 
-const RequestPage = React.lazy(() => import('@/features/modules/requests'))
+const RequestPage = React.lazy(() => import('@/features/modules/tickets'))
 
 export const Route = createFileRoute(
     '/_protected/masters/customer_support/_layout/requests/',
